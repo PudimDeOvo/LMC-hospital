@@ -1,0 +1,37 @@
+/* Estilo para o painel raiz da tela de boas-vindas */
+#welcomePane {
+    -fx-background-color: #F4F4F9; /* Um cinza bem claro para o fundo */
+}
+
+/* Estilo para o título principal */
+.welcome-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2D756C; /* Cor verde escura do tema original */
+}
+
+/* Estilo para o subtítulo */
+.welcome-subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555555; /* Cinza escuro para o texto */
+}
+
+/* Estilo para o botão de logout */
+.logout-button {
+    -fx-background-color: #D32F2F; /* Vermelho para uma ação de 'saída' */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8px 16px;
+}
+
+/* Efeito de hover para o botão de logout */
+.logout-button:hover {
+    -fx-background-color: #B71C1C; /* Vermelho mais escuro ao passar o mouse */
+    -fx-cursor: hand; /* Muda o cursor para uma mão */
+}
+
+.decorative-pane {
+    -fx-background-color: #2D756C; /* A cor que estava na tela de login */
+}
