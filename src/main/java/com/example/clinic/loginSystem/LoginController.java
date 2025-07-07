@@ -44,8 +44,10 @@ public class LoginController {
 
     @FXML
     protected void switchToSignUp(ActionEvent event) {
+        String FILE_PATH = "/com/example/clinic/SignUpScene/signup-view.fxml";
+
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/clinic/SignUpScene/signup-view.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FILE_PATH)));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -55,5 +57,4 @@ public class LoginController {
             System.err.println("Erro ao carregar a tela de cadastro (signup-view.fxml):");
             e.printStackTrace();
         }
-    }
-}
+    }}

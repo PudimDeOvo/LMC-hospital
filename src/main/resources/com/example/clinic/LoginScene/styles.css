@@ -33,5 +33,7 @@
 }
 
 .decorative-pane {
-    -fx-background-color: #2D756C; /* A cor que estava na tela de login */
+    -fx-background-color: linear-gradient(to bottom right, #4cae9b, #1c2a3a);
+    -fx-min-width: 400;
+    -fx-background-radius: 10 0 0 10;
 }

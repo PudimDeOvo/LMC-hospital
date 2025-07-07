@@ -1,5 +1,6 @@
 package com.example.clinic.registerSystem;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +49,7 @@ public class SignUpController {
             return;
         }
 
-        String[] pacientData = {username, password, name, healthPlan};
+        String[] pacientData = {username, password, name, Integer.toString(age), healthPlan};
         SignUpManager.storePacient(pacientData);
         System.out.println("Usuário cadastrado: " + username);
 
@@ -74,6 +75,7 @@ public class SignUpController {
 
     @FXML
     protected void switchToLogin(ActionEvent event) {
+        String FILE_PATH = "/com/example/clinic/LoginScene/login-view.fxm";
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/clinic/LoginScene/login-view.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
