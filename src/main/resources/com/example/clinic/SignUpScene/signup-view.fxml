@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import java.net.URL?>
 
 <HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.clinic.registerSystem.SignUpController"
-      alignment="CENTER" style="-fx-font-family: 'System';"
+      alignment="CENTER" styleClass="root"
       prefWidth="1280.0" prefHeight="720.0">
     <children>
 
@@ -30,57 +29,44 @@
             </children>
         </StackPane>
 
-        <VBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #FFFFFF;" prefWidth="450.0" maxWidth="450.0">
+        <VBox alignment="CENTER_LEFT" spacing="15.0" styleClass="form-container" prefWidth="450.0" maxWidth="450.0">
             <padding>
                 <Insets top="30" right="50" bottom="30" left="50"/>
             </padding>
             <children>
-                <Label text="Sign up">
-                    <font>
-                        <Font name="System Bold" size="28.0"/>
-                    </font>
-                </Label>
+                <Label text="Sign up" styleClass="title"/>
 
-                <GridPane hgap="10" vgap="15"> <columnConstraints>
-                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                </columnConstraints>
+                <GridPane hgap="10" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
 
                     <Label text="Username:"/>
                     <TextField fx:id="usernameField" promptText="Enter your username"
-                               style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;"
-                               prefHeight="35.0" GridPane.columnIndex="1"/>
+                               styleClass="text-field" prefHeight="35.0" GridPane.columnIndex="1"/>
 
                     <Label text="Password:" GridPane.rowIndex="1"/>
                     <PasswordField fx:id="passwordField" promptText="Enter your password"
-                                   style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;"
-                                   prefHeight="35.0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                   styleClass="password-field" prefHeight="35.0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
                     <Label text="Full Name:" GridPane.rowIndex="2"/>
                     <TextField fx:id="nameField" promptText="Enter your full name"
-                               style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;"
-                               prefHeight="35.0" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                               styleClass="text-field" prefHeight="35.0" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
                     <Label text="Age:" GridPane.rowIndex="3"/>
                     <TextField fx:id="ageField" promptText="Enter your age"
-                               style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;"
-                               prefHeight="35.0" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                               styleClass="text-field" prefHeight="35.0" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
                     <Label text="Health Plan:" GridPane.rowIndex="4"/>
                     <TextField fx:id="healthPlanField" promptText="Enter your health plan"
-                               style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;"
-                               prefHeight="35.0" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                               styleClass="text-field" prefHeight="35.0" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
                 </GridPane>
 
-                <Button onAction="#handleSignUpButtonAction" text="Sign up" textFill="WHITE"
-                        style="-fx-background-color: #4CAF82; -fx-background-radius: 6;"
-                        prefHeight="35.0" maxWidth="Infinity">
-                    <font>
-                        <Font name="System Bold" size="14.0"/>
-                    </font>
-                </Button>
+                <Button onAction="#handleSignUpButtonAction" text="Sign up" styleClass="submit-button"
+                        prefHeight="40.0" maxWidth="Infinity"/>
 
-                <Hyperlink text="Already have an account? Log in." textFill="#555555" onAction="#switchToLogin"/>
+                <Hyperlink text="Already have an account? Log in." onAction="#switchToLogin"/>
             </children>
         </VBox>
     </children>

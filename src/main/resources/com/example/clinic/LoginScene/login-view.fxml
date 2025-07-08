@@ -16,10 +16,9 @@
            prefWidth="1280.0" prefHeight="720.0" fx:controller="com.example.clinic.loginSystem.LoginController">
     <children>
 
-        <HBox alignment="CENTER" style="-fx-font-family: 'System';">
+        <HBox alignment="CENTER">
             <children>
-
-                <VBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #FFFFFF;" prefWidth="450.0" maxWidth="450.0">
+                <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="login-form-container" prefWidth="450.0" maxWidth="450.0">
                     <padding>
                         <Insets top="30" right="50" bottom="30" left="50" />
                     </padding>
@@ -30,16 +29,11 @@
                             </font>
                         </Label>
 
-                        <TextField fx:id="usernameField" promptText="Username" style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;" prefHeight="35.0" />
+                        <TextField fx:id="usernameField" promptText="Username" styleClass="form-input" prefHeight="40.0" />
 
-                        <PasswordField fx:id="passwordField" promptText="Password" style="-fx-background-color: #F1F1F1; -fx-background-radius: 6; -fx-border-color: transparent;" prefHeight="35.0" />
+                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="form-input" prefHeight="40.0" />
 
-                        <Button onAction="#handleLoginButtonAction" text="Login" textFill="WHITE" style="-fx-background-color: #4CAF82; -fx-background-radius: 6;" prefHeight="35.0" maxWidth="Infinity">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-
+                        <Button onAction="#handleLoginButtonAction" text="Login" styleClass="login-button" prefHeight="40.0" maxWidth="Infinity" />
                         <Hyperlink text="Don't have an account? Sign up" textFill="#555555" onAction="#switchToSignUp" />
                     </children>
                 </VBox>

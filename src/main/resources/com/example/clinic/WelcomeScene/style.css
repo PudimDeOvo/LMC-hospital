@@ -1,184 +1,107 @@
-/* Root styling with gradient background */
+/*
+ * =================================================================
+ * STYLESHEET JAVA FX - TEMA MODERNO (VERSÃO REFINADA)
+ * =================================================================
+ * - Fundo original restaurado
+ * - Botão primário com cores temáticas
+ * - Labels de título e subtítulo com estilo aprimorado
+ * =================================================================
+ */
 
+/* Root styling com o gradiente de fundo original */
 .root {
-
--fx-background-color: linear-gradient(to bottom right, #4ECDC4, #2E8B7A, #1F6B5A);
-
+    -fx-background-color: linear-gradient(to bottom right, #4ECDC4, #2E8B7A, #1F6B5A);
 }
 
+/* Regra geral para a fonte padrão de todas as labels */
+.label {
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+}
+
+/* Container de boas-vindas com sombra suave */
+.welcome-container {
+    -fx-background-color: white;
+    -fx-background-radius: 25px;
+    -fx-padding: 60px 45px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 30, 0, 0, 10);
+}
 
 /* --- MODIFICAÇÃO --- */
-
-/* Regra geral para definir a fonte padrão para todas as labels */
-
-.label {
-
--fx-font-family: "Segoe UI", "System", sans-serif;
-
+/* Título com cor escura do tema e uma sombra sutil para profundidade */
+.welcome-title {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F6B5A; /* Cor mais escura do gradiente de fundo */
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 1, 0, 1, 1); /* Sombra de texto sutil */
 }
 
+/* Subtítulo com espaçamento entre letras para um visual mais elegante */
+.welcome-subtitle {
+    -fx-font-size: 20px;
+    -fx-text-fill: #5a6c7d;
+    -fx-alignment: center;
+    -fx-letter-spacing: 0.5px; /* Adiciona um respiro entre as letras */
+}
 /* -------------------- */
 
 
-/* Welcome container with rounded white background */
-
-.welcome-container {
-
--fx-background-color: white;
-
--fx-background-radius: 20px;
-
--fx-padding: 60px 40px;
-
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
-
+/* Estilo base para transições e fontes dos botões */
+.primary-button, .secondary-button {
+    -fx-font-family: "Segoe UI", "Proxima Nova", "System", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
 }
 
-
-/* Welcome title styling (herda a fonte da regra .label) */
-
-.welcome-title {
-
--fx-font-size: 48px;
-
--fx-font-weight: bold;
-
--fx-text-fill: #2c3e50;
-
--fx-alignment: center;
-
-}
-
-
-/* Welcome subtitle styling (herda a fonte da regra .label) */
-
-.welcome-subtitle {
-
--fx-font-size: 20px;
-
--fx-text-fill: #5a6c7d;
-
--fx-alignment: center;
-
-}
-
-
-/* Primary button (Get Started) styling */
-
+/* Botão Primário com cores que combinam com o fundo */
 .primary-button {
-
--fx-background-color: #2c3e50;
-
--fx-text-fill: white;
-
--fx-font-family: "Segoe UI", "Proxima Nova", "System", "Arial", sans-serif;
-
--fx-font-size: 16px;
-
--fx-font-weight: bold;
-
--fx-background-radius: 30px;
-
--fx-cursor: hand;
-
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
-
+    -fx-background-color: #2E8B7A; /* Cor intermediária do gradiente */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(46, 139, 122, 0.4), 10, 0, 0, 3);
 }
-
 
 .primary-button:hover {
-
--fx-background-color: #34495e;
-
--fx-scale-x: 1.05;
-
--fx-scale-y: 1.05;
-
+    -fx-background-color: #4ECDC4; /* Cor mais clara do gradiente no hover */
+    -fx-effect: dropshadow(gaussian, rgba(78, 205, 196, 0.6), 15, 0, 0, 5);
+    -fx-transform: scale(1.05);
 }
-
 
 .primary-button:pressed {
-
--fx-background-color: #1a252f;
-
--fx-scale-x: 1.0;
-
--fx-scale-y: 1.0;
-
+    -fx-background-color: #1F6B5A; /* Cor mais escura do gradiente ao pressionar */
+    -fx-transform: scale(1);
+    -fx-effect: none;
 }
 
-
-/* Secondary button (I'm a Doctor) styling */
-
+/* Botão Secundário (Estilo "Fantasma") - mantido como antes */
 .secondary-button {
-
--fx-background-color: #2c3e50;
-
--fx-text-fill: white;
-
--fx-font-family: "Segoe UI", "Proxima Nova", "System", "Arial", sans-serif;
-
--fx-font-size: 14px;
-
--fx-font-weight: bold;
-
--fx-background-radius: 25px;
-
--fx-cursor: hand;
-
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 3, 0, 0, 1);
-
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px;
+    -fx-border-color: #c0c8d1;
+    -fx-border-width: 2px;
+    -fx-border-radius: 25px;
 }
-
 
 .secondary-button:hover {
-
--fx-background-color: #34495e;
-
--fx-scale-x: 1.05;
-
--fx-scale-y: 1.05;
-
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #2c3e50;
+    -fx-transform: scale(1.05);
 }
-
 
 .secondary-button:pressed {
-
--fx-background-color: #1a252f;
-
--fx-scale-x: 1.0;
-
--fx-scale-y: 1.0;
-
+    -fx-background-color: #e9ecef;
+    -fx-transform: scale(1);
 }
 
-
-/* Logo styling */
+/* Efeito de brilho para foco, com a cor do tema */
+.primary-button:focused, .secondary-button:focused {
+    -fx-effect: dropshadow(gaussian, #4ECDC4, 15, 0, 0, 0);
+}
 
 .logo-image {
-
--fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
-
-}
-
-
-/* Button animations */
-
-.primary-button, .secondary-button {
-
--fx-transition: all 0.3s ease;
-
-}
-
-
-/* Focus styling for accessibility */
-
-.primary-button:focused, .secondary-button:focused {
-
--fx-border-color: #4ECDC4;
-
--fx-border-width: 2px;
-
--fx-border-radius: 30px;
-
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
 }

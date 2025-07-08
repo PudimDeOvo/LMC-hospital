@@ -1,54 +1,139 @@
 /* Estilo para o painel raiz da tela de boas-vindas */
+
 #welcomePane {
-    -fx-background-color: #F4F4F9; /* Um cinza bem claro para o fundo */
+
+-fx-background-color: #F4F4F9; /* Um cinza bem claro para o fundo */
+
 }
+
 
 /* Estilo para o título principal */
+
 .welcome-title {
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2D756C; /* Cor verde escura do tema original */
+
+-fx-font-size: 32px;
+
+-fx-font-weight: bold;
+
+-fx-text-fill: #2D756C; /* Cor verde escura do tema original */
+
 }
+
 
 /* Estilo para o subtítulo */
+
 .welcome-subtitle {
-    -fx-font-size: 16px;
-    -fx-text-fill: #555555; /* Cinza escuro para o texto */
+
+-fx-font-size: 16px;
+
+-fx-text-fill: #555555; /* Cinza escuro para o texto */
+
 }
+
 
 /* Estilo para o botão de logout */
+
 .logout-button {
-    -fx-background-color: #D32F2F; /* Vermelho para uma ação de 'saída' */
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 6;
-    -fx-padding: 8px 16px;
+
+-fx-background-color: #D32F2F; /* Vermelho para uma ação de 'saída' */
+
+-fx-text-fill: white;
+
+-fx-font-size: 14px;
+
+-fx-font-weight: bold;
+
+-fx-background-radius: 6;
+
+-fx-padding: 8px 16px;
+
 }
+
 
 /* Efeito de hover para o botão de logout */
+
 .logout-button:hover {
-    -fx-background-color: #B71C1C; /* Vermelho mais escuro ao passar o mouse */
-    -fx-cursor: hand; /* Muda o cursor para uma mão */
+
+-fx-background-color: #B71C1C; /* Vermelho mais escuro ao passar o mouse */
+
+-fx-cursor: hand; /* Muda o cursor para uma mão */
+
 }
+
 
 .decorative-pane {
-    -fx-background-color: linear-gradient(to bottom right, #4cae9b, #1c2a3a);
-    -fx-min-width: 400;
-    -fx-background-radius: 10 0 0 10;
+
+-fx-background-color: linear-gradient(to bottom right, #4cae9b, #1c2a3a);
+
+-fx-min-width: 400;
+
+-fx-background-radius: 10 0 0 10;
+
 }
 
-.back-button {
-    -fx-background-color: #FFFFFF;
-    -fx-text-fill: #333333;
-    -fx-font-weight: bold;
-    -fx-background-radius: 20; /* Deixa o botão mais arredondado */
-    -fx-cursor: hand;
-    -fx-border-color: #E0E0E0;
-    -fx-border-width: 1;
-    -fx-border-radius: 20;
+
+/* ======================================== */
+
+/* ESTILOS PARA O BOTÃO DE LOGIN COM ANIMAÇÕES */
+
+/* ======================================== */
+
+
+/* Estilo base para o botão de login */
+
+.login-button {
+
+-fx-background-color: #2D756C; /* Cor verde escura do tema, para consistência */
+
+-fx-text-fill: white;
+
+-fx-font-size: 16px;
+
+-fx-font-weight: bold;
+
+-fx-background-radius: 6;
+
+-fx-padding: 10px 20px;
+
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 0, 2); /* Sombra inicial sutil */
+
+
+/* Define uma transição suave para as mudanças de cor e efeito */
+
+-fx-transition: -fx-background-color 0.2s ease-in-out, -fx-effect 0.2s ease-in-out;
+
 }
 
-.back-button:hover {
-    -fx-background-color: #F1F1F1; /* Efeito ao passar o mouse */
+
+/* Animação ao passar o mouse por cima (hover) */
+
+.login-button:hover {
+
+-fx-background-color: #378C80; /* Tom de verde um pouco mais claro e vibrante */
+
+-fx-cursor: hand; /* Muda o cursor para uma mão */
+
+/* Aumenta a sombra para dar um efeito de 'elevação' */
+
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 4);
+
+}
+
+
+/* Animação ao clicar no botão (pressed) */
+
+.login-button:pressed {
+
+-fx-background-color: #245E56; /* Verde mais escuro para simular o clique */
+
+/* Efeito de escala para fazer o botão 'afundar' na tela */
+
+-fx-scale-x: 0.98;
+
+-fx-scale-y: 0.98;
+
+/* Remove a sombra para reforçar o efeito de 'pressionado' */
+
+-fx-effect: none;
+
 }
