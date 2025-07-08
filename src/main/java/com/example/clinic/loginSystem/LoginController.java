@@ -1,5 +1,7 @@
 package com.example.clinic.loginSystem;
 
+
+import com.example.clinic.Database.PacientDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +16,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
-
-    LoginManager loginManager = new LoginManager();
 
     @FXML
     private TextField usernameField;
@@ -34,7 +34,7 @@ public class LoginController {
         System.out.println("Senha digitada: " + password);
 
 
-        if (loginManager.checkCredentials(username, password)) {
+        if (PacientDatabase.getInstance().checkCredentials(username, password)) {
             System.out.println("Login bem-sucedido!");
         } else {
             System.out.println("Credenciais inválidas.");

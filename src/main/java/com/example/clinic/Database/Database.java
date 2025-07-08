@@ -1,4 +1,4 @@
-package com.example.clinic.loginSystem;
+package com.example.clinic.Database;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -7,15 +7,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class LoginManager {
+public abstract class Database {
     HashMap<String, String> credentials = new HashMap<String, String>();
 
-    public LoginManager(){
-        loadCredentials();
+    protected Database(String FILE_PATH){
+        loadCredentials(FILE_PATH);
     }
 
-    private void loadCredentials(){
-        String FILE_PATH = "src/main/database/PacientDatabase.csv";
+    protected void loadCredentials(String FILE_PATH){
 
         try (CSVReader reader = new CSVReader(new FileReader(FILE_PATH))) {
             String[] header = reader.readNext();
@@ -42,11 +41,7 @@ public class LoginManager {
         };
     }
 
-
-    public boolean checkCredentials(String username, String password){
-        if (credentials.get(username) != null) {
-            return credentials.get(username).equals(password);
-        }
-        return false;
+    public HashMap<String, String> getCredentials(){
+        return credentials;
     }
 }

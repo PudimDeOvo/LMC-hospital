@@ -1,6 +1,5 @@
 package com.example.clinic;
 
-import com.example.clinic.loginSystem.LoginManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

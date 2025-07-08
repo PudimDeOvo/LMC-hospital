@@ -66,12 +66,14 @@
 .primary-button:hover {
     -fx-background-color: #4ECDC4; /* Cor mais clara do gradiente no hover */
     -fx-effect: dropshadow(gaussian, rgba(78, 205, 196, 0.6), 15, 0, 0, 5);
-    -fx-transform: scale(1.05);
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
 }
 
 .primary-button:pressed {
     -fx-background-color: #1F6B5A; /* Cor mais escura do gradiente ao pressionar */
-    -fx-transform: scale(1);
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
     -fx-effect: none;
 }
 
@@ -89,12 +91,14 @@
 .secondary-button:hover {
     -fx-background-color: #f8f9fa;
     -fx-border-color: #2c3e50;
-    -fx-transform: scale(1.05);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 .secondary-button:pressed {
     -fx-background-color: #e9ecef;
-    -fx-transform: scale(1);
+    -fx-scale-x: 1.1; /* Escala o elemento em 10% no eixo X */
+    -fx-scale-y: 1.1; /* Escala o elemento em 10% no eixo Y */
 }
 
 /* Efeito de brilho para foco, com a cor do tema */

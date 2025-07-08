@@ -1,6 +1,6 @@
 package com.example.clinic.registerSystem;
 
-
+import com.example.clinic.Database.PacientDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,24 +37,32 @@ public class SignUpController {
         String healthPlan = healthPlanField.getText();
 
         if (username.isEmpty() || password.isEmpty() || name.isEmpty() || ageField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Erro no Formulário", "Por favor, preencha todos os campos obrigatórios.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Fill out all camps.");
             return;
         }
 
         int age;
         try {
             age = Integer.parseInt(ageField.getText());
+            if (age <= 0) {
+                throw new NumberFormatException();
+            }
         } catch (NumberFormatException ex) {
-            showAlert(Alert.AlertType.ERROR, "Erro no Formulário", "A idade deve ser um número válido.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid age.");
             return;
         }
 
+        if (PacientDatabase.getInstance().getCredentials().containsKey(username)){
+            showAlert(Alert.AlertType.ERROR, "Error", "Username already taken.");
+        }
+
         String[] pacientData = {username, password, name, Integer.toString(age), healthPlan};
-        SignUpManager.storePacient(pacientData);
+        PacientDatabase.getInstance().addNewPacient(pacientData);
         System.out.println("Usuário cadastrado: " + username);
 
-        showAlert(Alert.AlertType.INFORMATION, "Cadastro Realizado", "Usuário " + name + " cadastrado com sucesso!");
+        showAlert(Alert.AlertType.INFORMATION, "Success", "User " + name + " successfully created!");
         clearFields();
+
     }
 
     private void clearFields() {
@@ -89,19 +97,4 @@ public class SignUpController {
         }
     }
 
-    @FXML
-    protected void switchToWelcome(ActionEvent event){
-        String FILE_PATH = "/com/example/clinic/WelcomeScene/welcome-view.fxml";
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FILE_PATH)));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-            stage.show();
-        } catch (IOException e) {
-            System.err.println("Erro ao carregar a tela de login (login-view.fxml):");
-            e.printStackTrace();
-        }
-    }
 }
