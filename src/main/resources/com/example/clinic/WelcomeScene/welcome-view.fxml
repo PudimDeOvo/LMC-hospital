@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.*?>
+
+
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.image.Image?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.welcomeSystem.WelcomeController" prefHeight="720.0" prefWidth="1080.0" styleClass="root" stylesheets="@style.css">
+
+    <children>
+
+        <VBox alignment="CENTER" layoutX="90.0" layoutY="85.0" prefHeight="550.0" prefWidth="900.0" spacing="40.0" styleClass="welcome-container">
+
+            <children>
+
+                <VBox alignment="CENTER" spacing="20.0">
+
+                    <children>
+
+                        <Label styleClass="welcome-title" text="Welcome" />
+
+                        <Label styleClass="welcome-subtitle" text="Your health made simple." />
+
+                    </children>
+
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="20.0">
+
+                    <children>
+
+                        <Button fx:id="getStartedButton" mnemonicParsing="false" onAction="#switchToPatientLogin" prefHeight="60.0" prefWidth="280.0" styleClass="primary-button" text="Get Started" />
+
+                        <Button fx:id="doctorButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="secondary-button" text="I'm a Doctor" />
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </VBox>
+
+    </children>
+
+</AnchorPane>

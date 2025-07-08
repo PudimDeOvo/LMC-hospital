@@ -8,5 +8,6 @@ module com.example.clinic {
     opens com.example.clinic to javafx.fxml;
     opens com.example.clinic.registerSystem to javafx.fxml;
     opens com.example.clinic.loginSystem to javafx.fxml;
+    opens com.example.clinic.welcomeSystem to javafx.fxml;
     exports com.example.clinic;
 }

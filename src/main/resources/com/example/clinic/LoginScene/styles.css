@@ -37,3 +37,18 @@
     -fx-min-width: 400;
     -fx-background-radius: 10 0 0 10;
 }
+
+.back-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20; /* Deixa o botão mais arredondado */
+    -fx-cursor: hand;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+}
+
+.back-button:hover {
+    -fx-background-color: #F1F1F1; /* Efeito ao passar o mouse */
+}
