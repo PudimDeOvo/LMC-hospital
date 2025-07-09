@@ -21,7 +21,7 @@
 
         <StackPane HBox.hgrow="ALWAYS" styleClass="decorative-pane">
             <children>
-                <Button onAction="#switchToLogin" text="Back" styleClass="back-button" StackPane.alignment="TOP_LEFT">
+                <Button onAction="#switchToWelcome" text="Back" styleClass="back-button" StackPane.alignment="TOP_LEFT">
                     <StackPane.margin>
                         <Insets top="20" left="20"/>
                     </StackPane.margin>

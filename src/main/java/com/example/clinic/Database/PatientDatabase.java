@@ -4,16 +4,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class PacientDatabase extends Database {
-    private static PacientDatabase instance;
+public class PatientDatabase extends Database {
+    private static PatientDatabase instance;
 
-    private PacientDatabase(){
-        super("src/main/database/PacientDatabase.csv");
+    private PatientDatabase(){
+        super("src/main/database/PatientDatabase.csv");
     }
 
-    public static PacientDatabase getInstance(){
+    public static PatientDatabase getInstance(){
         if (instance == null) {
-            instance = new PacientDatabase();
+            instance = new PatientDatabase();
         }
         return instance;
     }
@@ -21,7 +21,7 @@ public class PacientDatabase extends Database {
     public void addNewPacient(String[] data){
         String newUserData = String.join(",", data);
 
-        try (FileWriter fw = new FileWriter("src/main/database/PacientDatabase.csv", true)){
+        try (FileWriter fw = new FileWriter("src/main/database/PatientDatabase.csv", true)){
 
             fw.append(newUserData);
             fw.append("\n");

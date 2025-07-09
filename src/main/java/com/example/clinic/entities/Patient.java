@@ -1,9 +1,9 @@
 package com.example.clinic.entities;
 
-public class Pacient extends User{
+public class Patient extends User{
     private String healthPlan;
 
-    public Pacient(String username, String password, String name, int age, String healthPlan) {
+    public Patient(String username, String password, String name, int age, String healthPlan) {
         super(username, password, name, age);
         this.healthPlan = healthPlan;
     }

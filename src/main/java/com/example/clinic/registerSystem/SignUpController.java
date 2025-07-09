@@ -1,19 +1,12 @@
 package com.example.clinic.registerSystem;
 
-import com.example.clinic.Database.PacientDatabase;
+import com.example.clinic.Database.PatientDatabase;
+import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.Objects;
 
 
 public class SignUpController {
@@ -30,7 +23,7 @@ public class SignUpController {
     private TextField healthPlanField;
 
     @FXML
-    protected void handleSignUpButtonAction() {
+    protected void handleSignUpButtonAction(ActionEvent e) {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String name = nameField.getText();
@@ -52,25 +45,28 @@ public class SignUpController {
             return;
         }
 
-        if (PacientDatabase.getInstance().getCredentials().containsKey(username)){
+        if (PatientDatabase.getInstance().getCredentials().containsKey(username)){
             showAlert(Alert.AlertType.ERROR, "Error", "Username already taken.");
         }
 
         String[] pacientData = {username, password, name, Integer.toString(age), healthPlan};
-        PacientDatabase.getInstance().addNewPacient(pacientData);
+        PatientDatabase.getInstance().addNewPacient(pacientData);
         System.out.println("Usuário cadastrado: " + username);
 
         showAlert(Alert.AlertType.INFORMATION, "Success", "User " + name + " successfully created!");
-        clearFields();
 
+        PatientDatabase.getInstance().getCredentials().put(username, password);
+        SceneManager.switchScene(e, "/com/example/clinic/LoginScene/login-view.fxml");
     }
 
-    private void clearFields() {
-        usernameField.clear();
-        passwordField.clear();
-        nameField.clear();
-        ageField.clear();
-        healthPlanField.clear();
+    @FXML
+    protected void switchToLogin(ActionEvent e){
+        SceneManager.switchScene(e, "/com/example/clinic/LoginScene/login-view.fxml");
+    }
+
+    @FXML
+    protected void switchToWelcome(ActionEvent e){
+        SceneManager.switchScene(e, "/com/example/clinic/WelcomeScene/welcome-view.fxml");
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
@@ -80,21 +76,4 @@ public class SignUpController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    @FXML
-    protected void switchToLogin(ActionEvent event) {
-        String FILE_PATH = "/com/example/clinic/LoginScene/login-view.fxml";
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FILE_PATH)));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-            stage.show();
-        } catch (IOException e) {
-            System.err.println("Erro ao carregar a tela de login (login-view.fxml):");
-            e.printStackTrace();
-        }
-    }
-
 }
