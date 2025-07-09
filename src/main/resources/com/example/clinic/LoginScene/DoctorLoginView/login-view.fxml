@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           prefWidth="1280.0" prefHeight="720.0" fx:controller="com.example.clinic.loginSystem.DoctorLoginController">
+    <children>
+
+        <HBox alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="login-form-container" prefWidth="450.0" maxWidth="450.0">
+                    <padding>
+                        <Insets top="30" right="50" bottom="30" left="50" />
+                    </padding>
+                    <children>
+                        <Label text="Login">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Label>
+
+                        <TextField fx:id="usernameField" promptText="Username" styleClass="form-input" prefHeight="40.0" />
+
+                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="form-input" prefHeight="40.0" />
+
+                        <Button onAction="#handleLoginButtonAction" text="Login" styleClass="login-button" prefHeight="40.0" maxWidth="Infinity" />
+                        <Hyperlink text="Don't have an account? Sign up" textFill="#555555" onAction="#switchToSignUp" />
+                    </children>
+                </VBox>
+
+                <StackPane HBox.hgrow="ALWAYS" styleClass="decorative-pane" />
+
+            </children>
+        </HBox>
+
+        <Button onAction="#switchToWelcome" text="Back" styleClass="back-button" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets top="20" left="20" />
+            </StackPane.margin>
+        </Button>
+
+    </children>
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</StackPane>

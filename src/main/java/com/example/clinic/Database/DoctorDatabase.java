@@ -32,12 +32,9 @@ public class DoctorDatabase extends Database{
     }
 
     public boolean checkCredentials(String username, String password){
+        HashMap<String, String> credentials = getCredentials();
+        String storedPassword = credentials.get(username);
 
-        HashMap<String, String> credentials = getInstance().getCredentials();
-
-        if (credentials.get(username) != null) {
-            return credentials.get(username).equals(password);
-        }
-        return false;
+        return storedPassword != null && storedPassword.equals(password);
     }
 }

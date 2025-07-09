@@ -1,0 +1,102 @@
+/* Estilo raiz para toda a aplicação */
+.root {
+    -fx-background-color: linear-gradient(to right, #ffffff, #f0f4f7);
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Container principal para os formulários de login e cadastro */
+.form-container {
+    -fx-padding: 40 50 40 50;
+    -fx-background-color: white;
+    -fx-min-width: 400;
+    -fx-spacing: 15;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+/* Título principal dos formulários ("Login", "Sign up") */
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2B4C6B;
+}
+
+/* Estilo para os campos de texto e senha */
+.text-field, .password-field {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 8;
+    -fx-background-color: #F1F1F1;
+    -fx-border-color: transparent;
+    -fx-text-fill: #1c2a3a;
+    -fx-prompt-text-fill: #a0a9ad;
+
+    /* MODIFICADO: Adicionada transição para a cor do prompt text (label interna) */
+    -fx-transition: -fx-border-color 0.2s ease-in-out, -fx-effect 0.2s ease-in-out, -fx-prompt-text-fill 0.2s ease-in-out;
+}
+
+/* Efeito de destaque para campos com foco */
+.text-field:focused, .password-field:focused {
+    /* MODIFICADO: Cor da borda alterada para azul que complementa o teal-green */
+    -fx-border-color: #4A7C9B;
+    -fx-border-width: 1.5px;
+
+    /* MODIFICADO: Efeito de brilho atualizado para a cor azul */
+    -fx-effect: dropshadow(gaussian, rgba(74, 124, 155, 0.4), 6, 0, 0, 0);
+
+    /* ADICIONADO: Faz o texto de prompt (dica) desaparecer de forma suave */
+    -fx-prompt-text-fill: transparent;
+}
+
+
+/* Botão principal de ação ("Login", "Sign up") */
+.submit-button {
+    -fx-background-color: #3D6B8C;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 6;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    -fx-background-color: #4A7C9B;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 4);
+}
+
+.submit-button:pressed {
+    -fx-background-color: #2B4C6B;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: none;
+}
+
+/* Painel decorativo com gradiente */
+.decorative-pane {
+    -fx-background-color: linear-gradient(to bottom right, #4A7C9B, #2B4C6B);
+}
+
+/* Botão de voltar genérico */
+.back-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+}
+
+.back-button:hover {
+    -fx-background-color: #F1F1F1;
+}
+
+/* Estilização padrão para hyperlinks */
+.hyperlink {
+    -fx-text-fill: #555555;
+}

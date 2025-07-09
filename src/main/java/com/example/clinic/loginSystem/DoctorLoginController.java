@@ -1,13 +1,13 @@
 package com.example.clinic.loginSystem;
 
-import com.example.clinic.Database.PatientDatabase;
+import com.example.clinic.Database.DoctorDatabase;
 import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class PatientLoginController extends LoginController{
+public class DoctorLoginController extends LoginController{
     @FXML
     private TextField usernameField;
 
@@ -20,7 +20,9 @@ public class PatientLoginController extends LoginController{
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (PatientDatabase.getInstance().checkCredentials(username, password)){
+        System.out.println(username + password);
+
+        if (DoctorDatabase.getInstance().checkCredentials(username, password)){
             System.out.println("Login bem-sucedido");
         } else {
             System.out.println("Credenciais inválidas");
@@ -30,6 +32,6 @@ public class PatientLoginController extends LoginController{
     @FXML
     @Override
     protected void switchToSignUp(ActionEvent e){
-        SceneManager.switchScene(e, "/com/example/clinic/SignUpScene/PatientSignUpView/signup-view.fxml");
+        SceneManager.switchScene(e, "/com/example/clinic/SignUpScene/DoctorSignUpView/signup-view.fxml");
     }
 }

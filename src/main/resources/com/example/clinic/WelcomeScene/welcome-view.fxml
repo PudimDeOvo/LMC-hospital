@@ -38,7 +38,7 @@
 
                         <Button fx:id="getStartedButton" mnemonicParsing="false" onAction="#switchToPatientLogin" prefHeight="60.0" prefWidth="280.0" styleClass="primary-button" text="Get Started" />
 
-                        <Button fx:id="doctorButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="secondary-button" text="I'm a Doctor" />
+                        <Button fx:id="doctorButton" mnemonicParsing="false" onAction="#switchToDoctorLogin" prefHeight="50.0" prefWidth="200.0" styleClass="secondary-button" text="I'm a Doctor" />
 
                     </children>
 

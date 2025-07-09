@@ -9,7 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class PatientSignUpController extends SignUpController{
+public class DoctorSignUpController extends SignUpController{
+
     @FXML
     private TextField usernameField;
     @FXML
@@ -17,9 +18,9 @@ public class PatientSignUpController extends SignUpController{
     @FXML
     private TextField nameField;
     @FXML
-    private TextField ageField;
+    private TextField specialtyField;
     @FXML
-    private TextField healthPlanField;
+    private TextField verifiedHealthPlanField;
 
     @FXML
     @Override
@@ -27,35 +28,25 @@ public class PatientSignUpController extends SignUpController{
         String username = usernameField.getText();
         String password = passwordField.getText();
         String name = nameField.getText();
-        String healthPlan = healthPlanField.getText();
-        String ageInText = ageField.getText();
+        String verifiedHealthPlan = verifiedHealthPlanField.getText();
+        String specialty = specialtyField.getText();
 
-        if (isSignUpValid(username, password, name)){
-            String[] pacientData = {username, password, name, ageInText, healthPlan};
+        if (isSignUpValid(username, password, name, verifiedHealthPlan, specialty)){
+            String[] pacientData = {username, password, name, specialty, verifiedHealthPlan};
             PatientDatabase.getInstance().addNewPacient(pacientData);
             System.out.println("Usuário cadastrado: " + username);
 
             showAlert(Alert.AlertType.INFORMATION, "Success", "User " + name + " successfully created!");
 
-            PatientDatabase.getInstance().getCredentials().put(username, password);
-            SceneManager.switchScene(e, "/com/example/clinic/LoginScene/PatientLoginView/login-view.fxml");
+            DoctorDatabase.getInstance().getCredentials().put(username, password);
+            SceneManager.switchScene(e, "/com/example/clinic/LoginScene/DoctorLoginView/login-view.fxml");
         }
     }
 
-    private boolean isSignUpValid(String username, String password, String name){
-        if (username.isEmpty() || password.isEmpty() || name.isEmpty() || ageField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Fill out all camps.");
-            return false;
-        }
 
-        int ageAsInt;
-        try {
-            ageAsInt = Integer.parseInt(ageField.getText());
-            if (ageAsInt <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException ex) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Invalid age.");
+    private boolean isSignUpValid(String username, String password, String name, String specialty, String verifiedHealthPlanField){
+        if (username.isEmpty() || password.isEmpty() || name.isEmpty() || specialty.isEmpty() || verifiedHealthPlanField.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Fill out all camps.");
             return false;
         }
 
@@ -70,6 +61,6 @@ public class PatientSignUpController extends SignUpController{
     @FXML
     @Override
     protected void switchToLogin(ActionEvent e){
-        SceneManager.switchScene(e, "/com/example/clinic/LoginScene/PatientLoginView/login-view.fxml");
+        SceneManager.switchScene(e, "/com/example/clinic/LoginScene/DoctorLoginView/login-view.fxml");
     }
 }
