@@ -8,7 +8,7 @@ public class Doctor extends User{
     public Set<String> verifiedHealthPlans = new HashSet<>();
 
     public Doctor(String username, String password, String name, int age, String specialty, Set<String> verifiedHealthPlans) {
-        super(username, password, name, age);
+        super(username, password, name);
         this.specialty = specialty;
         this.verifiedHealthPlans = verifiedHealthPlans;
     }

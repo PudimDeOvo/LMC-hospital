@@ -7,13 +7,11 @@ public abstract class User {
 
     // info
     private String name;
-    private int age;
 
-    protected User(String username, String password, String name, int age) {
+    protected User(String username, String password, String name) {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.age = age;
     }
 
     public String getUsername() {
@@ -38,13 +36,5 @@ public abstract class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }
