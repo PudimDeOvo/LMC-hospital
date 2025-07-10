@@ -1,4 +1,4 @@
-package com.example.clinic.welcomeSystem;
+package com.example.clinic.initialSystem.welcomeSystem;
 
 import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;

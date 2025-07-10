@@ -1,4 +1,4 @@
-package com.example.clinic.registerSystem;
+package com.example.clinic.initialSystem.registerSystem;
 
 import com.example.clinic.Database.DoctorDatabase;
 import com.example.clinic.Database.PatientDatabase;
@@ -6,6 +6,7 @@ import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -19,7 +20,18 @@ public class PatientSignUpController extends SignUpController{
     @FXML
     private TextField ageField;
     @FXML
-    private TextField healthPlanField;
+    private ComboBox<String> healthPlanComboBox;
+
+
+    @FXML
+    private void initialize(){
+        healthPlanComboBox.getItems().addAll(
+                "Basic Plus Plan",
+                "Premium Health Plan",
+                "Executive Total Plan"
+        );
+    }
+
 
     @FXML
     @Override
@@ -27,10 +39,10 @@ public class PatientSignUpController extends SignUpController{
         String username = usernameField.getText();
         String password = passwordField.getText();
         String name = nameField.getText();
-        String healthPlan = healthPlanField.getText();
         String ageInText = ageField.getText();
+        String healthPlan = healthPlanComboBox.getValue();
 
-        if (isSignUpValid(username, password, name)){
+        if (isSignUpValid()){
             String[] pacientData = {username, password, name, ageInText, healthPlan};
             PatientDatabase.getInstance().addNewPacient(pacientData);
             System.out.println("Usuário cadastrado: " + username);
@@ -42,8 +54,10 @@ public class PatientSignUpController extends SignUpController{
         }
     }
 
-    private boolean isSignUpValid(String username, String password, String name){
-        if (username.isEmpty() || password.isEmpty() || name.isEmpty() || ageField.getText().isEmpty()) {
+
+    private boolean isSignUpValid(){
+        if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || nameField.getText().isEmpty() ||
+                ageField.getText().isEmpty() || healthPlanComboBox.getValue().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Fill out all camps.");
             return false;
         }
@@ -59,13 +73,15 @@ public class PatientSignUpController extends SignUpController{
             return false;
         }
 
-        if (DoctorDatabase.getInstance().getCredentials().containsKey(username) || PatientDatabase.getInstance().getCredentials().containsKey(username)){
+        if (DoctorDatabase.getInstance().getCredentials().containsKey(usernameField.getText())
+                || PatientDatabase.getInstance().getCredentials().containsKey(usernameField.getText())){
             showAlert(Alert.AlertType.ERROR, "Error", "Username already taken.");
             return false;
         }
 
         return true;
     }
+
 
     @FXML
     @Override

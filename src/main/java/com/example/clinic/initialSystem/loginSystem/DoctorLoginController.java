@@ -1,4 +1,4 @@
-package com.example.clinic.loginSystem;
+package com.example.clinic.initialSystem.loginSystem;
 
 import com.example.clinic.Database.DoctorDatabase;
 import com.example.clinic.SceneManager;

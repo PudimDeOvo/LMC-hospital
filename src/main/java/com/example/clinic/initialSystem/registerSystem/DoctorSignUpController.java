@@ -1,4 +1,4 @@
-package com.example.clinic.registerSystem;
+package com.example.clinic.initialSystem.registerSystem;
 
 import com.example.clinic.Database.DoctorDatabase;
 import com.example.clinic.Database.PatientDatabase;
@@ -6,6 +6,7 @@ import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -18,9 +19,31 @@ public class DoctorSignUpController extends SignUpController{
     @FXML
     private TextField nameField;
     @FXML
-    private TextField specialtyField;
+    private ComboBox<String> SpecialtyComboBox;
+
+
     @FXML
-    private TextField verifiedHealthPlanField;
+    private void initialize(){
+        SpecialtyComboBox.getItems().addAll(
+                "Cardiology",
+                "Dermatology",
+                "Endocrinology",
+                "Gastroenterology",
+                "Geriatrics",
+                "Gynecology and Obstetrics",
+                "Neurology",
+                "Oncology",
+                "Orthopedics",
+                "Pediatrics",
+                "Psychiatry",
+                "General Surgery",
+                "Urology",
+                "Ophthalmology",
+                "Otorhinolaryngology",
+                "Radiology",
+                "Anesthesiology"
+        );
+    }
 
     @FXML
     @Override
@@ -28,12 +51,11 @@ public class DoctorSignUpController extends SignUpController{
         String username = usernameField.getText();
         String password = passwordField.getText();
         String name = nameField.getText();
-        String verifiedHealthPlan = verifiedHealthPlanField.getText();
-        String specialty = specialtyField.getText();
+        String specialty = SpecialtyComboBox.getValue();
 
-        if (isSignUpValid(username, password, name, verifiedHealthPlan, specialty)){
-            String[] pacientData = {username, password, name, specialty, verifiedHealthPlan};
-            PatientDatabase.getInstance().addNewPacient(pacientData);
+        if (isSignUpValid()){
+            String[] doctorData = {username, password, name, specialty};
+            DoctorDatabase.getInstance().addNewDoctor(doctorData);
             System.out.println("Usuário cadastrado: " + username);
 
             showAlert(Alert.AlertType.INFORMATION, "Success", "User " + name + " successfully created!");
@@ -44,13 +66,15 @@ public class DoctorSignUpController extends SignUpController{
     }
 
 
-    private boolean isSignUpValid(String username, String password, String name, String specialty, String verifiedHealthPlanField){
-        if (username.isEmpty() || password.isEmpty() || name.isEmpty() || specialty.isEmpty() || verifiedHealthPlanField.isEmpty()) {
+    private boolean isSignUpValid(){
+        if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || nameField.getText().isEmpty()
+                || SpecialtyComboBox.getValue().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Fill out all camps.");
             return false;
         }
 
-        if (DoctorDatabase.getInstance().getCredentials().containsKey(username) || PatientDatabase.getInstance().getCredentials().containsKey(username)){
+        if (DoctorDatabase.getInstance().getCredentials().containsKey(usernameField.getText())
+                || PatientDatabase.getInstance().getCredentials().containsKey(usernameField.getText())){
             showAlert(Alert.AlertType.ERROR, "Error", "Username already taken.");
             return false;
         }

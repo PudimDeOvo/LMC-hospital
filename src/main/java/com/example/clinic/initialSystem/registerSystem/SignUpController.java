@@ -1,4 +1,4 @@
-package com.example.clinic.registerSystem;
+package com.example.clinic.initialSystem.registerSystem;
 
 import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;

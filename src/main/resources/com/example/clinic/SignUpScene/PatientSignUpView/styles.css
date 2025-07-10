@@ -49,6 +49,78 @@
     -fx-prompt-text-fill: transparent;
 }
 
+/* Estilo para ComboBox */
+.combo-box {
+    -fx-background-color: #F1F1F1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: transparent;
+    -fx-padding: 8;
+    -fx-text-fill: #1c2a3a;
+    -fx-prompt-text-fill: #a0a9ad;
+    -fx-transition: -fx-border-color 0.2s ease-in-out, -fx-effect 0.2s ease-in-out;
+}
+
+/* ComboBox quando focado */
+.combo-box:focused {
+    -fx-border-color: #5B9DDE;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(91, 157, 222, 0.4), 6, 0, 0, 0);
+}
+
+/* Seta do ComboBox */
+.combo-box .arrow {
+    -fx-background-color: #2D756C;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+    -fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em;
+    -fx-transition: -fx-background-color 0.2s ease-in-out;
+}
+
+/* Seta quando ComboBox está focado */
+.combo-box:focused .arrow {
+    -fx-background-color: #5B9DDE;
+}
+
+/* Botão da seta do ComboBox */
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 6 6 0;
+    -fx-padding: 0.5em;
+}
+
+/* Botão da seta quando hover */
+.combo-box:hover .arrow-button {
+    -fx-background-color: rgba(45, 117, 108, 0.1);
+}
+
+/* Dropdown list do ComboBox */
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+/* Células da lista do ComboBox */
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1c2a3a;
+    -fx-padding: 8 12;
+    -fx-border-width: 0;
+}
+
+/* Célula quando hover */
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #f0f7f5;
+}
+
+/* Célula selecionada */
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #2D756C;
+    -fx-text-fill: white;
+}
 
 /* Botão principal de ação ("Login", "Sign up") */
 .submit-button {
