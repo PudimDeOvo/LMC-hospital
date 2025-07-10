@@ -12,7 +12,8 @@ import java.util.Objects;
 
 public class SceneManager {
 
-    private SceneManager(){}
+    private SceneManager() {
+    }
 
     public static void switchScene(ActionEvent event, String fxmlPath) {
         try {
@@ -37,6 +38,19 @@ public class SceneManager {
             e.printStackTrace();
         } catch (NullPointerException e) {
             System.err.println("FXML file not found: " + fxmlPath);
+            e.printStackTrace();
+        }
+    }
+
+    public static void switchScene(ActionEvent event, Parent root) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (Exception e) {
+            System.err.println("Error switching scene with Parent root:");
             e.printStackTrace();
         }
     }
