@@ -1,16 +1,18 @@
-package com.example.clinic.entities;
+package com.example.clinic.entities.user;
+
+import com.example.clinic.entities.HealthInsurancePlan;
+import com.example.clinic.entities.MedicalSpecialty;
 
 import java.util.Set;
 import java.util.HashSet;
 
-public class Doctor extends User{
+public class Doctor extends User {
     private MedicalSpecialty specialty;
     public Set<HealthInsurancePlan> acceptedPlans = new HashSet<>();
 
-    public Doctor(String username, String password, String name, int age, MedicalSpecialty specialty, Set<HealthInsurancePlan> verifiedHealthPlans) {
-        super(username, password, name);
+    public Doctor(String username, String name, MedicalSpecialty specialty) {
+        super(username, name);
         this.specialty = specialty;
-        this.acceptedPlans = verifiedHealthPlans;
 
         for (HealthInsurancePlan plan : HealthInsurancePlan.values()){
             if (plan.coversSpecialty(specialty)){

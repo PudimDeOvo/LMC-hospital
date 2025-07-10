@@ -1,16 +1,14 @@
-package com.example.clinic.entities;
+package com.example.clinic.entities.user;
 
 public abstract class User {
     // credentials
     private String username;
-    private String password;
 
     // info
     private String name;
 
-    protected User(String username, String password, String name) {
+    protected User(String username, String name) {
         this.username = username;
-        this.password = password;
         this.name = name;
     }
 
@@ -22,13 +20,6 @@ public abstract class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getName() {
         return name;

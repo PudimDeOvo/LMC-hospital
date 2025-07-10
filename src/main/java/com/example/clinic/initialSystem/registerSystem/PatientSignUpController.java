@@ -1,7 +1,7 @@
 package com.example.clinic.initialSystem.registerSystem;
 
-import com.example.clinic.Database.DoctorDatabase;
-import com.example.clinic.Database.PatientDatabase;
+import com.example.clinic.Database.userDatabase.DoctorDatabase;
+import com.example.clinic.Database.userDatabase.PatientDatabase;
 import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,9 +26,9 @@ public class PatientSignUpController extends SignUpController{
     @FXML
     private void initialize(){
         healthPlanComboBox.getItems().addAll(
-                "Basic Plus Plan",
-                "Premium Health Plan",
-                "Executive Total Plan"
+                "Basic Plus",
+                "Premium Health",
+                "Executive Total"
         );
     }
 

@@ -1,11 +1,13 @@
-package com.example.clinic.entities;
+package com.example.clinic.entities.user;
 
-public class Patient extends User{
+import com.example.clinic.entities.HealthInsurancePlan;
+
+public class Patient extends User {
     private HealthInsurancePlan healthPlan;
     private int age;
 
-    public Patient(String username, String password, String name, int age, HealthInsurancePlan healthPlan) {
-        super(username, password, name);
+    public Patient(String username, String name, int age, HealthInsurancePlan healthPlan) {
+        super(username, name);
         this.healthPlan = healthPlan;
         this.age = age;
     }

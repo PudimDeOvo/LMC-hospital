@@ -1,5 +1,10 @@
-package com.example.clinic.Database;
+package com.example.clinic.Database.userDatabase;
 
+import com.example.clinic.entities.MedicalSpecialty;
+import com.example.clinic.entities.user.Doctor;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,6 +35,31 @@ public class DoctorDatabase extends Database{
             e.printStackTrace();
         }
     }
+
+
+    public Doctor getDoctor(String doctorUsername){
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/database/DoctorDatabase.csv"))) {
+            String line;
+
+            br.readLine();
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+
+                if (data.length > 0 && data[0].trim().equals(doctorUsername)) {
+                    String name = data[2].trim();
+                    String specialtyInText = data[3].trim();
+
+                    return new Doctor(doctorUsername, name, MedicalSpecialty.valueOf(specialtyInText.toUpperCase()));
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+        return null;
+    }
+
+
 
     public boolean checkCredentials(String username, String password){
         HashMap<String, String> credentials = getCredentials();

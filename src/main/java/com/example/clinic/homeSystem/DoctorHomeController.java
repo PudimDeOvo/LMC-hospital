@@ -1,6 +1,5 @@
 package com.example.clinic.homeSystem;
 
-import com.example.clinic.Database.DoctorDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +21,7 @@ public class DoctorHomeController {
 
     @FXML
     protected void switchToMyAppointments(ActionEvent event) {
-        String FILE_PATH = "/com/example/clinic/DoctorHomeScene/doctorappointments-view.fxml";
+        String FILE_PATH = "/com/example/clinic/DoctorHomeScene/appointments/doctorappointments-view.fxml";
 
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FILE_PATH)));

@@ -9,7 +9,11 @@ module com.example.clinic {
     opens com.example.clinic.initialSystem.registerSystem to javafx.fxml;
     opens com.example.clinic.initialSystem.loginSystem to javafx.fxml;
     opens com.example.clinic.initialSystem.welcomeSystem to javafx.fxml;
+    opens com.example.clinic.homeSystem to javafx.fxml;
+
     exports com.example.clinic;
-    exports com.example.clinic.Database;
-    opens com.example.clinic.Database to javafx.fxml;
+    exports com.example.clinic.Database.AppointmentDatabase;
+    opens com.example.clinic.Database.AppointmentDatabase to javafx.fxml;
+    exports com.example.clinic.Database.userDatabase;
+    opens com.example.clinic.Database.userDatabase to javafx.fxml;
 }
