@@ -1,5 +1,6 @@
 package com.example.clinic.homeSystem;
 
+import com.example.clinic.entities.user.Doctor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,15 @@ import java.util.Objects;
 
 public class DoctorHomeController {
     @FXML
-    protected TextField nameField;
+    private TextField nameField;
 
     @FXML
-    protected TextField specialtyField;
+    private TextField specialtyField;
+
+    public void setDoctor(Doctor doctor){
+        nameField.setText(doctor.getName());
+        specialtyField.setText(doctor.getSpecialty().toString());
+    }
 
     @FXML
     protected void switchToMyAppointments(ActionEvent event) {
