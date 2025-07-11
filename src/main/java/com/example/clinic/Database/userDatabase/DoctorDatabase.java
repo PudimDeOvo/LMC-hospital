@@ -49,8 +49,9 @@ public class DoctorDatabase extends Database{
                 if (data.length > 0 && data[0].trim().equals(doctorUsername)) {
                     String name = data[2].trim();
                     String specialtyInText = data[3].trim();
+                    int stars = Integer.parseInt(data[4].trim());
 
-                    return new Doctor(doctorUsername, name, MedicalSpecialty.valueOf(specialtyInText.toUpperCase()));
+                    return new Doctor(doctorUsername, name, MedicalSpecialty.valueOf(specialtyInText.toUpperCase()), stars);
                 }
             }
         } catch (IOException e) {

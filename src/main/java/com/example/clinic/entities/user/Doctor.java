@@ -9,10 +9,12 @@ import java.util.HashSet;
 public class Doctor extends User {
     private MedicalSpecialty specialty;
     public Set<HealthInsurancePlan> acceptedPlans = new HashSet<>();
+    private int stars;
 
-    public Doctor(String username, String name, MedicalSpecialty specialty) {
+    public Doctor(String username, String name, MedicalSpecialty specialty, int stars) {
         super(username, name);
         this.specialty = specialty;
+        this.stars = stars;
 
         for (HealthInsurancePlan plan : HealthInsurancePlan.values()){
             if (plan.coversSpecialty(specialty)){
@@ -29,4 +31,11 @@ public class Doctor extends User {
         this.specialty = specialty;
     }
 
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
 }

@@ -4,9 +4,33 @@
     -fx-padding: 0;
 }
 
-/* Filter bar styling */
+/* MODIFIED: Container for the top bar elements */
+.header-container {
+    -fx-padding: 20 20 0 20; /* Master padding for the top bar */
+}
+
+/* Back button styling */
+.back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-border-color: rgba(255, 255, 255, 0.6);
+    -fx-border-width: 2px;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* MODIFIED: Filter bar styling - alignment changed to left */
 .filter-bar {
-    -fx-padding: 20 20 0 20;
     -fx-alignment: center-left;
 }
 
@@ -60,7 +84,7 @@
 
 .scroll-pane .content {
     -fx-background-color: white;
-    -fx-background-radius: 0 15 15 15;
+    -fx-background-radius: 0 0 15 15; /* Adjusted for new layout */
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
 }
 
@@ -68,7 +92,7 @@
 .appointments-container {
     -fx-padding: 30;
     -fx-background-color: white;
-    -fx-background-radius: 0 15 15 15;
+    -fx-background-radius: 0 0 15 15; /* Adjusted for new layout */
 }
 
 /* Individual appointment card styling */

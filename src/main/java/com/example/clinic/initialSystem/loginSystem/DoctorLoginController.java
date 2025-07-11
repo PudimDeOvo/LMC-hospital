@@ -3,7 +3,7 @@ package com.example.clinic.initialSystem.loginSystem;
 import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.SceneManager;
 import com.example.clinic.entities.user.Doctor;
-import com.example.clinic.homeSystem.DoctorHomeController;
+import com.example.clinic.session.DoctorSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,25 +31,14 @@ public class DoctorLoginController extends LoginController{
         if (DoctorDatabase.getInstance().checkCredentials(username, password)){
             System.out.println("Login bem-sucedido");
             Doctor loggedDoctor = DoctorDatabase.getInstance().getDoctor(username);
-            switchToDoctorHome(e, loggedDoctor);
+            DoctorSession.getInstance().setLoggedDoctor(loggedDoctor);
+            SceneManager.switchScene(e, "/com/example/clinic/DoctorHomeScene/doctorhome-view.fxml");
         } else {
             System.out.println("Credenciais inválidas");
         }
     }
 
-    @FXML
-    protected void switchToDoctorHome(ActionEvent e, Doctor doctor){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clinic/DoctorHomeScene/doctorhome-view.fxml"));
-            Parent root = loader.load();
-            DoctorHomeController controller = loader.getController();
-            controller.setDoctor(doctor);
-            SceneManager.switchScene(e, root);
-        } catch(IOException ex) {
-            ex.printStackTrace(System.err);
-        }
 
-    }
 
     @FXML
     @Override

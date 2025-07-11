@@ -61,4 +61,16 @@ public class AppointmentDatabase {
 
         return appointments;
     }
+
+    public List<Appointment> getAppointmentsByDate(String FILE_PATH, boolean searchForDoctor, String target, String date){
+        List<Appointment> appointments = getAppointments(FILE_PATH, searchForDoctor, target);
+        List<Appointment> filteredAppointments = new ArrayList<>();
+
+        for (Appointment appointment : appointments){
+            if (appointment.getDate().equals(date)){
+                filteredAppointments.add(appointment);
+            }
+        }
+        return filteredAppointments;
+    }
 }

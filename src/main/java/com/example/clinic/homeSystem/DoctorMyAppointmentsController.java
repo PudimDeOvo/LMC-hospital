@@ -2,13 +2,16 @@ package com.example.clinic.homeSystem;
 
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.Database.userDatabase.DoctorDatabase;
+import com.example.clinic.SceneManager;
 import com.example.clinic.entities.appointment.Appointment;
 import com.example.clinic.entities.user.Doctor;
+import com.example.clinic.session.DoctorSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -35,7 +38,7 @@ public class DoctorMyAppointmentsController implements Initializable {
     }
 
     private void loadAppointments() {
-        Doctor doctor = DoctorDatabase.getInstance().getDoctor("nayeon");
+        Doctor doctor = DoctorSession.getInstance().getLoggedDoctor();
         appointmentsContainer.getChildren().clear();
 
         List<Appointment> appointments = AppointmentDatabase.getInstance().getAppointments("src/main/database/AppointmentDatabase.csv", true, doctor.getUsername());
@@ -88,5 +91,10 @@ public class DoctorMyAppointmentsController implements Initializable {
 
         card.getChildren().addAll(userIcon, patientInfo, spacer, rightSide);
         return card;
+    }
+
+    @FXML
+    public void switchToHome(ActionEvent e){
+        SceneManager.switchScene(e, "/com/example/clinic/DoctorHomeScene/doctorhome-view.fxml");
     }
 }
