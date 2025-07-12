@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER" prefHeight="720.0" prefWidth="1080.0"
+      styleClass="container" stylesheets="@styles.css" fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientReviewController" >
+
+    <Label styleClass="title" text="Avaliar Médico" />
+
+    <VBox alignment="CENTER" maxWidth="600.0" prefWidth="600.0" spacing="40.0">
+
+        <VBox styleClass="form-group" spacing="15.0">
+            <Label styleClass="form-label" text="Médico:" />
+            <ComboBox fx:id="medicoComboBox" maxWidth="1.7976931348623157E308"
+                      promptText="Selecione um médico" styleClass="form-select" />
+        </VBox>
+
+        <VBox styleClass="form-group" spacing="15.0">
+            <Label styleClass="form-label" text="Comentário:" />
+            <TextArea fx:id="comentarioTextArea" maxWidth="1.7976931348623157E308"
+                      prefHeight="200.0" promptText="Descreva sua experiência com o médico..."
+                      styleClass="form-textarea" wrapText="true" />
+        </VBox>
+
+        <HBox alignment="CENTER" spacing="20.0" styleClass="button-group">
+            <Button fx:id="enviarButton" mnemonicParsing="false"
+                    styleClass="btn-primary" text="Enviar Avaliação" />
+            <Button fx:id="voltarButton" mnemonicParsing="false"
+                    styleClass="btn-secondary" text="Voltar" />
+        </HBox>
+
+    </VBox>
+
+</VBox>
