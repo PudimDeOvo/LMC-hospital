@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientEditController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientEditController" stylesheets="@styles.css" prefHeight="720.0" prefWidth="1080.0" >
+    <children>
+        <!-- Header -->
+        <HBox styleClass="header" VBox.vgrow="NEVER">
+            <children>
+                <Button fx:id="btnVoltar" styleClass="back-button" text="← Voltar" />
+            </children>
+        </HBox>
 
-</AnchorPane>
+        <!-- Container Principal -->
+        <VBox alignment="CENTER" spacing="40.0" styleClass="container" VBox.vgrow="ALWAYS">
+            <children>
+                <!-- Título -->
+                <Label styleClass="title" text="Editar Perfil Médico" />
+
+                <!-- Seção da Foto -->
+                <VBox alignment="CENTER" spacing="20.0" styleClass="profile-photo-section">
+                    <children>
+                        <Circle fx:id="profilePhoto" fill="#333333" radius="60.0" styleClass="profile-photo" />
+                        <Button fx:id="btnAlterarFoto" styleClass="change-photo-btn" text="Alterar Foto" />
+                    </children>
+                </VBox>
+
+                <!-- Seção do Formulário -->
+                <VBox alignment="CENTER" maxWidth="500.0" spacing="30.0" styleClass="form-section">
+                    <children>
+                        <!-- Campo Nome -->
+                        <VBox spacing="8.0" styleClass="form-group">
+                            <children>
+                                <Label styleClass="form-label" text="Nome" />
+                                <TextField fx:id="txtNome" promptText="NOME" styleClass="form-input" />
+                            </children>
+                        </VBox>
+
+                        <!-- Campo Username -->
+                        <VBox spacing="8.0" styleClass="form-group">
+                            <children>
+                                <Label styleClass="form-label" text="Username" />
+                                <TextField fx:id="txtUsername" promptText="USERNAME" styleClass="form-input" />
+                            </children>
+                        </VBox>
+
+                        <!-- Campo Password -->
+                        <VBox spacing="8.0" styleClass="form-group">
+                            <children>
+                                <Label styleClass="form-label" text="Password" />
+                                <PasswordField fx:id="txtPassword" promptText="••••••••" styleClass="form-input" />
+                            </children>
+                        </VBox>
+
+                        <!-- Botão Salvar -->
+                        <Button fx:id="btnSalvar" maxWidth="1.7976931348623157E308" styleClass="save-button" text="Salvar Alterações" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>
