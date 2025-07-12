@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import com.example.clinic.session.PatientSession;
@@ -23,6 +24,7 @@ public class ReviewDoctorController {
 
     @FXML private ComboBox<String> doctorComboBox;
     @FXML private ComboBox<Integer> starsComboBox;
+    @FXML private Label feedbackLabel;
     @FXML private TextArea reviewText;
 
     @FXML
@@ -40,8 +42,24 @@ public class ReviewDoctorController {
     @FXML
     private void handleSubmit(ActionEvent event) {
         String selectedDoctorName = doctorComboBox.getValue();
-        int selectedStars = starsComboBox.getValue();
+        Integer selectedStars = starsComboBox.getValue();
         String comment = reviewText.getText();
+
+        feedbackLabel.setText("");
+        feedbackLabel.setStyle("-fx-text-fill: #d9534f;");
+
+        if (selectedDoctorName == null || selectedDoctorName.isEmpty()) {
+            feedbackLabel.setText("Please select a doctor.");
+            return;
+        }
+        if (selectedStars == null) {
+            feedbackLabel.setText("Please rate with stars.");
+            return;
+        }
+        if (comment == null || comment.trim().isEmpty()) {
+            feedbackLabel.setText("Please enter a comment.");
+            return;
+        }
 
         String patientUsername = PatientSession.getCurrentPatient().getUsername();
         String appointmentsFile = "src/main/database/AppointmentDatabase.csv";
@@ -78,6 +96,8 @@ public class ReviewDoctorController {
         } else {
             System.out.println("No concluded appointment found for review.");
         }
+        feedbackLabel.setText("Review submitted successfully!");
+        feedbackLabel.setStyle("-fx-text-fill: #28a745;");
 
         updateDoctorStars(doctorsFile, selectedDoctorName, selectedStars);
 

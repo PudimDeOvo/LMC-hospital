@@ -1,31 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0"
-            xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.clinic.homeSystem.PatientAppointmentsController">
-
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.homeSystem.PatientAppointmentsController" stylesheets="@styles.css">
     <children>
-        <Label layoutX="50" layoutY="50" text="Schedule appointment"
-               style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+        <!-- Background Container -->
+        <AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="background-container">
+            <children>
+                <!-- Main Container -->
+                <VBox alignment="CENTER" layoutX="290.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" styleClass="main-container">
+                    <children>
+                        <!-- Success Message (Initially Hidden) -->
+                        <Label fx:id="successMessage" styleClass="success-message" text="Scheduled successfully!" visible="false" />
 
-        <Label layoutX="50" layoutY="120" text="Doctor:"/>
-        <ComboBox fx:id="doctorComboBox" layoutX="150" layoutY="115" prefWidth="200"/>
+                        <!-- Header -->
+                        <VBox alignment="CENTER" styleClass="header">
+                            <children>
+                                <Label styleClass="title" text="Schedule appointment">
+                                    <font>
+                                        <Font name="System Bold" size="32.0" />
+                                    </font>
+                                </Label>
+                                <Label styleClass="subtitle" text="Patient Home">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
 
-        <Label layoutX="50" layoutY="170" text="Date:"/>
-        <DatePicker fx:id="datePicker" layoutX="150" layoutY="165"/>
+                        <!-- Form Container -->
+                        <VBox spacing="30.0" styleClass="form-container">
+                            <children>
+                                <!-- Doctor Field -->
+                                <VBox spacing="8.0" styleClass="form-group">
+                                    <children>
+                                        <Label styleClass="form-label" text="Doctor:">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="doctorComboBox" prefWidth="450.0" promptText="Select a doctor" styleClass="form-control">
+                                        </ComboBox>
+                                    </children>
+                                </VBox>
 
-        <Label layoutX="50" layoutY="220" text="Time:"/>
-        <TextField fx:id="timeField" layoutX="150" layoutY="215" prefWidth="200" promptText="Ex: 14:30"/>
+                                <!-- Date Field -->
+                                <VBox spacing="8.0" styleClass="form-group">
+                                    <children>
+                                        <Label styleClass="form-label" text="Data:">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="datePicker" prefWidth="450.0" promptText="Select a date" styleClass="form-control" />
+                                    </children>
+                                </VBox>
 
-        <Button layoutX="50" layoutY="300" text="Confirm" onAction="#handleConfirm"/>
-        <Button layoutX="170" layoutY="300" text="Back" onAction="#handleBack"/>
+                                <!-- Time Field -->
+                                <VBox spacing="8.0" styleClass="form-group">
+                                    <children>
+                                        <Label styleClass="form-label" text="Time:">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="timeField" prefWidth="450.0" promptText="Ex: 14:30" styleClass="form-control" />
+                                    </children>
+                                </VBox>
+
+                                <!-- Buttons -->
+                                <HBox alignment="CENTER" spacing="15.0" styleClass="button-group">
+                                    <children>
+                                        <Button onAction="#handleConfirm" prefWidth="210.0" styleClass="btn-primary" text="Confirm">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Button>
+                                        <Button onAction="#handleBack" prefWidth="210.0" styleClass="btn-secondary" text="Back">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>
