@@ -1,0 +1,160 @@
+/* Raiz da aplicação */
+.root {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Sidebar Verde */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom right, #5FA885, #4A8B6B);
+    -fx-pref-width: 450px;
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+    -fx-padding: 60px 40px;
+}
+
+/* Avatar */
+.avatar {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 150px;
+    -fx-background-color: #2C5F4A;
+    -fx-background-radius: 75px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);
+}
+
+.avatar-icon {
+    -fx-text-fill: white;
+    -fx-font-size: 40px;
+}
+
+/* Informações do Paciente */
+.patient-info {
+    -fx-alignment: center;
+    -fx-spacing: 8px;
+}
+
+.patient-name {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.patient-plan {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-size: 16px;
+}
+
+/* Botões do Menu */
+.menu-buttons {
+    -fx-spacing: 20px;
+    -fx-max-width: 320px;
+}
+
+.menu-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-border-color: transparent;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-padding: 12px 25px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C5F4A;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 2);
+}
+
+.menu-btn:hover {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 12, 0, 0, 4);
+    -fx-translate-y: -2px;
+}
+
+.menu-btn:pressed {
+    -fx-translate-y: 0px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 6, 0, 0, 1);
+}
+
+/* Seção de Perfil */
+.profile-section {
+    -fx-spacing: 15px;
+    -fx-max-width: 320px;
+}
+
+.edit-profile-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-padding: 10px 25px;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.edit-profile-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+}
+
+.edit-profile-btn:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
+}
+
+.logout-btn {
+    -fx-background-color: #E74C3C;
+    -fx-border-color: transparent;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-padding: 10px 25px;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.logout-btn:hover {
+    -fx-background-color: #C0392B;
+}
+
+.logout-btn:pressed {
+    -fx-background-color: #A93226;
+}
+
+/* Área Principal Branca */
+.main-content {
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+    -fx-padding: 60px 80px;
+}
+
+.welcome-title {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C5F4A;
+    -fx-line-spacing: 1.2;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C5F4A;
+    -fx-line-spacing: 1.2;
+}
+
+/* Responsividade básica para telas menores */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        -fx-pref-width: 100%;
+        -fx-padding: 40px 20px;
+    }
+
+    .main-content {
+        -fx-padding: 40px 20px;
+    }
+
+    .welcome-title, .welcome-subtitle {
+        -fx-font-size: 32px;
+    }
+}
