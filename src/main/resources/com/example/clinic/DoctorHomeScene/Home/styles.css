@@ -1,0 +1,239 @@
+/* Root styling */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #4a6b7c;
+}
+
+/* Sidebar styling */
+.sidebar {
+    -fx-background-color: #4a6b7c;
+    -fx-padding: 30 20 20 20; /* Increased top padding */
+    -fx-spacing: 0;
+}
+
+/* Profile cluster - centered group of elements */
+.profile-cluster {
+    -fx-spacing: 15; /* Increased spacing */
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+/* Stars container */
+.stars-container {
+    -fx-spacing: 3;
+    -fx-alignment: center;
+}
+
+.star {
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-font-weight: normal;
+}
+
+/* NEW: Profile image styling */
+.profile-image-background {
+    -fx-fill: #c8c8c8;
+    -fx-stroke: #b0b0b0;
+    -fx-stroke-width: 2;
+}
+
+.profile-icon {
+    -fx-fill: #909090;
+}
+
+/* Text labels */
+.doctor-name {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+
+.specialty {
+    -fx-font-size: 16px;
+    -fx-text-fill: #d0d0d0;
+    -fx-alignment: center;
+}
+
+/* Buttons */
+.edit-profile-btn {
+    -fx-background-color: #c8c8c8;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 12 25 12 25;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-min-width: 120;
+}
+
+.edit-profile-btn:hover {
+    -fx-background-color: #b8b8b8;
+}
+
+.logout-btn {
+    -fx-background-color: #ff6b6b;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 12 25 12 25;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-min-width: 100;
+    -fx-alignment: center;
+}
+
+.logout-btn:hover {
+    -fx-background-color: #ff5252;
+}
+
+/* Main content styling */
+.main-content {
+    -fx-background-color: white;
+    -fx-background-radius: 25 0 0 25;
+    -fx-padding: 40 50 40 50;
+    -fx-spacing: 30;
+}
+
+.header-section {
+    -fx-spacing: 8;
+}
+
+.welcome-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.date-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666666;
+}
+
+.appointments-section {
+    -fx-spacing: 20;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.appointments-container {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 15;
+    -fx-padding: 40;
+    -fx-min-height: 200;
+    -fx-spacing: 15;
+}
+
+.all-appointments-btn {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-padding: 20 40 20 40;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-cursor: hand;
+    -fx-min-width: 200;
+    -fx-alignment: center;
+}
+
+.all-appointments-btn:hover {
+    -fx-background-color: #e8e8e8;
+}
+
+/* Appointment item styling - Updated for card layout */
+.appointment-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 15 20 15 20;
+    -fx-spacing: 12;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-alignment: center-left;
+    -fx-min-height: 70;
+}
+
+.appointment-card:hover {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #4a6b7c;
+}
+
+.user-icon {
+    -fx-fill: #e0e0e0;
+    -fx-stroke: #c0c0c0;
+    -fx-stroke-width: 2;
+}
+
+.patient-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.appointment-type-compact {
+    -fx-font-size: 13px;
+    -fx-text-fill: #666666;
+}
+
+.appointment-time-compact {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a6b7c;
+}
+
+.view-button {
+    -fx-background-color: #4a6b7c;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 6 15 6 15;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+
+.view-button:hover {
+    -fx-background-color: #3a5a6b;
+}
+
+/* Legacy appointment item styling - keeping for compatibility */
+.appointment-item {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 15 20 15 20;
+    -fx-spacing: 10;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+
+.appointment-item:hover {
+    -fx-background-color: #f9f9f9;
+}
+
+.appointment-time {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a6b7c;
+}
+
+.appointment-patient {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.appointment-type {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+}
+
+/* No appointments message styling */
+.no-appointments-message {
+    -fx-text-fill: #666666;
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+}
