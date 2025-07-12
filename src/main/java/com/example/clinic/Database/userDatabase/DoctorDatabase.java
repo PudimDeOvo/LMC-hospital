@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
+import java.util.*;
+
 public class DoctorDatabase extends Database{
     private static DoctorDatabase instance;
 
@@ -68,4 +70,32 @@ public class DoctorDatabase extends Database{
 
         return storedPassword != null && storedPassword.equals(password);
     }
+
+    // tive que add pras consultas
+    public List<Doctor> getAllDoctors() {
+        List<Doctor> doctors = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/database/DoctorDatabase.csv"))) {
+            String line;
+            br.readLine();
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 5) {
+                    String username = data[0].trim();
+                    String name = data[2].trim();
+                    String specialty = data[3].trim();
+                    int stars = Integer.parseInt(data[4].trim());
+
+                    Doctor doctor = new Doctor(username, name, MedicalSpecialty.valueOf(specialty.toUpperCase()), stars);
+                    doctors.add(doctor);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return doctors;
+    }
+
 }

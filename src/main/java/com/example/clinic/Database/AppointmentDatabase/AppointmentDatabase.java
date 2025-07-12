@@ -32,23 +32,24 @@ public class AppointmentDatabase {
             while((line = br.readLine()) != null){
                 String[] data = line.split(",");
 
-                if(data.length >= 5){
+                if(data.length >= 6){
                     String doctorUsername = data[0].trim();
                     String patientUsername = data[1].trim();
                     String date = data[2].trim();
                     String concluded = data[3].trim();
                     String MedicalReview = data[4].trim();
+                    String status = data[5].trim();
 
                     Doctor doctor = DoctorDatabase.getInstance().getDoctor(doctorUsername);
                     Patient patient = PatientDatabase.getInstance().getPatient(patientUsername);
 
                     if (searchForDoctor){
                         if(doctorUsername.equalsIgnoreCase(target)){
-                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview));
+                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview, status));
                         }
                     } else {
                         if(patientUsername.equalsIgnoreCase(target)){
-                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview));
+                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview, status));
                         }
                     }
                 }
@@ -78,9 +79,34 @@ public class AppointmentDatabase {
                     + appointment.getPatient().getUsername() + ","
                     + appointment.getDate() + ","
                     + appointment.isConcluded() + ","
-                    + appointment.getMedicalReview() + "\n";
+                    + appointment.getMedicalReview() + ","
+                    + appointment.getStatus() + "\n";
 
             fw.write(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cancelAppointment(String filePath, Appointment toCancel) {
+        List<Appointment> all = getAppointments(filePath, false, toCancel.getPatient().getUsername());
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            bw.write("doctor,patient,date,concluded,medicalReview,status\n");
+
+            for (Appointment app : all) {
+                if (app.getDoctor().getUsername().equals(toCancel.getDoctor().getUsername()) &&
+                        app.getDate().equals(toCancel.getDate())) {
+                    app.setStatus("cancelled");
+                }
+
+                bw.write(app.getDoctor().getUsername() + ","
+                        + app.getPatient().getUsername() + ","
+                        + app.getDate() + ","
+                        + app.isConcluded() + ","
+                        + app.getMedicalReview() + ","
+                        + app.getStatus() + "\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

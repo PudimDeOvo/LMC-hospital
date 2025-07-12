@@ -13,19 +13,19 @@
             fx:controller="com.example.clinic.homeSystem.PatientAppointmentsController">
 
     <children>
-        <Label layoutX="50" layoutY="50" text="Agendar Consulta"
+        <Label layoutX="50" layoutY="50" text="Schedule appointment"
                style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
 
-        <Label layoutX="50" layoutY="120" text="Médico:"/>
+        <Label layoutX="50" layoutY="120" text="Doctor:"/>
         <ComboBox fx:id="doctorComboBox" layoutX="150" layoutY="115" prefWidth="200"/>
 
-        <Label layoutX="50" layoutY="170" text="Data:"/>
+        <Label layoutX="50" layoutY="170" text="Date:"/>
         <DatePicker fx:id="datePicker" layoutX="150" layoutY="165"/>
 
-        <Label layoutX="50" layoutY="220" text="Horário:"/>
+        <Label layoutX="50" layoutY="220" text="Time:"/>
         <TextField fx:id="timeField" layoutX="150" layoutY="215" prefWidth="200" promptText="Ex: 14:30"/>
 
-        <Button layoutX="50" layoutY="300" text="Confirmar" onAction="#handleConfirm"/>
-        <Button layoutX="170" layoutY="300" text="Voltar" onAction="#handleBack"/>
+        <Button layoutX="50" layoutY="300" text="Confirm" onAction="#handleConfirm"/>
+        <Button layoutX="170" layoutY="300" text="Back" onAction="#handleBack"/>
     </children>
 </AnchorPane>

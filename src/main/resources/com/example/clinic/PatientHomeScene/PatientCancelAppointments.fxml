@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefWidth="1080.0" prefHeight="720.0"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.clinic.homeSystem.PatientCancelAppointmentController">
+
+    <children>
+        <BorderPane prefWidth="1080.0" prefHeight="720.0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+
+            <center>
+                <VBox spacing="10.0">
+                    <padding>
+                        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                    </padding>
+
+                    <Label text="Your Appointments"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                    <ListView fx:id="appointmentsList" prefHeight="300.0"/>
+
+                    <HBox spacing="10">
+                        <Button text="Cancel"
+                                onAction="#handleCancelAppointment"
+                                prefWidth="150"/>
+                        <Button text="Back"
+                                onAction="#handleBack"
+                                prefWidth="100"/>
+                    </HBox>
+                </VBox>
+            </center>
+
+        </BorderPane>
+    </children>
+</AnchorPane>

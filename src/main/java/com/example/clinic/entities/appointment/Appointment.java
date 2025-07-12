@@ -9,13 +9,20 @@ public class Appointment {
     private String date;
     private boolean concluded;
     private String medicalReview;
+    private String status; //achei adequado botar :D pode ser "active" ou "cancelled"
 
-    public Appointment(Doctor doctor, Patient patient, String date, boolean concluded, String medicalReview) {
+    public Appointment(Doctor doctor, Patient patient, String date, boolean concluded, String medicalReview, String status) {
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
         this.concluded = concluded;
         this.medicalReview = medicalReview;
+        this.status = status;
+    }
+
+    //pra sempre criar com consulta com status "active"
+    public Appointment(Doctor doctor, Patient patient, String date, boolean concluded, String medicalReview) {
+        this(doctor, patient, date, concluded, medicalReview, "active");
     }
 
     public Doctor getDoctor() {
@@ -57,4 +64,8 @@ public class Appointment {
     public void setMedicalReview(String medicalReview) {
         this.medicalReview = medicalReview;
     }
+
+    public String getStatus() {return status;}
+
+    public void setStatus(String status) {this.status = status;}
 }

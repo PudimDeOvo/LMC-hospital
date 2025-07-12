@@ -18,8 +18,7 @@ import com.example.clinic.entities.appointment.Appointment;
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.entities.user.Patient;
-
-
+import com.example.clinic.initialSystem.sessionSystem.Session;
 
 public class PatientAppointmentsController {
 
@@ -29,32 +28,59 @@ public class PatientAppointmentsController {
 
     @FXML
     public void initialize() {
+        List<Doctor> allDoctors = DoctorDatabase.getInstance().getAllDoctors();
+
         List<String> doctorNames = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/database/DoctorDatabase.csv"))) {
-            br.readLine(); // skip header
-
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length >= 5) {
-                    String username = data[0].trim();
-                    String name = data[2].trim();
-                    String displayName = "Dr. " + name + "(" + username + ")";
-                    doctorNames.add(displayName);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (Doctor doctor : allDoctors) {
+            doctorNames.add(doctor.getName() + " (" + doctor.getUsername() + ")");
         }
 
         doctorComboBox.setItems(FXCollections.observableArrayList(doctorNames));
     }
 
-
     @FXML
     private void handleConfirm(ActionEvent event) {
-        //logic
+        String selectedDoctor = doctorComboBox.getValue();
+        String date = String.valueOf(datePicker.getValue());
+        String time = timeField.getText();
+
+        if (selectedDoctor == null || date == null || time.isBlank()) {
+            System.out.println("Please fill in all fields.");
+            return;
+        }
+
+        int start = selectedDoctor.indexOf('(') + 1;
+        int end = selectedDoctor.indexOf(')');
+        String doctorUsername = selectedDoctor.substring(start, end);
+
+        Doctor doctor = DoctorDatabase.getInstance().getDoctor(doctorUsername);
+        Patient patient = Session.getCurrentPatient();
+
+        if (doctor == null || patient == null) {
+            System.out.println("Doctor or patient not found!");
+            return;
+        }
+
+        String dateTime = date + " " + time;
+
+        Appointment newAppointment = new Appointment(
+                doctor,
+                patient,
+                dateTime,
+                false,
+                "none"
+        );
+
+        AppointmentDatabase.getInstance().addAppointment(
+                "src/main/database/AppointmentDatabase.csv",
+                newAppointment
+        );
+
+        System.out.println("Appointment saved: "
+                + doctorUsername + ","
+                + patient.getUsername() + ","
+                + dateTime);
+
         goHome(event);
     }
 
