@@ -1,4 +1,5 @@
 doctor,patient,date,concluded,medicalReview,status
 Ryujin,momo,2025-08-15 12:45,false,none,cancelled
 Ryujin,momo,2025-08-15 15:55,false,none,cancelled
-Ryujin,momo,2025-08-15 21:30,true,linda ,active
+Ryujin,momo,2025-08-15 21:30,true,linda,cancelled
+Ryujin,momo,2025-08-15 14:45,false,none,active

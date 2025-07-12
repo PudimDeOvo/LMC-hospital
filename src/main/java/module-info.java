@@ -16,4 +16,5 @@ module com.example.clinic {
     opens com.example.clinic.Database.AppointmentDatabase to javafx.fxml;
     exports com.example.clinic.Database.userDatabase;
     opens com.example.clinic.Database.userDatabase to javafx.fxml;
+    opens com.example.clinic.homeSystem.doctorHome to javafx.fxml;
 }

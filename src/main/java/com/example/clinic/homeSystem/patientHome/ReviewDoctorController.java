@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import com.example.clinic.initialSystem.sessionSystem.Session;
+import com.example.clinic.session.PatientSession;
 
 import java.io.*;
 import java.util.*;
@@ -43,7 +43,7 @@ public class ReviewDoctorController {
         int selectedStars = starsComboBox.getValue();
         String comment = reviewText.getText();
 
-        String patientUsername = Session.getCurrentPatient().getUsername();
+        String patientUsername = PatientSession.getCurrentPatient().getUsername();
         String appointmentsFile = "src/main/database/AppointmentDatabase.csv";
         String doctorsFile = "src/main/database/DoctorDatabase.csv";
 
@@ -128,7 +128,7 @@ public class ReviewDoctorController {
 
     private void goHome(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/patienthome.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/home/patienthome.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();

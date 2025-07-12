@@ -1,6 +1,5 @@
 package com.example.clinic.homeSystem;
 
-import com.example.clinic.entities.user.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import com.example.clinic.initialSystem.sessionSystem.Session;
+import com.example.clinic.session.PatientSession;
 
 import java.io.IOException;
 
@@ -19,29 +18,27 @@ public class PatientHomeController {
     private Label patientNameLabel;
 
     @FXML
-    private Label welcomeLabel;
-
-    @FXML
     public void initialize(){
-        String fullName = Session.getCurrentPatient().getName();
-        String username = Session.getCurrentPatient().getUsername();
+        String fullName = PatientSession.getCurrentPatient().getName().substring(0, 1).toUpperCase()
+                            + PatientSession.getCurrentPatient().getName().substring(1);
         patientNameLabel.setText(fullName);
-        welcomeLabel.setText("Welcome, " + username);
+
     }
+    //botei uppercase pq tava me incomodando é so tirar dps
 
     @FXML
     private void handleScheduleAppointment(ActionEvent event) {
-        switchScene(event, "/com/example/clinic/PatientHomeScene/patientappointments-view.fxml");
+        switchScene(event, "/com/example/clinic/PatientHomeScene/appointmentsview/patientappointments-view.fxml");
     }
 
     @FXML
     private void handleCancelAppointment(ActionEvent event) {
-        switchScene(event, "/com/example/clinic/PatientHomeScene/PatientCancelAppointments.fxml");
+        switchScene(event, "/com/example/clinic/PatientHomeScene/cancelappointment/PatientCancelAppointments.fxml");
     }
 
     @FXML
     private void handleReviewDoctor(ActionEvent event) {
-        switchScene(event, "/com/example/clinic/PatientHomeScene/reviewdoctor.fxml");
+        switchScene(event, "/com/example/clinic/PatientHomeScene/reviewdoctor/reviewdoctor.fxml");
     }
 
     @FXML

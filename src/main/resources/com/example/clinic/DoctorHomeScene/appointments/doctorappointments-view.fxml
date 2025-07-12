@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.homeSystem.DoctorMyAppointmentsController" styleClass="main-container" stylesheets="@styles.css" prefWidth="1080" prefHeight="720">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.homeSystem.doctorHome.DoctorMyAppointmentsController" styleClass="main-container" stylesheets="@styles.css" prefWidth="1080" prefHeight="720">
    <top>
       <VBox spacing="15" styleClass="header-container">
          <Button fx:id="backButton" onAction="#switchToHome" text="← Back" styleClass="back-button" />

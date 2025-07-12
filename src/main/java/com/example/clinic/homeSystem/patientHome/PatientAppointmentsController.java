@@ -18,7 +18,7 @@ import com.example.clinic.entities.appointment.Appointment;
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.entities.user.Patient;
-import com.example.clinic.initialSystem.sessionSystem.Session;
+import com.example.clinic.session.PatientSession;
 
 public class PatientAppointmentsController {
 
@@ -54,7 +54,7 @@ public class PatientAppointmentsController {
         String doctorUsername = selectedDoctor.substring(start, end);
 
         Doctor doctor = DoctorDatabase.getInstance().getDoctor(doctorUsername);
-        Patient patient = Session.getCurrentPatient();
+        Patient patient = PatientSession.getCurrentPatient();
 
         if (doctor == null || patient == null) {
             System.out.println("Doctor or patient not found!");
@@ -91,7 +91,7 @@ public class PatientAppointmentsController {
 
     private void goHome(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/patienthome.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/home/patienthome.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();

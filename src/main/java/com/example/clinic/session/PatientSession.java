@@ -1,7 +1,7 @@
-package com.example.clinic.initialSystem.sessionSystem;
+package com.example.clinic.session;
 import com.example.clinic.entities.user.Patient;
 
-public class Session {
+public class PatientSession {
     private static Patient currentPatient;
 
     public static void setCurrentPatient(Patient patient){

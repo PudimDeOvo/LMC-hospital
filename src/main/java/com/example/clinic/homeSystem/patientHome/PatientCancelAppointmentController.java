@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.*;
 import com.example.clinic.entities.user.Patient;
-import com.example.clinic.initialSystem.sessionSystem.Session;
+import com.example.clinic.session.PatientSession;
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class PatientCancelAppointmentController {
 
     @FXML
     public void initialize() {
-        Patient currentPatient = Session.getCurrentPatient();
+        Patient currentPatient = PatientSession.getCurrentPatient();
 
         List<Appointment> appointments = AppointmentDatabase.getInstance()
                 .getAppointments("src/main/database/AppointmentDatabase.csv", false, currentPatient.getUsername());
@@ -46,7 +46,7 @@ public class PatientCancelAppointmentController {
             return;
         }
 
-        Patient currentPatient = Session.getCurrentPatient();
+        Patient currentPatient = PatientSession.getCurrentPatient();
 
         String[] parts = selected.split(" - ");
         String dateTime = parts[0].trim();
@@ -72,7 +72,7 @@ public class PatientCancelAppointmentController {
     @FXML
     private void handleBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/patienthome.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/home/patienthome.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
