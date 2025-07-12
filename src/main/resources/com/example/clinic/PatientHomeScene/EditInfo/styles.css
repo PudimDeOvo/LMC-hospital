@@ -1,0 +1,162 @@
+/* Estilos para a tela de Editar Perfil */
+
+/* Root - Definição das cores */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    -fx-background-color: linear-gradient(to bottom right, #5c8a53, #6a9f5f);
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.back-button {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: white;
+    -fx-background-radius: 25;
+    -fx-padding: 12 24 12 24;
+    -fx-font-size: 16px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-translate-y: -2;
+}
+
+.back-button:pressed {
+    -fx-translate-y: 0;
+}
+
+/* Container Principal */
+.container {
+    -fx-background-color: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+    -fx-padding: 40 20 40 20;
+}
+
+/* Título */
+.title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5c8a53;
+    -fx-alignment: center;
+}
+
+/* Seção da Foto de Perfil */
+.profile-photo-section {
+    -fx-alignment: center;
+}
+
+.profile-photo {
+    -fx-fill: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 4);
+}
+
+.change-photo-btn {
+    -fx-background-color: linear-gradient(to bottom right, #6a9f5f, #7db072);
+    -fx-text-fill: white;
+    -fx-background-radius: 25;
+    -fx-padding: 12 24 12 24;
+    -fx-font-size: 16px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(106, 159, 95, 0.3), 15, 0, 0, 4);
+}
+
+.change-photo-btn:hover {
+    -fx-translate-y: -2;
+    -fx-effect: dropshadow(gaussian, rgba(106, 159, 95, 0.4), 20, 0, 0, 6);
+}
+
+.change-photo-btn:pressed {
+    -fx-translate-y: 0;
+}
+
+/* Seção do Formulário */
+.form-section {
+    -fx-alignment: center;
+    -fx-max-width: 500;
+}
+
+.form-group {
+    -fx-alignment: center-left;
+}
+
+.form-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5c8a53;
+}
+
+.form-input {
+    -fx-padding: 15 20 15 20;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 16px;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);
+    -fx-pref-width: 500;
+}
+
+.form-input:focused {
+    -fx-border-color: #6a9f5f;
+    -fx-effect: dropshadow(gaussian, rgba(106, 159, 95, 0.1), 0, 0, 0, 0),
+    inset 0 0 0 3 rgba(106, 159, 95, 0.1);
+    -fx-translate-y: -2;
+}
+
+.form-input .text {
+    -fx-fill: #333333;
+}
+
+.form-input .prompt-text {
+    -fx-fill: #aaaaaa;
+}
+
+/* Botão Salvar */
+.save-button {
+    -fx-background-color: linear-gradient(to bottom right, #6a9f5f, #7db072);
+    -fx-text-fill: white;
+    -fx-background-radius: 15;
+    -fx-padding: 18 0 18 0;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(106, 159, 95, 0.3), 15, 0, 0, 4);
+    -fx-pref-width: 500;
+}
+
+.save-button:hover {
+    -fx-translate-y: -2;
+    -fx-effect: dropshadow(gaussian, rgba(106, 159, 95, 0.4), 20, 0, 0, 6);
+}
+
+.save-button:pressed {
+    -fx-translate-y: 0;
+}
+
+/* Responsividade - Ajustes para telas menores */
+@media (max-width: 768px) {
+    .container {
+        -fx-padding: 20;
+    }
+
+    .title {
+        -fx-font-size: 28px;
+    }
+
+    .profile-photo {
+        -fx-radius: 50;
+    }
+
+    .form-input, .save-button {
+        -fx-pref-width: 300;
+    }
+}
