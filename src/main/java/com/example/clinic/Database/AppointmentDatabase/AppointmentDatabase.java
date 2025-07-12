@@ -6,9 +6,7 @@ import com.example.clinic.entities.appointment.Appointment;
 import com.example.clinic.entities.user.Doctor;
 import com.example.clinic.entities.user.Patient;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,5 +70,19 @@ public class AppointmentDatabase {
             }
         }
         return filteredAppointments;
+    }
+
+    public void addAppointment(String filePath, Appointment appointment) {
+        try (FileWriter fw = new FileWriter(filePath, true)) {
+            String line = appointment.getDoctor().getUsername() + ","
+                    + appointment.getPatient().getUsername() + ","
+                    + appointment.getDate() + ","
+                    + appointment.isConcluded() + ","
+                    + appointment.getMedicalReview() + "\n";
+
+            fw.write(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

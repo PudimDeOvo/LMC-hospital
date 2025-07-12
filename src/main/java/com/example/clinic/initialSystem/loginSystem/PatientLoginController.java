@@ -22,6 +22,7 @@ public class PatientLoginController extends LoginController{
 
         if (PatientDatabase.getInstance().checkCredentials(username, password)){
             System.out.println("Login bem-sucedido");
+            SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/patienthome.fxml");
         } else {
             System.out.println("Credenciais inválidas");
         }

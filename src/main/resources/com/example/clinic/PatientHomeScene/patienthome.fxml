@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.clinic.homeSystem.PatientHomeController">
+
+
+<children>
+        <Label layoutX="50" layoutY="50"
+               text="Bem-vindo, [Patient Name]!"
+               style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+
+        <Button layoutX="50" layoutY="150" prefWidth="200"
+                text="Agendar Consulta"
+                onAction="#handleScheduleAppointment"/>
+
+        <Button layoutX="50" layoutY="200" prefWidth="200"
+                text="Cancelar Consulta"
+                onAction="#handleCancelAppointment"/>
+
+        <Button layoutX="50" layoutY="250" prefWidth="200"
+                text="Avaliar Médico"
+                onAction="#handleReviewDoctor"/>
+
+        <Button layoutX="50" layoutY="350" prefWidth="200"
+                text="Logout"
+                onAction="#handleLogout"/>
+    </children>
+</AnchorPane>
