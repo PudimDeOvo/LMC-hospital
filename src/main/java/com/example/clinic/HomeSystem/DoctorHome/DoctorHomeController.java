@@ -1,7 +1,7 @@
 package com.example.clinic.HomeSystem.DoctorHome;
 
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
-import com.example.clinic.SceneManagerPack.SceneManager;
+import com.example.clinic.SceneManager;
 import com.example.clinic.Entities.Appointment.Appointment;
 import com.example.clinic.Session.DoctorSession;
 import javafx.fxml.FXML;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.clinic.HomeSystem.PatientHome.AppointmentHomeController"
+            styleClass="main-container"
+            stylesheets="@styles.css"
+            prefWidth="1080"
+            prefHeight="720">
+
+    <!-- Top section with Back and Filters -->
+    <top>
+        <VBox spacing="15" styleClass="header-container">
+            <Button fx:id="backButton" onAction="#switchToHome" text="← Back" styleClass="back-button" />
+
+            <HBox spacing="0" styleClass="filter-bar">
+                <Button fx:id="scheduledBtn" text="Scheduled Appointments" styleClass="filter-button, filter-button-active" onAction="#showScheduledAppointments"/>
+                <Button fx:id="concludedBtn" text="Concluded Appointments" styleClass="filter-button" onAction="#showConcludedAppointments"/>
+                <Button fx:id="cancelledBtn" text="Cancelled Appointments" styleClass="filter-button" onAction="#showCancelledAppointments"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center: appointments list -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox fx:id="appointmentsContainer" spacing="10" styleClass="appointments-container"/>
+        </ScrollPane>
+    </center>
+
+    <!-- Bottom: action buttons -->
+    <bottom>
+        <HBox spacing="20" alignment="CENTER" styleClass="bottom-actions">
+            <Button fx:id="evaluateDoctorBtn" text="Evaluate Doctor" styleClass="action-button" onAction="#handleEvaluateDoctor"/>
+            <Button fx:id="cancelAppointmentBtn" text="Cancel Appointment" styleClass="action-button" onAction="#handleCancelAppointment"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

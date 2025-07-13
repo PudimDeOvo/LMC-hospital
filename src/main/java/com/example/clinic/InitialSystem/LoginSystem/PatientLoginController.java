@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import com.example.clinic.Entities.User.Patient;
+import com.example.clinic.Session.PatientSession;
 
 public class PatientLoginController extends LoginController{
     @FXML
@@ -22,6 +24,9 @@ public class PatientLoginController extends LoginController{
 
         if (PatientDatabase.getInstance().checkCredentials(username, password)){
             System.out.println("Login bem-sucedido");
+            Patient loggedPatient = PatientDatabase.getInstance().getPatient(username);
+            PatientSession.setCurrentPatient(loggedPatient);
+            SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/Home/patienthome-view.fxml");
         } else {
             System.out.println("Credenciais inválidas");
         }

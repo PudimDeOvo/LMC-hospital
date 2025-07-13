@@ -1,8 +1,8 @@
 package com.example.clinic.HomeSystem.DoctorHome;
 
-import com.example.clinic.Database.UserDatabase.DoctorDatabase;
+import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.Entities.User.Doctor;
-import com.example.clinic.SceneManagerPack.SceneManager;
+import com.example.clinic.SceneManager;
 import com.example.clinic.Session.DoctorSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

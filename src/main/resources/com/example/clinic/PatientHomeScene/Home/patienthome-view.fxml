@@ -11,42 +11,47 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientHomeController">
+<HBox prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientHomeController">
+
     <children>
-        <!-- Sidebar Verde -->
+        <!-- Sidebar -->
         <VBox alignment="CENTER" prefWidth="450.0" spacing="20.0" styleClass="sidebar">
             <padding>
-                <Insets bottom="60.0" left="40.0" right="40.0" top="60.0" />
+                <Insets top="60.0" right="40.0" bottom="60.0" left="40.0" />
             </padding>
             <children>
-            <StackPane prefHeight="120" prefWidth="120">
-               <children>
-                  <Circle radius="60.0" styleClass="profile-image-background" />
-                  <VBox alignment="CENTER" spacing="3" style="-fx-translate-y: 5;">
-                     <children>
-                        <Circle radius="18" styleClass="profile-icon" />
-                        <Circle radius="30" styleClass="profile-icon">
-                           <clip>
-                              <Rectangle height="30" width="60" x="-30" y="0" />
-                           </clip>
-                        </Circle>
-                     </children>
-                  </VBox>
-               </children>
-            </StackPane>
+                <!-- Profile Icon -->
+                <StackPane prefHeight="120" prefWidth="120">
+                    <children>
+                        <Circle radius="60.0" styleClass="profile-image-background" />
+                        <VBox alignment="CENTER" spacing="3" style="-fx-translate-y: 5;">
+                            <children>
+                                <Circle radius="18" styleClass="profile-icon" />
+                                <Circle radius="30" styleClass="profile-icon">
+                                    <clip>
+                                        <Rectangle height="30" width="60" x="-30" y="0" />
+                                    </clip>
+                                </Circle>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
 
-                <!-- Informações do Paciente -->
+                <!-- Patient Info -->
                 <VBox alignment="CENTER" spacing="8.0" styleClass="patient-info">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                     <children>
-                        <Label fx:id="patientNameLabel" styleClass="patient-name" text="Nome do Paciente">
+                        <Label fx:id="patientNameLabel" styleClass="patient-name" text="Patient Name">
                             <font>
                                 <Font name="System Bold" size="20.0" />
                             </font>
                         </Label>
-                        <Label fx:id="patientPlanLabel" styleClass="patient-plan" text="Plano de Saúde">
+                        <Label fx:id="patientPlanLabel" styleClass="patient-plan" text="Insurance Plan">
                             <font>
                                 <Font size="16.0" />
                             </font>
@@ -54,23 +59,14 @@
                     </children>
                 </VBox>
 
-                <!-- Botões do Menu -->
+                <!-- Appointment Button -->
                 <VBox maxWidth="320.0" spacing="20.0" styleClass="menu-buttons">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                     <children>
-                        <Button fx:id="scheduleBtn" maxWidth="Infinity" styleClass="menu-btn" text="Agendar Consulta">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="cancelBtn" maxWidth="Infinity" styleClass="menu-btn" text="Cancelar Consulta">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="evaluateBtn" maxWidth="Infinity" styleClass="menu-btn" text="Avaliar Médico">
+                        <Button fx:id="appointmentBtn" onAction="#handleAppointments" maxWidth="Infinity"
+                                styleClass="menu-btn" text="Appointments">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -78,18 +74,20 @@
                     </children>
                 </VBox>
 
-                <!-- Spacer para empurrar os botões de perfil para baixo -->
+                <!-- Spacer -->
                 <Region VBox.vgrow="ALWAYS" />
 
-                <!-- Seção de Perfil -->
+                <!-- Profile Controls -->
                 <VBox maxWidth="320.0" spacing="15.0" styleClass="profile-section">
                     <children>
-                        <Button fx:id="editProfileBtn" maxWidth="Infinity" styleClass="edit-profile-btn" text="Edit Profile">
+                        <Button fx:id="editProfileBtn" onAction="#handleEditProfile" maxWidth="Infinity"
+                                styleClass="edit-profile-btn" text="Edit Profile">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Button>
-                        <Button fx:id="logoutBtn" maxWidth="Infinity" styleClass="logout-btn" text="Logout">
+                        <Button fx:id="logoutBtn" onAction="#handleLogout" maxWidth="Infinity"
+                                styleClass="logout-btn" text="Logout">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -99,18 +97,18 @@
             </children>
         </VBox>
 
-        <!-- Área Principal Branca -->
+        <!-- Main Content -->
         <VBox alignment="CENTER" spacing="20.0" styleClass="main-content" HBox.hgrow="ALWAYS">
             <padding>
-                <Insets bottom="60.0" left="80.0" right="80.0" top="60.0" />
+                <Insets top="60.0" right="80.0" bottom="60.0" left="80.0" />
             </padding>
             <children>
-                <Label styleClass="welcome-title" text="Bem-vindo ao">
+                <Label styleClass="welcome-title" text="Welcome to">
                     <font>
                         <Font name="System Bold" size="48.0" />
                     </font>
                 </Label>
-                <Label styleClass="welcome-subtitle" text="Portal do Paciente">
+                <Label styleClass="welcome-subtitle" text="Patient Portal">
                     <font>
                         <Font name="System Bold" size="48.0" />
                     </font>

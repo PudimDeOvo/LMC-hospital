@@ -6,9 +6,7 @@ import com.example.clinic.Entities.Appointment.Appointment;
 import com.example.clinic.Entities.User.Doctor;
 import com.example.clinic.Entities.User.Patient;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,5 +70,44 @@ public class AppointmentDatabase {
             }
         }
         return filteredAppointments;
+    }
+
+    public void addAppointment(String filePath, Appointment appointment) {
+        try (FileWriter fw = new FileWriter(filePath, true)) {
+            String line = appointment.getDoctor().getUsername() + ","
+                    + appointment.getPatient().getUsername() + ","
+                    + appointment.getDate() + ","
+                    + appointment.isConcluded() + ","
+                    + appointment.getMedicalReview() + ","
+                    + appointment.getStatus() + "\n";
+
+            fw.write(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cancelAppointment(String filePath, Appointment toCancel) {
+        List<Appointment> all = getAppointments(filePath, false, toCancel.getPatient().getUsername());
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            bw.write("doctor,patient,date,concluded,medicalReview,status\n");
+
+            for (Appointment app : all) {
+                if (app.getDoctor().getUsername().equals(toCancel.getDoctor().getUsername()) &&
+                        app.getDate().equals(toCancel.getDate())) {
+                    app.setStatus("cancelled");
+                }
+
+                bw.write(app.getDoctor().getUsername() + ","
+                        + app.getPatient().getUsername() + ","
+                        + app.getDate() + ","
+                        + app.isConcluded() + ","
+                        + app.getMedicalReview() + ","
+                        + app.getStatus() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
