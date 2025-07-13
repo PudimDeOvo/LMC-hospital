@@ -1,7 +1,7 @@
 package com.example.clinic.InitialSystem.RegisterSystem;
 
-import com.example.clinic.Database.UserDatabase.DoctorDatabase;
-import com.example.clinic.Database.UserDatabase.PatientDatabase;
+import com.example.clinic.Database.userDatabase.DoctorDatabase;
+import com.example.clinic.Database.userDatabase.PatientDatabase;
 import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -2,9 +2,9 @@ package com.example.clinic.Database.AppointmentDatabase;
 
 import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.Database.userDatabase.PatientDatabase;
-import com.example.clinic.entities.appointment.Appointment;
-import com.example.clinic.entities.user.Doctor;
-import com.example.clinic.entities.user.Patient;
+import com.example.clinic.Entities.Appointment.Appointment;
+import com.example.clinic.Entities.User.Doctor;
+import com.example.clinic.Entities.User.Patient;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

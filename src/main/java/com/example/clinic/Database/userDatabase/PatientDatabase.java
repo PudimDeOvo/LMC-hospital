@@ -1,9 +1,9 @@
 package com.example.clinic.Database.userDatabase;
 
-import com.example.clinic.entities.HealthInsurancePlan;
-import com.example.clinic.entities.MedicalSpecialty;
-import com.example.clinic.entities.user.Doctor;
-import com.example.clinic.entities.user.Patient;
+import com.example.clinic.Entities.HealthInsurancePlan;
+import com.example.clinic.Entities.MedicalSpecialty;
+import com.example.clinic.Entities.User.Doctor;
+import com.example.clinic.Entities.User.Patient;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

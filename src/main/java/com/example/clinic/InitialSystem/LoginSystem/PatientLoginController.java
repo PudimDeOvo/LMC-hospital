@@ -1,6 +1,6 @@
 package com.example.clinic.InitialSystem.LoginSystem;
 
-import com.example.clinic.Database.UserDatabase.PatientDatabase;
+import com.example.clinic.Database.userDatabase.PatientDatabase;
 import com.example.clinic.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

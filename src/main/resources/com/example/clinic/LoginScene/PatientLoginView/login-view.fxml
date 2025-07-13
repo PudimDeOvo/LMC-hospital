@@ -13,7 +13,7 @@
 <?import java.net.URL?>
 
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-           prefWidth="1280.0" prefHeight="720.0" fx:controller="com.example.clinic.initialSystem.loginSystem.PatientLoginController">
+           prefWidth="1280.0" prefHeight="720.0" fx:controller="com.example.clinic.InitialSystem.LoginSystem.PatientLoginController">
     <children>
 
         <HBox alignment="CENTER">

@@ -1,6 +1,6 @@
 package com.example.clinic.InitialSystem.LoginSystem;
 
-import com.example.clinic.Database.UserDatabase.DoctorDatabase;
+import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.SceneManager;
 import com.example.clinic.Entities.User.Doctor;
 import com.example.clinic.Session.DoctorSession;
