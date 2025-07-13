@@ -28,25 +28,25 @@
                 <!-- Avatar Section -->
                 <VBox styleClass="avatar-section">
                     <children>
-                  <StackPane prefHeight="120" prefWidth="120">
-                     <children>
-                        <Circle radius="60.0" styleClass="profile-image-background" />
-                        <VBox alignment="CENTER" spacing="3" style="-fx-translate-y: 5;">
-                           <children>
-                              <Circle radius="18" styleClass="profile-icon" />
-                              <Circle radius="30" styleClass="profile-icon">
-                                 <clip>
-                                    <Rectangle height="30" width="60" x="-30" y="0" />
-                                 </clip>
-                              </Circle>
-                           </children>
-                        </VBox>
-                     </children>
-                  </StackPane>
+                        <StackPane prefHeight="100" prefWidth="100">
+                            <children>
+                                <Circle radius="50.0" styleClass="profile-image-background" />
+                                <VBox alignment="CENTER" spacing="2" style="-fx-translate-y: 3;">
+                                    <children>
+                                        <Circle radius="15" styleClass="profile-icon" />
+                                        <Circle radius="25" styleClass="profile-icon">
+                                            <clip>
+                                                <Rectangle height="25" width="50" x="-25" y="0" />
+                                            </clip>
+                                        </Circle>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </StackPane>
                         <Button fx:id="btnAlterarFoto" styleClass="btn-alterar-foto" text="Change picture" />
                     </children>
                 </VBox>
-      
+
                 <!-- Form Section -->
                 <VBox styleClass="form-section">
                     <children>
@@ -57,7 +57,7 @@
                                 <TextField fx:id="newDoctorNameField" promptText="NAME" styleClass="form-input" />
                             </children>
                         </VBox>
-      
+
                         <!-- Campo Username -->
                         <VBox styleClass="field-container">
                             <children>
@@ -65,7 +65,7 @@
                                 <TextField fx:id="newDoctorUsernameField" promptText="USERNAME" styleClass="form-input" />
                             </children>
                         </VBox>
-      
+
                         <!-- Campo Password -->
                         <VBox styleClass="field-container">
                             <children>
