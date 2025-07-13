@@ -15,7 +15,7 @@
         <!-- Header -->
         <HBox styleClass="header">
             <children>
-                <Button fx:id="btnVoltar" styleClass="btn-voltar" text="← Voltar" />
+                <Button fx:id="backButton" onAction="#switchToBack" styleClass="btn-voltar" text="← Back" />
             </children>
         </HBox>
 
@@ -23,7 +23,7 @@
         <VBox styleClass="main-content">
             <children>
                 <!-- Título -->
-                <Label styleClass="titulo" text="Editar Perfil Médico" />
+                <Label styleClass="titulo" text="Edit Profile" />
 
                 <!-- Avatar Section -->
                 <VBox styleClass="avatar-section">
@@ -43,7 +43,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                        <Button fx:id="btnAlterarFoto" styleClass="btn-alterar-foto" text="Alterar Foto" />
+                        <Button fx:id="btnAlterarFoto" styleClass="btn-alterar-foto" text="Change picture" />
                     </children>
                 </VBox>
       
@@ -53,8 +53,8 @@
                         <!-- Campo Nome -->
                         <VBox styleClass="field-container">
                             <children>
-                                <Label styleClass="field-label" text="Nome" />
-                                <TextField fx:id="txtNome" promptText="NAME" styleClass="form-input" />
+                                <Label styleClass="field-label" text="Name" />
+                                <TextField fx:id="newDoctorNameField" promptText="NAME" styleClass="form-input" />
                             </children>
                         </VBox>
       
@@ -62,7 +62,7 @@
                         <VBox styleClass="field-container">
                             <children>
                                 <Label styleClass="field-label" text="Username" />
-                                <TextField fx:id="txtUsername" promptText="USERNAME" styleClass="form-input" />
+                                <TextField fx:id="newDoctorUsernameField" promptText="USERNAME" styleClass="form-input" />
                             </children>
                         </VBox>
       
@@ -70,7 +70,7 @@
                         <VBox styleClass="field-container">
                             <children>
                                 <Label styleClass="field-label" text="Password" />
-                                <PasswordField fx:id="txtPassword" promptText="NEW PASSWORD" styleClass="form-input" />
+                                <PasswordField fx:id="newDoctorPasswordField" promptText="NEW PASSWORD" styleClass="form-input" />
                             </children>
                         </VBox>
                     </children>
@@ -79,8 +79,7 @@
                 <!-- Action Buttons -->
                 <HBox styleClass="action-buttons">
                     <children>
-                        <Button fx:id="btnCancelar" styleClass="btn-cancelar" text="Cancelar" />
-                        <Button fx:id="btnSalvar" styleClass="btn-salvar" text="Salvar Alterações" />
+                        <Button fx:id="saveButton" onAction="#saveChanges" styleClass="btn-salvar" text="Save changes" />
                     </children>
                 </HBox>
             </children>
