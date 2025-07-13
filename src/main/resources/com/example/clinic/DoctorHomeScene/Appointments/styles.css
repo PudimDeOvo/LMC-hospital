@@ -1,6 +1,6 @@
 /* Main container with gradient background */
 .main-container {
-    -fx-background-color: linear-gradient(to bottom, #4A7BA7, #2E4F6B, #1A3A52);
+    -fx-background-color: linear-gradient(to bottom, #4A6B7C, #2E4F6B, #1A3A52);
     -fx-padding: 0;
 }
 
@@ -11,17 +11,13 @@
 
 /* Back button styling */
 .back-button {
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-text-fill: white;
-    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 25px;
     -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
-    -fx-border-color: rgba(255, 255, 255, 0.6);
-    -fx-border-width: 2px;
-    -fx-background-radius: 25;
-    -fx-border-radius: 25;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
 }
 
 .back-button:hover {
