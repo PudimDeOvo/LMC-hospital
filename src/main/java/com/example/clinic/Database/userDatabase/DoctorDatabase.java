@@ -1,4 +1,4 @@
-package com.example.clinic.Database.userDatabase;
+package com.example.clinic.Database.UserDatabase;
 
 import com.example.clinic.Entities.MedicalSpecialty;
 import com.example.clinic.Entities.User.Doctor;
@@ -36,6 +36,50 @@ public class DoctorDatabase extends Database{
         }
     }
 
+    public void updateDoctor(Doctor oldData, String[] newData){
+        StringBuilder fileContent = new StringBuilder();
+        boolean check = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/database/DoctorDatabase.csv"))) {
+            String header = br.readLine();
+            if (header != null) {
+                fileContent.append(header).append("\n");
+            }
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] existingData = line.split(",");
+
+                if (existingData.length > 0 && existingData[0].trim().equals(oldData.getUsername())) {
+                    String[] updatedData = new String[existingData.length];
+                    for(int i = 0; i < existingData.length; i++){
+                        if(i < 3 && i < newData.length){
+                            updatedData[i] = newData[i];
+                        }
+                        else{
+                            updatedData[i] = existingData[i];
+                        }
+                    }
+                    fileContent.append(String.join(",", updatedData)).append("\n");
+                    check = true;
+                } else {
+                    fileContent.append(line).append("\n");
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading or writing file: " + e.getMessage());
+        }
+
+        if(check){
+            try(FileWriter fw = new FileWriter("src/main/database/DoctorDatabase.csv")) {
+                fw.write(fileContent.toString());
+            } catch (IOException e) {
+                System.err.println("Error writing to file: " + e.getMessage());
+            }
+        } else {
+            System.err.println("Doctor with username " + oldData.getUsername() + " not found.");
+        }
+    }
 
     public Doctor getDoctor(String doctorUsername){
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/database/DoctorDatabase.csv"))) {
