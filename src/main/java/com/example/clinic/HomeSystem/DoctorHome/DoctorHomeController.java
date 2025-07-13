@@ -1,7 +1,7 @@
 package com.example.clinic.HomeSystem.DoctorHome;
 
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
-import com.example.clinic.SceneManager;
+import com.example.clinic.SceneManagerPack.SceneManager;
 import com.example.clinic.Entities.Appointment.Appointment;
 import com.example.clinic.Session.DoctorSession;
 import javafx.fxml.FXML;
@@ -140,14 +140,14 @@ public class DoctorHomeController implements Initializable {
     }
 
     @FXML
-    private void handleEditProfile(ActionEvent event) {
-        // Handle edit profile button click
+    private void switchToEdit(ActionEvent event) {
         System.out.println("Edit Profile clicked");
-        // In a real app, this would open an edit profile dialog or scene
+        SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/EditInfo/doctoredit-view.fxml");
     }
 
     @FXML
     private void handleLogout(ActionEvent e) {
+        System.out.println("Logout clicked");
         DoctorSession.getInstance().setLoggedDoctor(null);
         SceneManager.switchScene(e, "/com/example/clinic/LoginScene/DoctorLoginView/login-view.fxml");
     }
