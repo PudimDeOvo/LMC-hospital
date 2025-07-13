@@ -37,7 +37,7 @@
 
             <Label fx:id="specialtyLabel" styleClass="specialty" text="Specialty" />
 
-            <Button fx:id="editProfileButton" styleClass="edit-profile-btn" text="Edit Profile" />
+            <Button fx:id="editProfileButton" onAction="#switchToEdit" styleClass="edit-profile-btn" text="Edit Profile" />
          </VBox>
 
          <Region VBox.vgrow="ALWAYS" />
