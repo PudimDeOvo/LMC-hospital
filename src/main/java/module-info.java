@@ -4,6 +4,7 @@ module com.example.clinic {
     requires org.apache.commons.csv;
     requires com.opencsv;
     requires javafx.graphics;
+    requires javafx.base;
 
 
     opens com.example.clinic to javafx.fxml;

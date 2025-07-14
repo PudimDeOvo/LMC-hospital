@@ -33,9 +33,26 @@
     <!-- Bottom: action buttons -->
     <bottom>
         <HBox spacing="20" alignment="CENTER" styleClass="bottom-actions">
-            <Button fx:id="evaluateDoctorBtn" text="Evaluate Doctor" styleClass="action-button" onAction="#handleEvaluateDoctor"/>
-            <Button fx:id="cancelAppointmentBtn" text="Cancel Appointment" styleClass="action-button" onAction="#handleCancelAppointment"/>
+            <Button fx:id="evaluateDoctorBtn"
+                    text="Evaluate Doctor"
+                    styleClass="action-button"
+                    onAction="#handleEvaluateDoctor"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"/>
+            <Button fx:id="cancelAppointmentBtn"
+                    text="Cancel Appointment"
+                    styleClass="action-button"
+                    onAction="#handleCancelAppointment"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"/>
+            <Button fx:id="makeAppointmentBtn"
+                    text="Schedule Appointment"
+                    styleClass="action-button"
+                    onAction="#handleCreateAppointment"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"/>
         </HBox>
     </bottom>
+
 
 </BorderPane>

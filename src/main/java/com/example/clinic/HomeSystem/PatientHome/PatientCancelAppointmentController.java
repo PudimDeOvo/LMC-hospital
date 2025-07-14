@@ -72,7 +72,7 @@ public class PatientCancelAppointmentController {
     @FXML
     private void handleBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/Home/patienthome.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/clinic/PatientHomeScene/appointmentHome/appointmenthome-view.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();

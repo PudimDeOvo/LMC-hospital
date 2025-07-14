@@ -6,7 +6,7 @@
 
 <AnchorPane prefWidth="1080.0" prefHeight="720.0"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.clinic.homeSystem.PatientCancelAppointmentController">
+            fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientCancelAppointmentController">
 
     <children>
         <BorderPane prefWidth="1080.0" prefHeight="720.0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">

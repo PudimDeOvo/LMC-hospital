@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.clinic.HomeSystem.PatientHome.CreateAppointmentsController"
+            prefHeight="720.0"
+            prefWidth="1080.0"
+            styleClass="root"
+            stylesheets="@styles.css">
+
+    <children>
+        <VBox alignment="CENTER"
+              layoutX="90.0"
+              layoutY="85.0"
+              prefHeight="550.0"
+              prefWidth="900.0"
+              spacing="40.0"
+              styleClass="appointment-container">
+
+            <children>
+
+                <VBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <Label styleClass="appointment-title" text="Create Appointment"/>
+                        <Label styleClass="appointment-subtitle" text="Book your visit in a few simple steps"/>
+                    </children>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="15.0">
+                    <children>
+                        <ComboBox fx:id="doctorComboBox" prefWidth="300.0" promptText="Select Doctor"/>
+                        <DatePicker fx:id="datePicker" prefWidth="300.0"/>
+                        <TextField fx:id="timeField" prefWidth="300.0" promptText="Enter Time (HH:MM)"/>
+                    </children>
+                </VBox>
+
+                <HBox alignment="CENTER" spacing="30.0">
+                    <children>
+                        <Button text="Confirm"
+                                onAction="#handleConfirm"
+                                prefHeight="50.0"
+                                prefWidth="180.0"
+                                styleClass="primary-button"/>
+                        <Button text="Back"
+                                onAction="#handleBack"
+                                prefHeight="50.0"
+                                prefWidth="180.0"
+                                styleClass="secondary-button"/>
+                    </children>
+                </HBox>
+
+            </children>
+
+        </VBox>
+    </children>
+
+</AnchorPane>

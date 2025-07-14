@@ -137,8 +137,13 @@ public class AppointmentHomeController implements Initializable {
 
     @FXML
     public void handleEvaluateDoctor(ActionEvent e) {
-        System.out.println("TODO: Open evaluate doctor view.");
-        // Implement your logic
+        System.out.println("apertou no botao de avaliar");
+        SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/ReviewDoctor/reviewdoctor-view.fxml");
+    }
+
+    public void handleCreateAppointment(ActionEvent e){
+        System.out.println("apertou no botao de criar consulta");
+        SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/PacientAppointment/patientcreateappointment-view.fxml");
     }
 
     @FXML
