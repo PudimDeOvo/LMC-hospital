@@ -5,6 +5,8 @@ import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.Entities.Appointment.Appointment;
 import com.example.clinic.Entities.User.Doctor;
 import com.example.clinic.Session.PatientSession;
+import com.example.clinic.Entities.Review.Review;
+import com.example.clinic.Database.ReviewDatabase.ReviewDatabase;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -129,6 +131,23 @@ public class ReviewDoctorController {
         }
 
         updateDoctorStars(doctorsFile, selectedDoctorName, selectedStars);
+
+        feedbackLabel.setText("Review submitted successfully!");
+        feedbackLabel.setStyle("-fx-text-fill: #28a745;");
+
+        Doctor doctor = DoctorDatabase.getInstance().getDoctorByName(selectedDoctorName);
+        if (doctor == null) {
+            feedbackLabel.setText("Doctor not found.");
+            return;
+        }
+
+        ReviewDatabase.getInstance().addReview(
+                new Review(
+                        doctor.getUsername(),
+                        comment,
+                        java.time.LocalDate.now().toString()
+                )
+        );
 
         feedbackLabel.setText("Review submitted successfully!");
         feedbackLabel.setStyle("-fx-text-fill: #28a745;");

@@ -26,6 +26,13 @@
                     <children>
                         <Label styleClass="appointment-title" text="Create Appointment"/>
                         <Label styleClass="appointment-subtitle" text="Select a specialty and book your doctor"/>
+                        <TextArea fx:id="reviewsArea"
+                                  prefWidth="400"
+                                  prefHeight="200"
+                                  editable="false"
+                                  wrapText="true"
+                                  promptText="Doctor reviews will appear here." />
+
                     </children>
                 </VBox>
 
@@ -34,7 +41,8 @@
                         <ComboBox fx:id="specialtyComboBox" prefWidth="300.0" promptText="Select Specialty"/>
                         <ComboBox fx:id="doctorComboBox" prefWidth="300.0" promptText="Select Doctor"/>
                         <DatePicker fx:id="datePicker" prefWidth="300.0"/>
-                        <TextField fx:id="timeField" prefWidth="300.0" promptText="Enter Time (HH:MM)"/>
+                        <ComboBox fx:id="timeComboBox" prefWidth="300.0" promptText="Select Time"/>
+                        <Label fx:id="feedbackLabel" style="-fx-text-fill: #d9534f; -fx-font-size: 14px;" />
                     </children>
                 </VBox>
 
