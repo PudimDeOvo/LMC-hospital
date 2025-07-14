@@ -2,37 +2,53 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<AnchorPane prefWidth="1080.0" prefHeight="720.0"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientCancelAppointmentController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientCancelAppointmentController"
+            prefHeight="720.0"
+            prefWidth="1080.0"
+            styleClass="root"
+            stylesheets="@styles.css">
 
     <children>
-        <BorderPane prefWidth="1080.0" prefHeight="720.0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <VBox alignment="CENTER"
+              layoutX="90.0"
+              layoutY="85.0"
+              prefHeight="550.0"
+              prefWidth="900.0"
+              spacing="30.0"
+              styleClass="cancel-container">
 
-            <center>
-                <VBox spacing="10.0">
-                    <padding>
-                        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-                    </padding>
+            <children>
 
-                    <Label text="Your Appointments"
-                           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <VBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <Label styleClass="cancel-title" text="Your Appointments"/>
+                        <Label styleClass="cancel-subtitle" text="Select an appointment to cancel"/>
+                    </children>
+                </VBox>
 
-                    <ListView fx:id="appointmentsList" prefHeight="300.0"/>
+                <ListView fx:id="appointmentsList" prefHeight="300.0" prefWidth="700.0"/>
 
-                    <HBox spacing="10">
-                        <Button text="Cancel"
+                <HBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <Button text="Cancel Appointment"
                                 onAction="#handleCancelAppointment"
-                                prefWidth="150"/>
+                                prefHeight="50.0"
+                                prefWidth="200.0"
+                                styleClass="primary-button"/>
                         <Button text="Back"
                                 onAction="#handleBack"
-                                prefWidth="100"/>
-                    </HBox>
-                </VBox>
-            </center>
+                                prefHeight="50.0"
+                                prefWidth="150.0"
+                                styleClass="secondary-button"/>
+                    </children>
+                </HBox>
 
-        </BorderPane>
+            </children>
+
+        </VBox>
     </children>
+
 </AnchorPane>

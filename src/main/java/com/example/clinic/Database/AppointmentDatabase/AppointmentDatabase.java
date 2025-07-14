@@ -32,23 +32,24 @@ public class AppointmentDatabase {
             while((line = br.readLine()) != null){
                 String[] data = line.split(",");
 
-                if(data.length >= 5){
+                if(data.length >= 6){
                     String doctorUsername = data[0].trim();
                     String patientUsername = data[1].trim();
                     String date = data[2].trim();
                     String concluded = data[3].trim();
                     String MedicalReview = data[4].trim();
+                    String status = data[5].trim();
 
                     Doctor doctor = DoctorDatabase.getInstance().getDoctor(doctorUsername);
                     Patient patient = PatientDatabase.getInstance().getPatient(patientUsername);
 
                     if (searchForDoctor){
                         if(doctorUsername.equalsIgnoreCase(target)){
-                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview));
+                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview, status));
                         }
                     } else {
                         if(patientUsername.equalsIgnoreCase(target)){
-                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview));
+                            appointments.add(new Appointment(doctor, patient, date, Boolean.parseBoolean(concluded), MedicalReview, status));
                         }
                     }
                 }

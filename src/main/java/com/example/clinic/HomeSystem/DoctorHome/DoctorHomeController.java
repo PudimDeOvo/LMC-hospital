@@ -38,7 +38,7 @@ public class DoctorHomeController implements Initializable {
 
     // Doctor information (in a real app, this would come from a database)
     private String doctorName = DoctorSession.getInstance().getLoggedDoctor().getName();
-    private String specialty = DoctorSession.getInstance().getLoggedDoctor().getSpecialty().toString();
+    private String specialty = DoctorSession.getInstance().getLoggedDoctor().getSpecialty().getDisplayName(); //era toString();
     private int rating = DoctorSession.getInstance().getLoggedDoctor().getStars(); // out of 5 stars
 
     @Override

@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -26,12 +25,13 @@
                 <VBox alignment="CENTER" spacing="20.0">
                     <children>
                         <Label styleClass="appointment-title" text="Create Appointment"/>
-                        <Label styleClass="appointment-subtitle" text="Book your visit in a few simple steps"/>
+                        <Label styleClass="appointment-subtitle" text="Select a specialty and book your doctor"/>
                     </children>
                 </VBox>
 
                 <VBox alignment="CENTER" spacing="15.0">
                     <children>
+                        <ComboBox fx:id="specialtyComboBox" prefWidth="300.0" promptText="Select Specialty"/>
                         <ComboBox fx:id="doctorComboBox" prefWidth="300.0" promptText="Select Doctor"/>
                         <DatePicker fx:id="datePicker" prefWidth="300.0"/>
                         <TextField fx:id="timeField" prefWidth="300.0" promptText="Enter Time (HH:MM)"/>

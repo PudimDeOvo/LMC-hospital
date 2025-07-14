@@ -19,12 +19,15 @@ import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.Database.userDatabase.DoctorDatabase;
 import com.example.clinic.Entities.User.Patient;
 import com.example.clinic.Session.PatientSession;
+import com.example.clinic.Entities.MedicalSpecialty;
+import com.example.clinic.Entities.HealthInsurancePlan;
 
 public class CreateAppointmentsController {
 
     @FXML private ComboBox<String> doctorComboBox;
     @FXML private DatePicker datePicker;
     @FXML private TextField timeField;
+    @FXML private ComboBox<MedicalSpecialty> specialtyComboBox;
 
     @FXML
     public void initialize() {
@@ -36,6 +39,33 @@ public class CreateAppointmentsController {
         }
 
         doctorComboBox.setItems(FXCollections.observableArrayList(doctorNames));
+
+        Patient patient = PatientSession.getCurrentPatient();
+        if (patient == null) {
+            System.out.println("No patient session found.");
+            return;
+        }
+
+        HealthInsurancePlan plan = patient.getHealthPlan();
+        if (plan == null) {
+            System.out.println("No insurance plan found for patient.");
+            return;
+        }
+
+        specialtyComboBox.setItems(FXCollections.observableArrayList(plan.getCoveredSpecialties()));
+
+        specialtyComboBox.setOnAction(event -> {
+            MedicalSpecialty selectedSpecialty = specialtyComboBox.getValue();
+            if (selectedSpecialty == null) return;
+
+            List<String> filteredDoctors = new ArrayList<>();
+            for (Doctor doc : allDoctors) {
+                if (doc.getSpecialty().equals(selectedSpecialty)) {
+                    filteredDoctors.add(doc.getName() + " (" + doc.getUsername() + ")");
+                }
+            }
+            doctorComboBox.setItems(FXCollections.observableArrayList(filteredDoctors));
+        });
     }
 
     @FXML
