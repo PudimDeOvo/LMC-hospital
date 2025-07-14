@@ -1,0 +1,89 @@
+/*
+ * =====================================================
+ * STYLESHEET: Cancel Appointment Scene
+ * Matches the modern theme from Welcome page
+ * =====================================================
+ */
+
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #4ECDC4, #2E8B7A, #1F6B5A);
+}
+
+.label {
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+}
+
+.cancel-container {
+    -fx-background-color: white;
+    -fx-background-radius: 25px;
+    -fx-padding: 60px 45px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 30, 0, 0, 10);
+}
+
+.cancel-title {
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F6B5A;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 1, 0, 1, 1);
+}
+
+.cancel-subtitle {
+    -fx-font-size: 18px;
+    -fx-text-fill: #5a6c7d;
+    -fx-alignment: center;
+    -fx-letter-spacing: 0.5px;
+}
+
+.list-view {
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+}
+
+.primary-button, .secondary-button {
+    -fx-font-family: "Segoe UI", "Proxima Nova", "System", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.primary-button {
+    -fx-background-color: #2E8B7A;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(46, 139, 122, 0.4), 10, 0, 0, 3);
+}
+
+.primary-button:hover {
+    -fx-background-color: #4ECDC4;
+    -fx-effect: dropshadow(gaussian, rgba(78, 205, 196, 0.6), 15, 0, 0, 5);
+}
+
+.primary-button:pressed {
+    -fx-background-color: #1F6B5A;
+    -fx-effect: none;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px;
+    -fx-border-color: #c0c8d1;
+    -fx-border-width: 2px;
+    -fx-border-radius: 25px;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #2c3e50;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: #e9ecef;
+}
+
+.primary-button:focused, .secondary-button:focused {
+    -fx-effect: dropshadow(gaussian, #4ECDC4, 15, 0, 0, 0);
+}

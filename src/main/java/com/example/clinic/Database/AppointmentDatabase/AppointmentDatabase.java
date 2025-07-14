@@ -88,26 +88,56 @@ public class AppointmentDatabase {
     }
 
     public void cancelAppointment(String filePath, Appointment toCancel) {
-        List<Appointment> all = getAppointments(filePath, false, toCancel.getPatient().getUsername());
+        List<Appointment> all = getAppointmentsNew(filePath, false, null);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
             bw.write("doctor,patient,date,concluded,medicalReview,status\n");
 
             for (Appointment app : all) {
                 if (app.getDoctor().getUsername().equals(toCancel.getDoctor().getUsername()) &&
-                        app.getDate().equals(toCancel.getDate())) {
+                        app.getDate().equals(toCancel.getDate()) &&
+                        app.getPatient().getUsername().equals(toCancel.getPatient().getUsername())) {
                     app.setStatus("cancelled");
                 }
 
-                bw.write(app.getDoctor().getUsername() + ","
-                        + app.getPatient().getUsername() + ","
-                        + app.getDate() + ","
-                        + app.isConcluded() + ","
-                        + app.getMedicalReview() + ","
-                        + app.getStatus() + "\n");
+                bw.write(app.getDoctor().getUsername() + "," +
+                        app.getPatient().getUsername() + "," +
+                        app.getDate() + "," +
+                        app.isConcluded() + "," +
+                        app.getMedicalReview() + "," +
+                        app.getStatus() + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
+
+        public List<Appointment> getAppointmentsNew(String filePath, boolean concludedOnly, String username) {
+            List<Appointment> list = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+                String line = br.readLine(); // skip header
+                while ((line = br.readLine()) != null) {
+                    String[] tokens = line.split(",");
+                    String doctorUsername = tokens[0].trim();
+                    String patientUsername = tokens[1].trim();
+                    String date = tokens[2].trim();
+                    boolean concluded = Boolean.parseBoolean(tokens[3].trim());
+                    String medicalReview = tokens[4].trim();
+                    String status = tokens.length > 5 ? tokens[5].trim() : "active";
+
+                    if (concludedOnly && !concluded) continue;
+
+                    if (username == null || patientUsername.equals(username)) {
+                        Doctor doctor = DoctorDatabase.getInstance().getDoctor(doctorUsername);
+                        Patient patient = PatientDatabase.getInstance().getPatient(patientUsername);
+                        Appointment app = new Appointment(doctor, patient, date, concluded, medicalReview, status);
+                        list.add(app);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return list;
+        }
+
+    }
