@@ -1,8 +1,12 @@
 package com.example.clinic.HomeSystem.PatientHome;
 
+import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.Entities.Appointment.Appointment;
+import com.example.clinic.Entities.User.Patient;
+import com.example.clinic.Session.PatientSession;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,53 +14,62 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.util.*;
-import com.example.clinic.Entities.User.Patient;
-import com.example.clinic.Session.PatientSession;
-import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CancelAppointmentController {
 
-    @FXML private ListView<Appointment> appointmentsList;
+    @FXML private ListView<String> appointmentsList;
 
     @FXML
     public void initialize() {
-        System.out.println("initialize() called");
         Patient currentPatient = PatientSession.getCurrentPatient();
-        if (currentPatient == null) return;
 
         List<Appointment> appointments = AppointmentDatabase.getInstance()
-                .getAppointmentsNew("src/main/database/AppointmentDatabase.csv", false, currentPatient.getUsername());
+                .getAppointments("src/main/database/AppointmentDatabase.csv", false, currentPatient.getUsername());
 
-        appointments.removeIf(app -> "cancelled".equalsIgnoreCase(app.getStatus()));
+        List<String> displayList = new ArrayList<>();
+        for (Appointment app : appointments) {
+            if (!"cancelled".equalsIgnoreCase(app.getStatus())) {
+                displayList.add(app.getDate() + " - " + app.getDoctor().getName());
+            }
+        }
 
-        appointmentsList.setItems(FXCollections.observableArrayList(appointments));
-
+        appointmentsList.setItems(FXCollections.observableArrayList(displayList));
     }
-
 
     @FXML
     private void handleCancelAppointment(ActionEvent event) {
-        Appointment selected = appointmentsList.getSelectionModel().getSelectedItem();
+        String selected = appointmentsList.getSelectionModel().getSelectedItem();
         if (selected == null) {
             System.out.println("No appointment selected!");
             return;
         }
 
-        AppointmentDatabase.getInstance().cancelAppointment(
-                "src/main/database/AppointmentDatabase.csv",
-                selected
-        );
+        Patient currentPatient = PatientSession.getCurrentPatient();
 
-        System.out.println("Cancelled appointment: " + selected.getDate() + " - " + selected.getDoctor().getName());
+        String[] parts = selected.split(" - ");
+        String dateTime = parts[0].trim();
+        String doctorName = parts[1].trim();
+
+        List<Appointment> appointments = AppointmentDatabase.getInstance()
+                .getAppointments("src/main/database/AppointmentDatabase.csv", false, currentPatient.getUsername());
+
+        for (Appointment app : appointments) {
+            if (app.getDate().equals(dateTime) && app.getDoctor().getName().equals(doctorName)) {
+                AppointmentDatabase.getInstance().cancelAppointment(
+                        "src/main/database/AppointmentDatabase.csv",
+                        app
+                );
+                System.out.println("Cancelled: " + selected);
+                break;
+            }
+        }
 
         initialize();
-
-        appointmentsList.refresh();
     }
-
 
     @FXML
     private void handleBack(ActionEvent event) {

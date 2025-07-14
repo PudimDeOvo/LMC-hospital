@@ -44,12 +44,14 @@
 
 /* First button (left) - rounded left corners */
 .filter-button:first-child {
-    -fx-background-radius: 15 0 0 0;
+    -fx-background-radius: 15 15 0 0;
+    -fx-border-radius: 15 15 0 0;
 }
 
 /* Last button (right) - rounded right corners */
 .filter-button:last-child {
-    -fx-background-radius: 0 15 0 0;
+    -fx-background-radius: 15 15 0 0;
+    -fx-border-radius: 15 15 0 0;
 }
 
 /* Active filter button */

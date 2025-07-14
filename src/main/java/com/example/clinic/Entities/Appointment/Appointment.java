@@ -71,6 +71,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return getDate() + " - " + getDoctor().getName();
+        return date + " - Dr. " + doctor.getName() + " [" + status + "]";
     }
+
 }

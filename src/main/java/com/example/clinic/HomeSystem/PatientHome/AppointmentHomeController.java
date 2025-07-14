@@ -34,6 +34,18 @@ public class AppointmentHomeController implements Initializable {
         loadScheduledAppointments();
     }
 
+    private void setActiveFilter(Button activeButton) {
+        List<Button> allButtons = List.of(scheduledBtn, concludedBtn, cancelledBtn);
+
+        for (Button button : allButtons) {
+            button.getStyleClass().remove("filter-button-active");
+        }
+
+        if (!activeButton.getStyleClass().contains("filter-button-active")) {
+            activeButton.getStyleClass().add("filter-button-active");
+        }
+    }
+
     private void loadScheduledAppointments() {
         Patient patient = PatientSession.getCurrentPatient();
         appointmentsContainer.getChildren().clear();
@@ -91,7 +103,6 @@ public class AppointmentHomeController implements Initializable {
         card.setAlignment(Pos.CENTER_LEFT);
         card.getStyleClass().add("appointment-card");
 
-        // Patient's doctor info
         VBox doctorInfo = new VBox();
         doctorInfo.setSpacing(5);
 
@@ -103,12 +114,11 @@ public class AppointmentHomeController implements Initializable {
 
         doctorInfo.getChildren().addAll(doctorName, doctorUsername);
 
-        // Right side with date
         VBox rightSide = new VBox();
         rightSide.setSpacing(10);
         rightSide.setAlignment(Pos.CENTER_RIGHT);
 
-        Label dateLabel = new Label("Date: " + "PRECISA PEGAR A DATA AINDA");
+        Label dateLabel = new Label("Date: " + appointment.getDate());
         dateLabel.getStyleClass().add("appointment-date");
 
         rightSide.getChildren().addAll(dateLabel);
@@ -122,17 +132,23 @@ public class AppointmentHomeController implements Initializable {
 
     @FXML
     public void showScheduledAppointments(ActionEvent e) {
+        System.out.println("Mostrar marcados");
         loadScheduledAppointments();
+        setActiveFilter(scheduledBtn);
     }
 
     @FXML
     public void showConcludedAppointments(ActionEvent e) {
+        System.out.println("Mostrar concluídos");
         loadConcludedAppointments();
+        setActiveFilter(concludedBtn);
     }
 
     @FXML
     public void showCancelledAppointments(ActionEvent e) {
+        System.out.println("Mostrar cancelados");
         loadCancelledAppointments();
+        setActiveFilter(cancelledBtn);
     }
 
     @FXML

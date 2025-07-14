@@ -1,4 +1,3 @@
 doctor,patient,date,concluded,medicalReview,status
-Ryujin,momo,2025-07-30 testes,false,none,active
-teste,momo,2025-07-18 teste,false,none,active
-Ryujin,momo,2025-07-24 23:54,false,none,active
+Ryujin,momo,2025-07-31 teste,false,none,active
+teste,momo,2025-07-10 teste,false,none,cancelled
