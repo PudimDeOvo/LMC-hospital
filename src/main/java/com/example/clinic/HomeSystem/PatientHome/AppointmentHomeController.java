@@ -121,7 +121,16 @@ public class AppointmentHomeController implements Initializable {
         Label dateLabel = new Label("Date: " + appointment.getDate());
         dateLabel.getStyleClass().add("appointment-date");
 
-        rightSide.getChildren().addAll(dateLabel);
+        rightSide.getChildren().add(dateLabel);
+
+        if (appointment.isConcluded()) {
+            Button payButton = new Button("💳 Pay");
+            payButton.setOnAction(e -> {
+                new PaymentWindow(appointment, appointmentsContainer, card).show();
+            });
+            payButton.getStyleClass().add("pay-button");
+            rightSide.getChildren().add(payButton);
+        }
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -129,6 +138,7 @@ public class AppointmentHomeController implements Initializable {
         card.getChildren().addAll(doctorInfo, spacer, rightSide);
         return card;
     }
+
 
     @FXML
     public void showScheduledAppointments(ActionEvent e) {
@@ -154,7 +164,13 @@ public class AppointmentHomeController implements Initializable {
     @FXML
     public void handleEvaluateDoctor(ActionEvent e) {
         System.out.println("apertou no botao de avaliar");
-        SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/ReviewDoctor/reviewdoctor-view.fxml");
+        try {
+            System.out.println("[DEBUG] switchScene succeeded");
+            SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/ReviewDoctor/reviewdoctor-view.fxml");
+        } catch (Exception ex) {
+            System.out.println("[DEBUG] switchScene failled");
+            ex.printStackTrace();
+        }
     }
 
     public void handleCreateAppointment(ActionEvent e){

@@ -7,57 +7,60 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.clinic.HomeSystem.PatientHome.ReviewDoctorController"
             prefHeight="720.0" prefWidth="1080.0"
-            styleClass="root" stylesheets="@style.css">
+            styleClass="root" stylesheets="@styles.css">
 
     <children>
 
         <VBox alignment="CENTER" layoutX="90.0" layoutY="85.0"
               prefHeight="550.0" prefWidth="900.0"
-              spacing="40.0" styleClass="welcome-container">
+              spacing="20.0" styleClass="welcome-container">
 
             <children>
 
-                <VBox alignment="CENTER" spacing="20.0">
+                <VBox alignment="CENTER" spacing="12.0">
 
                     <children>
                         <Label styleClass="welcome-title" text="Evaluate Doctor" />
                         <Label styleClass="welcome-subtitle"
                                text="Share your experience with your doctor." />
+                        <Label fx:id="feedbackLabel" style="-fx-text-fill: #d9534f; -fx-font-size: 14px;" />
                     </children>
 
                 </VBox>
 
-                <VBox alignment="CENTER" spacing="30.0" maxWidth="600.0" prefWidth="600.0">
+                <VBox alignment="CENTER" spacing="15.0" maxWidth="500.0" prefWidth="500.0">
 
-                    <VBox spacing="15.0">
+                    <VBox spacing="10.0">
                         <Label styleClass="form-label" text="Doctor:" />
-                        <ComboBox fx:id="medicoComboBox"
+                        <ComboBox fx:id="doctorComboBox"
                                   maxWidth="1.7976931348623157E308"
                                   promptText="Select a Doctor"
                                   styleClass="form-select" />
                     </VBox>
 
-                    <VBox spacing="15.0">
+                    <VBox spacing="10.0">
                         <Label styleClass="form-label" text="Comment:" />
-                        <TextArea fx:id="comentarioTextArea"
+                        <TextArea fx:id="reviewText"
                                   maxWidth="1.7976931348623157E308"
-                                  prefHeight="200.0"
+                                  prefHeight="150.0"
                                   promptText="Describe your experience with the doctor..."
                                   wrapText="true"
                                   styleClass="form-textarea" />
                     </VBox>
 
-                    <HBox alignment="CENTER" spacing="20.0">
+                    <HBox fx:id="starsBox" alignment="CENTER" spacing="10.0" prefHeight="40.0"/>
+
+                    <HBox alignment="CENTER" spacing="15.0" prefHeight="40.0">
                         <Button fx:id="enviarButton"
                                 mnemonicParsing="false"
-                                onAction="#sendReview"
-                                prefHeight="50.0" prefWidth="200.0"
+                                onAction="#handleSubmit"
+                                prefHeight="40.0" prefWidth="150.0"
                                 styleClass="primary-button"
                                 text="Send" />
                         <Button fx:id="voltarButton"
                                 mnemonicParsing="false"
-                                onAction="#goBack"
-                                prefHeight="50.0" prefWidth="150.0"
+                                onAction="#handleBack"
+                                prefHeight="40.0" prefWidth="110.0"
                                 styleClass="secondary-button"
                                 text="Back" />
                     </HBox>

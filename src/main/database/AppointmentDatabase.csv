@@ -1,3 +1,4 @@
 doctor,patient,date,concluded,medicalReview,status
-Ryujin,momo,2025-07-31 teste,false,none,cancelled
-teste,momo,2025-07-10 teste,false,none,cancelled
+Ryujin,momo,2025-08-13 13:45,true,linda,active
+Ryujin,momo,2025-07-16 14:45,true,chato,active
+teste,momo,2025-07-17 23:45,true,linda e talentosa amo,active
