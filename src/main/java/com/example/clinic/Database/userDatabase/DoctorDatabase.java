@@ -104,7 +104,14 @@ public class DoctorDatabase extends Database{
         return null;
     }
 
-
+    public Doctor getDoctorByName(String name) {
+        for (Doctor doc : getAllDoctors()) {
+            if (doc.getName().equalsIgnoreCase(name)) {
+                return doc;
+            }
+        }
+        return null;
+    }
 
     public boolean checkCredentials(String username, String password){
         HashMap<String, String> credentials = getCredentials();

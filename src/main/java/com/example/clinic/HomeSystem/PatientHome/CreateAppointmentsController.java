@@ -4,7 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,13 +22,19 @@ import com.example.clinic.Entities.User.Patient;
 import com.example.clinic.Session.PatientSession;
 import com.example.clinic.Entities.MedicalSpecialty;
 import com.example.clinic.Entities.HealthInsurancePlan;
+import com.example.clinic.Entities.Review.Review;
+import com.example.clinic.Database.ReviewDatabase.ReviewDatabase;
+import java.time.LocalDate;
 
 public class CreateAppointmentsController {
 
     @FXML private ComboBox<String> doctorComboBox;
     @FXML private DatePicker datePicker;
-    @FXML private TextField timeField;
+    @FXML private ComboBox<String> timeComboBox;
     @FXML private ComboBox<MedicalSpecialty> specialtyComboBox;
+    @FXML private Label feedbackLabel;
+    @FXML private TextArea reviewsArea;
+
 
     @FXML
     public void initialize() {
@@ -40,6 +47,16 @@ public class CreateAppointmentsController {
 
         doctorComboBox.setItems(FXCollections.observableArrayList(doctorNames));
 
+        doctorComboBox.setOnAction(event -> {
+            String selectedDoctor = doctorComboBox.getValue();
+            if (selectedDoctor != null) {
+                int start = selectedDoctor.indexOf('(') + 1;
+                int end = selectedDoctor.indexOf(')');
+                String doctorUsername = selectedDoctor.substring(start, end);
+                showDoctorReviews(doctorUsername);
+            }
+        });
+
         Patient patient = PatientSession.getCurrentPatient();
         if (patient == null) {
             System.out.println("No patient session found.");
@@ -51,6 +68,15 @@ public class CreateAppointmentsController {
             System.out.println("No insurance plan found for patient.");
             return;
         }
+
+        List<String> timeSlots = new ArrayList<>();
+        for (int hour = 7; hour <= 17; hour++) {
+            timeSlots.add(String.format("%02d:00", hour));
+            if (hour != 17) {
+                timeSlots.add(String.format("%02d:30", hour));
+            }
+        }
+        timeComboBox.setItems(FXCollections.observableArrayList(timeSlots));
 
         specialtyComboBox.setItems(FXCollections.observableArrayList(plan.getCoveredSpecialties()));
 
@@ -68,9 +94,24 @@ public class CreateAppointmentsController {
         });
     }
 
+    private void showDoctorReviews(String doctorUsername) {
+        System.out.println("got called");
+        List<Review> reviews = ReviewDatabase.getInstance().getReviewForDoctor(doctorUsername);
+
+        if (reviews.isEmpty()) {
+            reviewsArea.setText("No reviews available for this doctor yet.");
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (Review review : reviews) {
+                sb.append("- ").append(review.getDate()).append(": ").append(review.getComment()).append("\n");
+            }
+            reviewsArea.setText(sb.toString());
+        }
+    }
+
     private void showConfirmation(String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-        alert.setTitle("Appointment Confirmation");
+        alert.setTitle("Confirmation message");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
@@ -79,13 +120,26 @@ public class CreateAppointmentsController {
     @FXML
     private void handleConfirm(ActionEvent event) {
         String selectedDoctor = doctorComboBox.getValue();
-        String date = String.valueOf(datePicker.getValue());
-        String time = timeField.getText();
+        LocalDate datePicked = datePicker.getValue();
+        String time = timeComboBox.getValue();
 
-        if (selectedDoctor == null || date == null || time.isBlank()) {
-            System.out.println("Please fill in all fields.");
+        feedbackLabel.setText("");
+        feedbackLabel.setStyle("-fx-text-fill: #d9534f;");
+
+        if (selectedDoctor == null) {
+            feedbackLabel.setText("Please select a doctor.");
             return;
         }
+        if (datePicked == null) {
+            feedbackLabel.setText("Please select a date.");
+            return;
+        }
+        if (time == null) {
+            feedbackLabel.setText("Please select a time.");
+            return;
+        }
+
+        String date = datePicked.toString();
 
         int start = selectedDoctor.indexOf('(') + 1;
         int end = selectedDoctor.indexOf(')');

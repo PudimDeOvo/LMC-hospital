@@ -1,2 +1,10 @@
 doctor,patient,date,concluded,medicalReview,status
-
+Ryujin,momo,2025-07-31 10:30,false,none,active
+Ryujin,momo,2025-07-31 08:30,true,linda e talentosa merecia mais daquela empresa maldita vtmc JYPE.,active
+Ryujin,momo,2025-07-31 10:30,true,amoela,active
+Ryujin,momo,2025-07-31 10:30,true,atenciosa e bonita,active
+teste,momo,2025-08-01 11:30,false,none,active
+teste,momo,2025-07-31 10:30,false,none,active
+Ryujin,momo,2025-07-24 10:00,false,none,active
+Ryujin,momo,2025-07-31 07:00,false,none,active
+Ryujin,momo,2025-07-24 10:30,false,none,waiting
