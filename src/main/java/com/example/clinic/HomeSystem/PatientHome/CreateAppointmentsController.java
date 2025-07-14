@@ -68,6 +68,14 @@ public class CreateAppointmentsController {
         });
     }
 
+    private void showConfirmation(String message) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle("Appointment Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     @FXML
     private void handleConfirm(ActionEvent event) {
         String selectedDoctor = doctorComboBox.getValue();
@@ -91,14 +99,43 @@ public class CreateAppointmentsController {
             return;
         }
 
+        List<Appointment> existingAppointments = AppointmentDatabase
+                .getInstance()
+                .getAppointments("src/main/database/AppointmentDatabase.csv", true, doctor.getUsername());
+
+        long activeCount = existingAppointments.stream()
+                .filter(app -> !"cancelled".equalsIgnoreCase(app.getStatus()))
+                .filter(app -> !app.isConcluded())
+                .count();
+
         String dateTime = date + " " + time;
+
+        if (activeCount >= 3) {
+            Appointment waitingAppointment = new Appointment(
+                    doctor,
+                    patient,
+                    dateTime,
+                    false,
+                    "none",
+                    "waiting"
+            );
+            AppointmentDatabase.getInstance().addAppointment(
+                    "src/main/database/AppointmentDatabase.csv",
+                    waitingAppointment
+            );
+            System.out.println("Doctor full! Added to the waiting list.");
+            showConfirmation("This doctor is fully booked.\nYou have been added to the waiting list.");
+            goHome(event);
+            return;
+        }
 
         Appointment newAppointment = new Appointment(
                 doctor,
                 patient,
                 dateTime,
                 false,
-                "none"
+                "none",
+                "active"
         );
 
         AppointmentDatabase.getInstance().addAppointment(
@@ -106,13 +143,10 @@ public class CreateAppointmentsController {
                 newAppointment
         );
 
-        System.out.println("Appointment saved: "
-                + doctorUsername + ","
-                + patient.getUsername() + ","
-                + dateTime);
-
+        System.out.println("Appointment booked!");
         goHome(event);
     }
+
 
     @FXML
     private void handleBack(ActionEvent event) {
