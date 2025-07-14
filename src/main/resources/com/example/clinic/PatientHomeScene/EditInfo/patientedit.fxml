@@ -3,62 +3,100 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientEditController" stylesheets="@styles.css" prefHeight="720.0" prefWidth="1080.0" >
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0" stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.clinic.HomeSystem.PatientHome.PatientEditController">
+
     <children>
         <!-- Header -->
-        <HBox styleClass="header" VBox.vgrow="NEVER">
+        <HBox styleClass="header">
             <children>
-                <Button fx:id="btnVoltar" styleClass="back-button" text="← Voltar" />
+                <Button onAction="#switchToBack" styleClass="btn-voltar" text="Back" />
             </children>
         </HBox>
 
-        <!-- Container Principal -->
-        <VBox alignment="CENTER" spacing="40.0" styleClass="container" VBox.vgrow="ALWAYS">
+        <!-- Main Content -->
+        <VBox styleClass="main-content" spacing="10" alignment="CENTER">
             <children>
-                <!-- Título -->
-                <Label styleClass="title" text="Editar Perfil Médico" />
+                <Label styleClass="titulo" text="Edit Profile" />
 
-                <!-- Seção da Foto -->
-                <VBox alignment="CENTER" spacing="20.0" styleClass="profile-photo-section">
+                <!-- Avatar Section -->
+                <VBox styleClass="avatar-section" spacing="10">
                     <children>
-                        <Circle fx:id="profilePhoto" fill="#333333" radius="60.0" styleClass="profile-photo" />
-                        <Button fx:id="btnAlterarFoto" styleClass="change-photo-btn" text="Alterar Foto" />
+                        <StackPane prefHeight="80" prefWidth="80">
+                            <children>
+                                <Circle radius="40.0" styleClass="profile-image-background" />
+                                <VBox alignment="CENTER" spacing="1" style="-fx-translate-y: 2;">
+                                    <children>
+                                        <Circle radius="10" styleClass="profile-icon" />
+                                        <Circle radius="18" styleClass="profile-icon">
+                                            <clip>
+                                                <Rectangle height="18" width="36" x="-18" y="0" />
+                                            </clip>
+                                        </Circle>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </StackPane>
+                        <Button fx:id="btnAlterarFoto" styleClass="btn-alterar-foto" text="Change picture" />
                     </children>
                 </VBox>
 
-                <!-- Seção do Formulário -->
-                <VBox alignment="CENTER" maxWidth="500.0" spacing="30.0" styleClass="form-section">
+                <!-- Form Section -->
+                <VBox styleClass="form-section" spacing="16">
                     <children>
-                        <!-- Campo Nome -->
-                        <VBox spacing="8.0" styleClass="form-group">
+
+                        <!-- Name -->
+                        <VBox styleClass="field-container" spacing="4">
                             <children>
-                                <Label styleClass="form-label" text="Nome" />
-                                <TextField fx:id="txtNome" promptText="NOME" styleClass="form-input" />
+                                <Label styleClass="field-label" text="Name" />
+                                <TextField fx:id="newPatientNameField" promptText="NAME" styleClass="form-input-small" />
                             </children>
                         </VBox>
 
-                        <!-- Campo Username -->
-                        <VBox spacing="8.0" styleClass="form-group">
+                        <!-- Username -->
+                        <VBox styleClass="field-container" spacing="4">
                             <children>
-                                <Label styleClass="form-label" text="Username" />
-                                <TextField fx:id="txtUsername" promptText="USERNAME" styleClass="form-input" />
+                                <Label styleClass="field-label" text="Username" />
+                                <TextField fx:id="newPatientUsernameField" promptText="USERNAME" styleClass="form-input-small" />
                             </children>
                         </VBox>
 
-                        <!-- Campo Password -->
-                        <VBox spacing="8.0" styleClass="form-group">
+                        <!-- Password -->
+                        <VBox styleClass="field-container" spacing="4">
                             <children>
-                                <Label styleClass="form-label" text="Password" />
-                                <PasswordField fx:id="txtPassword" promptText="••••••••" styleClass="form-input" />
+                                <Label styleClass="field-label" text="Password" />
+                                <PasswordField fx:id="newPatientPasswordField" promptText="NEW PASSWORD" styleClass="form-input-small" />
                             </children>
                         </VBox>
 
-                        <!-- Botão Salvar -->
-                        <Button fx:id="btnSalvar" maxWidth="1.7976931348623157E308" styleClass="save-button" text="Salvar Alterações" />
+                        <!-- Age -->
+                        <VBox styleClass="field-container" spacing="4">
+                            <children>
+                                <Label styleClass="field-label" text="Age" />
+                                <TextField fx:id="newPatientAgeField" promptText="AGE" styleClass="form-input-small" />
+                            </children>
+                        </VBox>
+
+                        <!-- Health Plan -->
+                        <VBox styleClass="field-container" spacing="4">
+                            <children>
+                                <Label styleClass="field-label" text="Health Plan" />
+                                <ChoiceBox fx:id="newPatientHealthPlanChoiceBox" styleClass="form-input-small" />
+                            </children>
+                        </VBox>
+
                     </children>
                 </VBox>
+
+                <!-- Action Buttons -->
+                <HBox styleClass="action-buttons" spacing="10" alignment="CENTER">
+                    <children>
+                        <Button fx:id="saveButton" onAction="#saveChanges" styleClass="btn-salvar-small" text="Save changes" />
+                    </children>
+                </HBox>
+
             </children>
         </VBox>
     </children>
