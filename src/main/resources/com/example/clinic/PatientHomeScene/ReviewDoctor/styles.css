@@ -1,11 +1,14 @@
-/* ===============================================================
- * SHARED ROOT AND CONTAINER (reuse from welcome)
- * =============================================================== */
-
+/* Root styling com o gradiente de fundo original */
 .root {
     -fx-background-color: linear-gradient(to bottom right, #4ECDC4, #2E8B7A, #1F6B5A);
 }
 
+/* Fonte padrão para todas as labels */
+.label {
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+}
+
+/* Container principal com fundo branco arredondado e sombra */
 .welcome-container {
     -fx-background-color: white;
     -fx-background-radius: 25px;
@@ -13,10 +16,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 30, 0, 0, 10);
 }
 
-/* ===============================================================
- * TITLES — reuse same style
- * =============================================================== */
-
+/* Título principal */
 .welcome-title {
     -fx-font-size: 48px;
     -fx-font-weight: bold;
@@ -25,6 +25,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 1, 0, 1, 1);
 }
 
+/* Subtítulo */
 .welcome-subtitle {
     -fx-font-size: 20px;
     -fx-text-fill: #5a6c7d;
@@ -32,60 +33,46 @@
     -fx-letter-spacing: 0.5px;
 }
 
-/* ===============================================================
- * FORM ELEMENTS
- * =============================================================== */
-
-/* Labels inside the form */
+/* Labels dos formulários */
 .form-label {
-    -fx-font-family: "Segoe UI", "System", sans-serif;
     -fx-font-size: 16px;
-    -fx-text-fill: #2c3e50;
-    -fx-font-weight: semi-bold;
+    -fx-text-fill: #2E8B7A;
+    -fx-font-weight: bold;
 }
 
-/* ComboBox styling */
+/* ComboBox (select) */
 .form-select {
-    -fx-pref-height: 45px;
-    -fx-background-radius: 8px;
-    -fx-border-radius: 8px;
-    -fx-border-color: #c0c8d1;
-    -fx-border-width: 1.5px;
-    -fx-background-color: #ffffff;
-    -fx-padding: 0 10px;
     -fx-font-size: 14px;
-}
-
-.form-select:focused {
-    -fx-border-color: #4ECDC4;
-    -fx-effect: dropshadow(gaussian, #4ECDC4, 5, 0, 0, 0);
-}
-
-/* TextArea styling */
-.form-textarea {
     -fx-background-radius: 10px;
+    -fx-border-color: #2E8B7A;
     -fx-border-radius: 10px;
-    -fx-border-color: #c0c8d1;
-    -fx-border-width: 1.5px;
-    -fx-background-color: #ffffff;
-    -fx-padding: 10px;
+    -fx-padding: 6px 8px;
+}
+
+/* TextArea */
+.form-textarea {
     -fx-font-size: 14px;
-    -fx-wrap-text: true;
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-color: #2E8B7A;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+    -fx-focus-color: #4ECDC4;
 }
 
-.form-textarea:focused {
-    -fx-border-color: #4ECDC4;
-    -fx-effect: dropshadow(gaussian, #4ECDC4, 5, 0, 0, 0);
+/* Feedback Label (mensagens de erro ou sucesso) */
+#feedbackLabel {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px;
 }
 
-/* ===============================================================
- * BUTTONS — reuse welcome style
- * =============================================================== */
-
+/* Botões */
 .primary-button, .secondary-button {
     -fx-font-family: "Segoe UI", "Proxima Nova", "System", "Arial", sans-serif;
     -fx-font-weight: bold;
     -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
 }
 
 .primary-button {
@@ -119,12 +106,51 @@
 .secondary-button:hover {
     -fx-background-color: #f8f9fa;
     -fx-border-color: #2c3e50;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 .secondary-button:pressed {
     -fx-background-color: #e9ecef;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
 .primary-button:focused, .secondary-button:focused {
     -fx-effect: dropshadow(gaussian, #4ECDC4, 15, 0, 0, 0);
+}
+
+/* Checkbox para "Favoritar" */
+.check-box {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2E8B7A;
+    -fx-padding: 5 0 5 0;
+}
+
+/* Container das estrelas */
+#starsBox {
+    -fx-spacing: 8px;
+    -fx-alignment: center;
+}
+
+/* Estrelas (labels) */
+#starsBox > Label {
+    -fx-font-size: 30px;
+    -fx-cursor: hand;
+    -fx-text-fill: #bbb; /* cor cinza claro para estrelas vazias */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Estrela cheia (★) */
+#starsBox > Label.filled {
+    -fx-text-fill: #gray;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.8), 8, 0, 0, 0);
+}
+
+/* Hover effect nas estrelas */
+#starsBox > Label:hover {
+    -fx-text-fill: #gray;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }

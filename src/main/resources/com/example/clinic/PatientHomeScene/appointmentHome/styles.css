@@ -156,3 +156,13 @@
     -fx-pref-height: 0;
     -fx-pref-width: 0;
 }
+
+.pay-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 4 12;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
