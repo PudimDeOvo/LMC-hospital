@@ -1,14 +1,14 @@
 package com.example.clinic.HomeSystem.PatientHome;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.scene.layout.VBox;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import com.example.clinic.Entities.Appointment.Appointment;
 
 public class PaymentWindow {
@@ -24,25 +24,29 @@ public class PaymentWindow {
     }
 
     public void show() {
-        Stage stage = new Stage();
-        stage.setTitle("Payment");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clinic/PatientHomeScene/paymentwindow/payment.fxml"));
+            Parent root = loader.load();
 
-        Label label = new Label("Appointment concluded. Please proceed with payment.");
-        Button confirmButton = new Button("Confirm Payment");
-        confirmButton.setOnAction(e -> {
-            container.getChildren().remove(card);
-            stage.close();
-        });
+            VBox layout = (VBox) root;
+            Label label = (Label) layout.lookup("#paymentLabel");
+            Button confirmButton = (Button) layout.lookup("#confirmPaymentButton");
 
-        VBox layout = new VBox(10, label, confirmButton);
-        layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(20));
+            confirmButton.setOnAction(e -> {
+                container.getChildren().remove(card);
+                Stage stage = (Stage) confirmButton.getScene().getWindow();
+                stage.close();
+            });
 
-        Scene scene = new Scene(layout, 300, 150);
-        stage.setScene(scene);
+            Scene scene = new Scene(root, 350, 200);
+            Stage stage = new Stage();
+            stage.setTitle("Payment");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
 
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
-

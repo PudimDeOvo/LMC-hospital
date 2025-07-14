@@ -1,0 +1,19 @@
+/* Payment Window Specific Styles */
+
+.payment-root {
+    -fx-background-color: white;
+    -fx-padding: 40px;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);
+}
+
+.payment-label {
+    -fx-font-size: 18px;
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-text-fill: #1F6B5A;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+/* Reuse your existing primary button style */
