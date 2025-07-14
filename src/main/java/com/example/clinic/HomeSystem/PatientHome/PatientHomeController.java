@@ -35,6 +35,7 @@ public class PatientHomeController {
     @FXML
     private void handleEditProfile(ActionEvent event) {
         System.out.println("Edit profile clicked");
+        SceneManager.switchScene(event, "/com/example/clinic/PatientHomeScene/EditInfo/patientedit.fxml");
     }
 
     @FXML

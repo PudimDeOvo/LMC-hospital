@@ -3,34 +3,71 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      alignment="CENTER" prefHeight="720.0" prefWidth="1080.0"
-      styleClass="container" stylesheets="@styles.css" fx:controller="com.example.clinic.HomeSystem.PatientHome.ReviewDoctorController" >
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.clinic.HomeSystem.PatientHome.ReviewDoctorController"
+            prefHeight="720.0" prefWidth="1080.0"
+            styleClass="root" stylesheets="@style.css">
 
-    <Label styleClass="title" text="Evaluate Doctor" />
+    <children>
 
-    <VBox alignment="CENTER" maxWidth="600.0" prefWidth="600.0" spacing="40.0">
+        <VBox alignment="CENTER" layoutX="90.0" layoutY="85.0"
+              prefHeight="550.0" prefWidth="900.0"
+              spacing="40.0" styleClass="welcome-container">
 
-        <VBox styleClass="form-group" spacing="15.0">
-            <Label styleClass="form-label" text="Médico:" />
-            <ComboBox fx:id="medicoComboBox" maxWidth="1.7976931348623157E308"
-                      promptText="Select a Doctor" styleClass="form-select" />
+            <children>
+
+                <VBox alignment="CENTER" spacing="20.0">
+
+                    <children>
+                        <Label styleClass="welcome-title" text="Evaluate Doctor" />
+                        <Label styleClass="welcome-subtitle"
+                               text="Share your experience with your doctor." />
+                    </children>
+
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="30.0" maxWidth="600.0" prefWidth="600.0">
+
+                    <VBox spacing="15.0">
+                        <Label styleClass="form-label" text="Doctor:" />
+                        <ComboBox fx:id="medicoComboBox"
+                                  maxWidth="1.7976931348623157E308"
+                                  promptText="Select a Doctor"
+                                  styleClass="form-select" />
+                    </VBox>
+
+                    <VBox spacing="15.0">
+                        <Label styleClass="form-label" text="Comment:" />
+                        <TextArea fx:id="comentarioTextArea"
+                                  maxWidth="1.7976931348623157E308"
+                                  prefHeight="200.0"
+                                  promptText="Describe your experience with the doctor..."
+                                  wrapText="true"
+                                  styleClass="form-textarea" />
+                    </VBox>
+
+                    <HBox alignment="CENTER" spacing="20.0">
+                        <Button fx:id="enviarButton"
+                                mnemonicParsing="false"
+                                onAction="#sendReview"
+                                prefHeight="50.0" prefWidth="200.0"
+                                styleClass="primary-button"
+                                text="Send" />
+                        <Button fx:id="voltarButton"
+                                mnemonicParsing="false"
+                                onAction="#goBack"
+                                prefHeight="50.0" prefWidth="150.0"
+                                styleClass="secondary-button"
+                                text="Back" />
+                    </HBox>
+
+                </VBox>
+
+            </children>
+
         </VBox>
 
-        <VBox styleClass="form-group" spacing="15.0">
-            <Label styleClass="form-label" text="Comment:" />
-            <TextArea fx:id="comentarioTextArea" maxWidth="1.7976931348623157E308"
-                      prefHeight="200.0" promptText="Describe your experience with the doctor..."
-                      styleClass="form-textarea" wrapText="true" />
-        </VBox>
+    </children>
 
-        <HBox alignment="CENTER" spacing="20.0" styleClass="button-group">
-            <Button fx:id="enviarButton" mnemonicParsing="false"
-                    styleClass="btn-primary" text="Send" />
-            <Button fx:id="voltarButton" mnemonicParsing="false"
-                    styleClass="btn-secondary" text="Back" />
-        </HBox>
-
-    </VBox>
-
-</VBox>
+</AnchorPane>

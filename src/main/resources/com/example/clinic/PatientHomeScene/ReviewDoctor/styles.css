@@ -1,117 +1,130 @@
-.container {
-    -fx-background-color: #f5f5f5;
-    -fx-padding: 40px;
+/* ===============================================================
+ * SHARED ROOT AND CONTAINER (reuse from welcome)
+ * =============================================================== */
+
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #4ECDC4, #2E8B7A, #1F6B5A);
 }
 
-.title {
-    -fx-font-size: 64px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #4a7c59;
-    -fx-font-family: "Arial";
-}
-
-.form-group {
-    -fx-max-width: 600px;
-    -fx-pref-width: 600px;
-}
-
-.form-label {
-    -fx-font-size: 28px;
-    -fx-text-fill: #4a7c59;
-    -fx-font-weight: 500;
-    -fx-font-family: "Arial";
-}
-
-.form-select {
-    -fx-pref-height: 50px;
-    -fx-font-size: 18px;
+.welcome-container {
     -fx-background-color: white;
-    -fx-border-color: #4a7c59;
-    -fx-border-width: 2px;
-    -fx-border-radius: 8px;
+    -fx-background-radius: 25px;
+    -fx-padding: 60px 45px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 30, 0, 0, 10);
+}
+
+/* ===============================================================
+ * TITLES — reuse same style
+ * =============================================================== */
+
+.welcome-title {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F6B5A;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 1, 0, 1, 1);
+}
+
+.welcome-subtitle {
+    -fx-font-size: 20px;
+    -fx-text-fill: #5a6c7d;
+    -fx-alignment: center;
+    -fx-letter-spacing: 0.5px;
+}
+
+/* ===============================================================
+ * FORM ELEMENTS
+ * =============================================================== */
+
+/* Labels inside the form */
+.form-label {
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: semi-bold;
+}
+
+/* ComboBox styling */
+.form-select {
+    -fx-pref-height: 45px;
     -fx-background-radius: 8px;
-    -fx-text-fill: #333;
-    -fx-font-family: "Arial";
-    -fx-padding: 0 20px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #c0c8d1;
+    -fx-border-width: 1.5px;
+    -fx-background-color: #ffffff;
+    -fx-padding: 0 10px;
+    -fx-font-size: 14px;
 }
 
 .form-select:focused {
-    -fx-border-color: #5a8c69;
-    -fx-effect: dropshadow(gaussian, rgba(74, 124, 89, 0.1), 10, 0, 0, 0);
+    -fx-border-color: #4ECDC4;
+    -fx-effect: dropshadow(gaussian, #4ECDC4, 5, 0, 0, 0);
 }
 
-.form-select .arrow {
-    -fx-background-color: #4a7c59;
-}
-
+/* TextArea styling */
 .form-textarea {
-    -fx-font-size: 18px;
-    -fx-background-color: white;
-    -fx-border-color: #4a7c59;
-    -fx-border-width: 2px;
-    -fx-border-radius: 8px;
-    -fx-background-radius: 8px;
-    -fx-text-fill: #333;
-    -fx-font-family: "Arial";
-    -fx-padding: 20px;
-    -fx-control-inner-background: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #c0c8d1;
+    -fx-border-width: 1.5px;
+    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
 }
 
 .form-textarea:focused {
-    -fx-border-color: #5a8c69;
-    -fx-effect: dropshadow(gaussian, rgba(74, 124, 89, 0.1), 10, 0, 0, 0);
+    -fx-border-color: #4ECDC4;
+    -fx-effect: dropshadow(gaussian, #4ECDC4, 5, 0, 0, 0);
 }
 
-.form-textarea .content {
-    -fx-background-color: white;
+/* ===============================================================
+ * BUTTONS — reuse welcome style
+ * =============================================================== */
+
+.primary-button, .secondary-button {
+    -fx-font-family: "Segoe UI", "Proxima Nova", "System", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
-.button-group {
-    -fx-spacing: 20px;
-}
-
-.btn-primary {
-    -fx-background-color: #4a7c59;
+.primary-button {
+    -fx-background-color: #2E8B7A;
     -fx-text-fill: white;
-    -fx-font-size: 20px;
-    -fx-font-weight: 500;
-    -fx-font-family: "Arial";
-    -fx-padding: 15px 40px;
-    -fx-border-radius: 8px;
-    -fx-background-radius: 8px;
-    -fx-cursor: hand;
-    -fx-min-width: 180px;
+    -fx-font-size: 16px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(46, 139, 122, 0.4), 10, 0, 0, 3);
 }
 
-.btn-primary:hover {
-    -fx-background-color: #3e6b4d;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+.primary-button:hover {
+    -fx-background-color: #4ECDC4;
+    -fx-effect: dropshadow(gaussian, rgba(78, 205, 196, 0.6), 15, 0, 0, 5);
 }
 
-.btn-primary:pressed {
-    -fx-background-color: #2d5038;
+.primary-button:pressed {
+    -fx-background-color: #1F6B5A;
+    -fx-effect: none;
 }
 
-.btn-secondary {
-    -fx-background-color: white;
-    -fx-text-fill: #4a7c59;
-    -fx-font-size: 20px;
-    -fx-font-weight: 500;
-    -fx-font-family: "Arial";
-    -fx-padding: 15px 40px;
-    -fx-border-color: #4a7c59;
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px;
+    -fx-border-color: #c0c8d1;
     -fx-border-width: 2px;
-    -fx-border-radius: 8px;
-    -fx-background-radius: 8px;
-    -fx-cursor: hand;
-    -fx-min-width: 180px;
+    -fx-border-radius: 25px;
 }
 
-.btn-secondary:hover {
-    -fx-background-color: #f0f7f3;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+.secondary-button:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #2c3e50;
 }
 
-.btn-secondary:pressed {
-    -fx-background-color: #e6f2ea;
+.secondary-button:pressed {
+    -fx-background-color: #e9ecef;
+}
+
+.primary-button:focused, .secondary-button:focused {
+    -fx-effect: dropshadow(gaussian, #4ECDC4, 15, 0, 0, 0);
 }
