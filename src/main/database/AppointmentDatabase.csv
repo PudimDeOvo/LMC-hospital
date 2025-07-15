@@ -1,2 +1,8 @@
 doctor,patient,date,concluded,medicalReview,status
+<<<<<<< HEAD
 teste,xx,2025-07-15 08:00,true,Diagnosis: asdObservations: asd,active
+=======
+Ryujin,momo,18/07/2025 09:30,false,none,active
+teste,momo,10/07/2025 07:30,true,Diagnosis: infelizmente a paciente tem talentosite aguda temo que é terminalObservations: muito linda ,active
+nayeon,momo,02/07/2025 08:00,false,none,active
+>>>>>>> 08cffba4e0848c2b1e3c663ad8cfed2aeded326f
