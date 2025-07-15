@@ -4,6 +4,7 @@ import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.SceneManager;
 import com.example.clinic.Entities.Appointment.Appointment;
 import com.example.clinic.Entities.User.Doctor;
+import com.example.clinic.Session.AppointmentSession;
 import com.example.clinic.Session.DoctorSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,6 +80,16 @@ public class DoctorMyAppointmentsController implements Initializable {
         Button concludeBtn = new Button("Conclude");
         concludeBtn.getStyleClass().add("conclude-button");
         concludeBtn.setPrefWidth(120);
+        concludeBtn.setOnAction(event -> {
+            System.out.println("Conclude Appointment clicked for: " + appointment.getPatient().getName());
+            appointment.setConcluded(true);
+            AppointmentDatabase.getInstance().updateAppointment(appointment);
+            AppointmentSession.getInstance().setAppointment(appointment);
+
+            SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/Appointments/ReviewPatient/reviewpatient-view.fxml");
+
+            loadAppointments(); // carrega as consultsa depois da avaliacao
+        });
 
         rightSide.getChildren().addAll(dateLabel, concludeBtn);
 
@@ -88,6 +99,36 @@ public class DoctorMyAppointmentsController implements Initializable {
 
         card.getChildren().addAll(userIcon, patientInfo, spacer, rightSide);
         return card;
+    }
+
+    @FXML
+    private void loadAppointmentsByStatus(boolean concluded) {
+        Doctor doctor = DoctorSession.getInstance().getLoggedDoctor();
+        appointmentsContainer.getChildren().clear();
+
+        List<Appointment> appointments = AppointmentDatabase.getInstance().getAppointments("src/main/database/AppointmentDatabase.csv", true, doctor.getUsername());
+
+        for (Appointment appointment : appointments) {
+            if (appointment.isConcluded() == concluded) {
+                Node appointmentNode = createAppointmentNode(appointment);
+                appointmentsContainer.getChildren().add(appointmentNode);
+            }
+        }
+    }
+
+    @FXML
+    public void showNotConcludedAppointments(ActionEvent e) {
+        loadAppointmentsByStatus(false);
+    }
+
+    @FXML
+    public void showConcludedAppointments(ActionEvent e) {
+        loadAppointmentsByStatus(true);
+    }
+
+    @FXML
+    public void showAllAppointments(ActionEvent e) {
+        loadAppointments();
     }
 
     @FXML
