@@ -3,6 +3,7 @@ package com.example.clinic.HomeSystem.DoctorHome;
 import com.example.clinic.Database.AppointmentDatabase.AppointmentDatabase;
 import com.example.clinic.SceneManager;
 import com.example.clinic.Entities.Appointment.Appointment;
+import com.example.clinic.Session.AppointmentSession;
 import com.example.clinic.Session.DoctorSession;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -128,6 +129,17 @@ public class DoctorHomeController implements Initializable {
         Button concludeBtn = new Button("Conclude");
         concludeBtn.getStyleClass().add("view-button");
         concludeBtn.setPrefWidth(100);
+        concludeBtn.setOnAction(event -> {
+            System.out.println("Conclude Appointment clicked for: " + appointment.getPatient().getName());
+            appointment.setConcluded(true);
+            AppointmentDatabase.getInstance().updateAppointment(appointment);
+            AppointmentSession.getInstance().setAppointment(appointment);
+
+            SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/Appointments/ReviewPatient/reviewpatient-view.fxml");
+
+            todaysAppointments.getChildren().clear();
+            loadTodaysAppointments(); // carrego as consultas depois da avaliacao
+        });
 
         rightSide.getChildren().addAll(timeLabel, concludeBtn);
 
@@ -142,7 +154,7 @@ public class DoctorHomeController implements Initializable {
     @FXML
     private void switchToEdit(ActionEvent event) {
         System.out.println("Edit Profile clicked");
-        SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/EditInfo/doctoredit-view.fxml");
+        SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/EditInfo/doctoredit.fxml");
     }
 
     @FXML
@@ -154,7 +166,7 @@ public class DoctorHomeController implements Initializable {
 
     @FXML
     private void handleAllAppointments(ActionEvent e) {
-        SceneManager.switchScene(e, "/com/example/clinic/DoctorHomeScene/Appointments/doctorappointments-view.fxml");
+        SceneManager.switchScene(e, "/com/example/clinic/DoctorHomeScene/Appointments/OngoingAppointment/doctorappointments-view.fxml");
     }
 
     // Getter methods for accessing private fields (useful for testing or external access)
