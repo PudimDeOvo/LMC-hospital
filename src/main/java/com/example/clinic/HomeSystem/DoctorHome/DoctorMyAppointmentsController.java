@@ -42,6 +42,7 @@ public class DoctorMyAppointmentsController implements Initializable {
 
         List<Appointment> appointments = AppointmentDatabase.getInstance().getAppointments("src/main/database/AppointmentDatabase.csv", true, doctor.getUsername());
         for (Appointment appointment : appointments) {
+
             Node appointmentNode = createAppointmentNode(appointment);
             appointmentsContainer.getChildren().add(appointmentNode);
         }
@@ -62,10 +63,16 @@ public class DoctorMyAppointmentsController implements Initializable {
         VBox patientInfo = new VBox();
         patientInfo.setSpacing(5);
 
-        Label nameLabel = new Label(appointment.getPatient().getName());
+        String nomePaciente = "Paciente desconhecido";
+        String idadePaciente = "Idade desconhecida";
+        if (appointment.getPatient() != null) {
+            nomePaciente = appointment.getPatient().getName();
+            idadePaciente = "Age    " + appointment.getPatient().getAge() + " years";
+        }
+        Label nameLabel = new Label(nomePaciente);
         nameLabel.getStyleClass().add("patient-name");
 
-        Label ageLabel = new Label("Age    " + appointment.getPatient().getAge() + " years");
+        Label ageLabel = new Label(idadePaciente);
         ageLabel.getStyleClass().add("patient-age");
 
         patientInfo.getChildren().addAll(nameLabel, ageLabel);
@@ -78,21 +85,39 @@ public class DoctorMyAppointmentsController implements Initializable {
         Label dateLabel = new Label("Date: " + appointment.getDate());
         dateLabel.getStyleClass().add("appointment-date");
 
-        Button concludeBtn = new Button("Conclude");
-        concludeBtn.getStyleClass().add("conclude-button");
-        concludeBtn.setPrefWidth(120);
-        concludeBtn.setOnAction(event -> {
-            System.out.println("Conclude Appointment clicked for: " + appointment.getPatient().getName());
-            appointment.setConcluded(true);
-            AppointmentDatabase.getInstance().updateAppointment(appointment);
-            AppointmentSession.getInstance().setAppointment(appointment);
+        //verifica a waiting list
+        HBox statusBox = new HBox();
+        statusBox.setSpacing(10);
+        statusBox.getChildren().add(dateLabel);
 
-            SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/Appointments/ReviewPatient/reviewpatient-view.fxml");
+        if ("waiting".equalsIgnoreCase(appointment.getStatus())) {
+            Label waitingLabel = new Label("Waiting List");
+            waitingLabel.getStyleClass().add("waiting-label");
+            statusBox.getChildren().add(waitingLabel);
+        }
+        rightSide.getChildren().add(statusBox);
 
-            loadAppointments(); // carrega as consultsa depois da avaliacao
-        });
+        //add botao conclude aos nao concluidos
+        if(!appointment.isConcluded() && !"waiting".equalsIgnoreCase(appointment.getStatus())) {
+            Button concludeBtn = new Button("Conclude");
+            concludeBtn.getStyleClass().add("conclude-button");
+            concludeBtn.setPrefWidth(120);
+            concludeBtn.setOnAction(event -> {
+                if (appointment.getPatient() != null) {
+                    System.out.println("Conclude Appointment clicked for: " + appointment.getPatient().getName());
+                } else {
+                    System.out.println("Conclude Appointment clicked for: Unknown Patient");
+                }
+                appointment.setConcluded(true);
+                AppointmentDatabase.getInstance().updateAppointment(appointment);
+                AppointmentSession.getInstance().setAppointment(appointment);
 
-        rightSide.getChildren().addAll(dateLabel, concludeBtn);
+                SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/Appointments/ReviewPatient/reviewpatient-view.fxml");
+
+                loadAppointments(); // carrega as consultsa depois da avaliacao
+            });
+            rightSide.getChildren().addAll(dateLabel, concludeBtn);
+        }
 
         // Add spacing to push the conclude button to the right
         Region spacer = new Region();
