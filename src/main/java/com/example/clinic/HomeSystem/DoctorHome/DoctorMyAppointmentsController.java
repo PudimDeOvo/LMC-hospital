@@ -117,19 +117,35 @@ public class DoctorMyAppointmentsController implements Initializable {
         }
     }
 
+    // add so pra ter como saber onde o doutor ta clicando
+    private void setActiveFilter(Button activeButton) {
+        List<Button> allButtons = List.of(notConcludedBtn, concludedBtn, allBtn);
+
+        for (Button button : allButtons) {
+            button.getStyleClass().remove("filter-button-active");
+        }
+
+        if (!activeButton.getStyleClass().contains("filter-button-active")) {
+            activeButton.getStyleClass().add("filter-button-active");
+        }
+    }
+
     @FXML
     public void showNotConcludedAppointments(ActionEvent e) {
         loadAppointmentsByStatus(false);
+        setActiveFilter(notConcludedBtn);
     }
 
     @FXML
     public void showConcludedAppointments(ActionEvent e) {
         loadAppointmentsByStatus(true);
+        setActiveFilter(concludedBtn);
     }
 
     @FXML
     public void showAllAppointments(ActionEvent e) {
         loadAppointments();
+        setActiveFilter(allBtn);
     }
 
     @FXML

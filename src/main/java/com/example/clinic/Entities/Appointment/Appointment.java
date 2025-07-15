@@ -9,7 +9,7 @@ public class Appointment {
     private String date;
     private boolean concluded;
     private String medicalReview;
-    private String status; //active ou cancelled
+    private String status; //active ou cancelled or paid
 
     public Appointment(Doctor doctor, Patient patient, String date, boolean concluded, String medicalReview, String status) {
         this.doctor = doctor;
