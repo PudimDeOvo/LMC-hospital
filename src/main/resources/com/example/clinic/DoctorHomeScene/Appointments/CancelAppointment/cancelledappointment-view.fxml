@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.clinic.DoctorHomeScene.Appointments.CancelAppointment.Cancelledappointment"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.HomeSystem.DoctorHome.DoctorCancelAppointmentController" stylesheets="@styles.css" >
+    <children>
+        <VBox styleClass="main-container" VBox.vgrow="ALWAYS">
+            <children>
+                <!-- Header Container -->
+                <VBox styleClass="header-container">
+                    <children>
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#switchToBack" styleClass="back-button" text="← Back" />
+                        <VBox styleClass="title-section">
+                            <children>
+                                <Label styleClass="title" text="Cancel Appointment" />
+                                <Label styleClass="subtitle" text="Select an appointment to cancel" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
 
-</AnchorPane>
+                <!-- Content Container -->
+                <VBox styleClass="content-container" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Scroll Container -->
+                        <ScrollPane fx:id="scrollPane" styleClass="scroll-container" VBox.vgrow="ALWAYS">
+                            <content>
+                                <VBox fx:id="appointmentsContainer" styleClass="appointments-container" />
+                            </content>
+                        </ScrollPane>
+
+<!--                        &lt;!&ndash; Main Actions &ndash;&gt;-->
+<!--                        <HBox styleClass="main-actions">-->
+<!--                            <children>-->
+<!--                                <Button fx:id="cancelButton" disable="true" mnemonicParsing="false" onAction="#cancelSelectedAppointment" styleClass="main-btn, btn-cancel-selected" text="Cancel Selected" />-->
+<!--                            </children>-->
+<!--                        </HBox>-->
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>
