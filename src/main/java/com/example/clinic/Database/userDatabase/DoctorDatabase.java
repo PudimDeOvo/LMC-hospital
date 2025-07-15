@@ -113,6 +113,7 @@ public class DoctorDatabase extends Database{
         return null;
     }
 
+
     public boolean checkCredentials(String username, String password){
         HashMap<String, String> credentials = getCredentials();
         String storedPassword = credentials.get(username);
