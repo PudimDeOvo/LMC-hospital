@@ -79,11 +79,13 @@ public class PatientEditController implements Initializable {
         currentPatient.setAge(newAge);
         currentPatient.setHealthPlan(selectedPlan);
 
-        PatientSession.setCurrentPatient(currentPatient); // Update session
+        PatientSession.setCurrentPatient(currentPatient);
 
         boolean success = updatePatientInCSV(oldUsername, newUsername, newPassword, newName, newAge, selectedPlan);
 
         if (success) {
+            PatientDatabase db = PatientDatabase.getInstance();
+            db.reloadCredentials();
             showAlert(Alert.AlertType.INFORMATION, "Profile updated successfully.");
         } else {
             showAlert(Alert.AlertType.ERROR, "Failed to update profile.");
