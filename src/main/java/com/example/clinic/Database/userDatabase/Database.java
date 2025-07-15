@@ -9,12 +9,15 @@ import java.util.HashMap;
 
 public abstract class Database {
     HashMap<String, String> credentials = new HashMap<String, String>();
+    protected final String FILE_PATH;
 
     protected Database(String FILE_PATH){
+        this.FILE_PATH = FILE_PATH;
         loadCredentials(FILE_PATH);
     }
 
     protected void loadCredentials(String FILE_PATH){
+        credentials.clear(); //limpa dados antigos antes de recarregar
 
         try (CSVReader reader = new CSVReader(new FileReader(FILE_PATH))) {
             String[] header = reader.readNext();
@@ -43,5 +46,10 @@ public abstract class Database {
 
     public HashMap<String, String> getCredentials(){
         return credentials;
+    }
+
+    //pra atualizar quando o cliente editar os dados
+    public void reloadCredentials(){
+        loadCredentials(FILE_PATH);
     }
 }
