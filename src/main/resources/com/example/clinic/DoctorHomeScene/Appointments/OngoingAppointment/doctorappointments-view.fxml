@@ -19,4 +19,9 @@
          <VBox fx:id="appointmentsContainer" spacing="10" styleClass="appointments-container" />
       </ScrollPane>
    </center>
+   <bottom>
+      <HBox styleClass="bottom-button-container">
+         <Button fx:id="cancelAppointmentBtn" text="Cancel Appointment" onAction="#switchToCancelAppointment" styleClass="cancel-appointment-button" />
+      </HBox>
+   </bottom>
 </BorderPane>
