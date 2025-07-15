@@ -1,0 +1,172 @@
+/* Main container with gradient background */
+.main-container {
+    -fx-background-color: linear-gradient(to bottom, #4A6B7C, #2E4F6B, #1A3A52);
+    -fx-padding: 0;
+}
+
+/* Container for the top bar elements */
+.header-container {
+    -fx-padding: 20 20 0 20;
+}
+
+.tab-active {
+    -fx-background-color: white;
+    -fx-text-fill: #1976d2;
+    -fx-font-weight: bold;
+}
+
+/* Back button styling */
+.back-button {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 25px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Filter bar styling */
+.filter-bar {
+    -fx-alignment: center-left;
+}
+
+/* Filter button styling */
+.filter-button {
+    -fx-background-color: #2C3E50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 15 15 0 0;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+/* Active filter button */
+.filter-button-active {
+    -fx-background-color: white;
+    -fx-text-fill: #2C3E50;
+}
+
+/* Hover effect for filter buttons */
+.filter-button:hover {
+    -fx-background-color: #34495E;
+}
+
+.filter-button-active:hover {
+    -fx-background-color: #ECF0F1;
+}
+
+/* Scroll pane styling */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0 20 20 20;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 15 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+}
+
+/* Appointments container */
+.appointments-container {
+    -fx-padding: 30;
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 15 15;
+}
+
+/* Individual appointment card styling */
+.appointment-card {
+    -fx-background-color: #CCCCCC;
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-spacing: 15;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+/* Patient info styling */
+.patient-name {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #2C3E50;
+}
+
+.patient-age {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495E;
+}
+
+.appointment-date {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495E;
+}
+
+/* Conclude button styling */
+.conclude-button {
+    -fx-background-color: #2E4F6B;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-padding: 8 20 8 20;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.conclude-button:hover {
+    -fx-background-color: #1A3A52;
+}
+
+/* Concluded button styling (disabled state) */
+.concluded-button {
+    -fx-background-color: #6C757D;
+    -fx-text-fill: white;
+    -fx-opacity: 0.7;
+}
+
+/* User icon styling */
+.user-icon {
+    -fx-fill: #7F8C8D;
+    -fx-stroke: #95A5A6;
+    -fx-stroke-width: 2;
+}
+
+/* Scrollbar styling */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+}
+
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 4;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 4;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hide scroll bar arrows */
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+}

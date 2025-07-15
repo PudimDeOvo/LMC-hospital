@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="720.0" prefWidth="1080.0" styleClass="root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinic.HomeSystem.DoctorHome.ReviewPatientController">
+    <children>
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" styleClass="header">
+            <children>
+                <Button fx:id="backButton" onAction="#switchToMyAppointments" styleClass="back-button" text="← Back" />
+            </children>
+        </HBox>
+
+        <!-- Main Content -->
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox spacing="20.0" styleClass="container">
+                    <children>
+                        <!-- Title -->
+                        <Label styleClass="title" text="Patient Evaluation" />
+
+                        <!-- Patient Information -->
+                        <VBox spacing="10.0" styleClass="patient-info">
+                            <children>
+                                <Label styleClass="patient-info-title" text="Patient Information" />
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <Label styleClass="patient-info-label" text="Name:" />
+                                        <TextField fx:id="patientNameField" styleClass="patient-info-field" />
+                                    </children>
+                                </HBox>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <Label styleClass="patient-info-label" text="Age:" />
+                                        <TextField fx:id="patientAgeField" styleClass="patient-info-field" />
+                                    </children>
+                                </HBox>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <Label styleClass="patient-info-label" text="Consultation Date:" />
+                                        <TextField fx:id="dateField" styleClass="patient-info-field" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Form Fields -->
+                        <VBox spacing="16.0">
+                            <children>
+
+                                <!-- Diagnosis -->
+                                <VBox spacing="8.0" styleClass="form-group">
+                                    <children>
+                                        <Label styleClass="form-label" text="Diagnosis" />
+                                        <TextField fx:id="diagnosisField" promptText="Primary diagnosis" styleClass="form-input" />
+                                    </children>
+                                </VBox>
+
+                                <!-- Observations -->
+                                <VBox spacing="8.0" styleClass="form-group">
+                                    <children>
+                                        <Label styleClass="form-label" text="General Observations" />
+                                        <TextArea fx:id="observationsArea" prefRowCount="4" promptText="Additional observations about the consultation..." styleClass="form-textarea" wrapText="true" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Buttons -->
+                        <HBox alignment="CENTER" spacing="16.0" styleClass="button-group">
+                            <children>
+                                <Button fx:id="saveButton" onAction="#saveReview" styleClass="btn-primary" text="Save Evaluation" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</VBox>
