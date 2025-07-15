@@ -29,6 +29,7 @@ public class DoctorMyAppointmentsController implements Initializable {
     @FXML private Button notConcludedBtn;
     @FXML private Button concludedBtn;
     @FXML private Button allBtn;
+    @FXML private Button cancelAppointmentBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -129,6 +130,12 @@ public class DoctorMyAppointmentsController implements Initializable {
     @FXML
     public void showAllAppointments(ActionEvent e) {
         loadAppointments();
+    }
+
+    @FXML
+    private void switchToCancelAppointment(ActionEvent event) {
+        System.out.println("Cancel Appointment clicked");
+        SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/Appointments/CancelAppointment/cancelledappointment-view.fxml");
     }
 
     @FXML
