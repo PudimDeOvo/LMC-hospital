@@ -31,18 +31,21 @@ public class DoctorCancelAppointmentController implements Initializable {
     }
 
     private void loadAppointmentsNotConcluded() {
+        appointmentsContainer.getChildren().clear();
+
         String doctorUsername = DoctorSession.getInstance().getLoggedDoctor().getUsername();
         List<Appointment> appointments = AppointmentDatabase.getInstance().getAppointments("src/main/database/AppointmentDatabase.csv", true, doctorUsername);
 
-        for(Appointment appointm : appointments){
-            if(!appointm.isConcluded() && !"cancelled".equalsIgnoreCase(appointm.getStatus())
-            ){
-              addAppointment(
-                      appointm.getPatient().getName(),
-                      appointm.getPatient().getAge(),
-                      appointm.getDate(),
-                      appointm.getPatient().getUsername()
-              );
+        for (Appointment appointm : appointments) {
+            if (!appointm.isConcluded()
+                    && !"cancelled".equalsIgnoreCase(appointm.getStatus())
+                    && !"waiting".equalsIgnoreCase(appointm.getStatus())) {
+                addAppointment(
+                        appointm.getPatient().getName(),
+                        appointm.getPatient().getAge(),
+                        appointm.getDate(),
+                        appointm.getPatient().getUsername()
+                );
             }
         }
     }
@@ -89,6 +92,11 @@ public class DoctorCancelAppointmentController implements Initializable {
         Label appointmentDateLabel = new Label("Date: " + appointmentDate);
         appointmentDateLabel.getStyleClass().add("appointment-date");
 
+        Appointment appointment = AppointmentDatabase.getInstance()
+                .getAppointmentsByDate("src/main/database/AppointmentDatabase.csv", false, patientUsername, appointmentDate)
+                .stream().findFirst().orElse(null);
+
+        // açao do botao de cancelar
         cancelLocalButton.getStyleClass().add("cancel-button");
         cancelLocalButton.setOnAction(e -> {
             e.consume(); // Prevent card selection
@@ -145,15 +153,19 @@ public class DoctorCancelAppointmentController implements Initializable {
 
             if (!appointmentsByDate.isEmpty()) {
                 Appointment appointment = appointmentsByDate.get(0);
+
                 appointment.setStatus("cancelled");
                 appointment.setConcluded(true);
                 AppointmentDatabase.getInstance().updateAppointment(appointment);
-            }
+                System.out.println("Appointment cancelled");
 
-            System.out.println("Appointment cancelled");
-            appointmentsContainer.getChildren().remove(appointmentCard);
-            if(appointmentsContainer.getChildren().isEmpty()) {
-                showEmptyState();
+                System.out.println("Updating waiting list...");
+                AppointmentDatabase.getInstance().walkWaitingList(appointment.getDoctor().getUsername(), appointment.getDate());
+
+                loadAppointmentsNotConcluded();
+                if (appointmentsContainer.getChildren().isEmpty()) {
+                    showEmptyState();
+                }
             }
         }
     }
