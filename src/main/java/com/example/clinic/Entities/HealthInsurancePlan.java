@@ -5,6 +5,9 @@ import java.util.EnumSet;
 import java.util.Set;
 
 public enum HealthInsurancePlan {
+    NO_PLAN("No Health Insurance Plan",
+            MedicalSpecialty.values()),
+
     BASIC_PLUS("Basic Plus Plan",
             MedicalSpecialty.CARDIOLOGY,
             MedicalSpecialty.DERMATOLOGY,

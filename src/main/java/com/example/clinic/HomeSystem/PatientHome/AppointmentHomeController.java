@@ -123,7 +123,7 @@ public class AppointmentHomeController implements Initializable {
 
         rightSide.getChildren().add(dateLabel);
 
-        if (appointment.isConcluded()) {
+        if (appointment.isConcluded() && PatientSession.getCurrentPatient().getHealthPlan().getName().equals("No Health Insurance Plan")) {
             Button payButton = new Button("💳 Pay");
             payButton.setOnAction(e -> {
                 new PaymentWindow(appointment, appointmentsContainer, card).show();

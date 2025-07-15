@@ -23,7 +23,6 @@ public class PatientLoginController extends LoginController{
         String password = passwordField.getText();
 
         if (PatientDatabase.getInstance().checkCredentials(username, password)){
-            System.out.println("Login bem-sucedido");
             Patient loggedPatient = PatientDatabase.getInstance().getPatient(username);
             PatientSession.setCurrentPatient(loggedPatient);
             SceneManager.switchScene(e, "/com/example/clinic/PatientHomeScene/Home/patienthome-view.fxml");

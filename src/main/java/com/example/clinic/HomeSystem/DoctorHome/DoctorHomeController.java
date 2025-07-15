@@ -83,6 +83,8 @@ public class DoctorHomeController implements Initializable {
                 DoctorSession.getInstance().getLoggedDoctor().getUsername(),
                 today.format(formatter));
 
+        System.out.print(appointments);
+
         for (Appointment appointment : appointments) {
             Node appointmentNode = createAppointmentNode(appointment);
             todaysAppointments.getChildren().add(appointmentNode);

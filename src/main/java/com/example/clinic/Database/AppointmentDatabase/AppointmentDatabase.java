@@ -64,7 +64,7 @@ public class AppointmentDatabase {
     public List<Appointment> getAppointmentsByDate(String FILE_PATH, boolean searchForDoctor, String target, String date){
         List<Appointment> appointments = getAppointments(FILE_PATH, searchForDoctor, target);
         List<Appointment> filteredAppointments = new ArrayList<>();
-
+        System.out.print(appointments);
         for (Appointment appointment : appointments){
             if (appointment.getDate().equals(date)){
                 filteredAppointments.add(appointment);

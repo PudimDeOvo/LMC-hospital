@@ -28,7 +28,8 @@ public class PatientSignUpController extends SignUpController{
         healthPlanComboBox.getItems().addAll(
                 "Basic Plus",
                 "Premium Health",
-                "Executive Total"
+                "Executive Total",
+                "No Plan"
         );
     }
 
