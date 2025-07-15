@@ -1,0 +1,244 @@
+/* Main Container */
+.main-container {
+    -fx-background-color: linear-gradient(to bottom, #4A6B7C, #2E4F6B, #1A3A52);
+    -fx-min-height: 100vh;
+    -fx-max-width: 1080px;
+    -fx-pref-width: 1080px;
+}
+
+/* Header Container */
+.header-container {
+    -fx-padding: 20 20 0 20;
+    -fx-spacing: 20;
+}
+
+.back-button {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: transparent;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-padding: 10 20;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 3, 0, 0, 1);
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.title-section {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.title {
+    -fx-font-size: 2.5em;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.subtitle {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+}
+
+/* Content Container */
+.content-container {
+    -fx-padding: 0 20 20 20;
+    -fx-spacing: 0;
+}
+
+.scroll-container {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 15 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+
+.scroll-container .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-container .scroll-bar:vertical {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 4;
+    -fx-pref-width: 8;
+}
+
+.scroll-container .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 4;
+}
+
+.scroll-container .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Appointments Container */
+.appointments-container {
+    -fx-padding: 30;
+    -fx-spacing: 15;
+}
+
+/* Appointment Card */
+.appointment-card {
+    -fx-background-color: #CCCCCC;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+    -fx-spacing: 15;
+}
+
+.appointment-card:hover {
+    -fx-background-color: #BBBBBB;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 12, 0, 0, 4);
+}
+
+.appointment-card.selected {
+    -fx-background-color: #E3F2FD;
+    -fx-border-color: #1976D2;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(25, 118, 210, 0.3), 15, 0, 0, 4);
+}
+
+/* Patient Info */
+.patient-info {
+    -fx-spacing: 15;
+    -fx-alignment: center-left;
+}
+
+.patient-avatar {
+    -fx-min-width: 50;
+    -fx-min-height: 50;
+    -fx-max-width: 50;
+    -fx-max-height: 50;
+    -fx-background-color: #7F8C8D;
+    -fx-border-color: #95A5A6;
+    -fx-border-width: 2;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+.patient-details {
+    -fx-spacing: 4;
+}
+
+.patient-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.patient-age {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495E;
+}
+
+/* Appointment Right */
+.appointment-right {
+    -fx-spacing: 20;
+    -fx-alignment: center-right;
+}
+
+.appointment-date {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495E;
+    -fx-text-alignment: right;
+}
+
+.cancel-button {
+    -fx-background-color: #2E4F6B;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 8 20;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+}
+
+.cancel-button:hover {
+    -fx-background-color: #1A3A52;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 8, 0, 0, 2);
+}
+
+/* Main Actions */
+.main-actions {
+    -fx-spacing: 20;
+    -fx-padding: 20;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 0 0 15 15;
+    -fx-alignment: center;
+}
+
+.main-btn {
+    -fx-padding: 12 30;
+    -fx-border-color: transparent;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-min-width: 150;
+}
+
+.btn-cancel-selected {
+    -fx-background-color: #e53935; /* vermelho */
+    -fx-text-fill: white;
+}
+
+.btn-cancel-selected:hover {
+    -fx-background-color: #b91c1c;
+    -fx-effect: dropshadow(three-pass-box, rgba(220, 38, 38, 0.3), 15, 0, 0, 4);
+}
+
+.btn-cancel-selected:disabled {
+    -fx-background-color: #6C757D;
+    -fx-opacity: 0.7;
+    -fx-cursor: default;
+}
+
+.btn-back-main {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 2;
+}
+
+.btn-back-main:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Empty State */
+.empty-state {
+    -fx-alignment: center;
+    -fx-padding: 80 20;
+    -fx-spacing: 20;
+}
+
+.empty-icon {
+    -fx-font-size: 4em;
+    -fx-text-fill: rgba(108, 117, 125, 0.5);
+}
+
+.empty-text {
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6C757D;
+}
+
+.empty-subtext {
+    -fx-font-size: 1em;
+    -fx-text-fill: rgba(108, 117, 125, 0.7);
+}
+
