@@ -36,6 +36,7 @@ public class DoctorHomeController implements Initializable {
     @FXML private Label dateLabel;
     @FXML private VBox todaysAppointments;
     @FXML private Button allAppointmentsButton;
+    @FXML private Button cancelAppointmentButton;
 
     // Doctor information (in a real app, this would come from a database)
     private String doctorName = DoctorSession.getInstance().getLoggedDoctor().getName();
@@ -149,6 +150,12 @@ public class DoctorHomeController implements Initializable {
 
         card.getChildren().addAll(userIcon, patientInfo, spacer, rightSide);
         return card;
+    }
+
+    @FXML
+    private void switchToCancelAppointment(ActionEvent event) {
+        System.out.println("Cancel Appointment clicked");
+        SceneManager.switchScene(event, "/com/example/clinic/DoctorHomeScene/Appointments/CancelAppointment/cancelledappointment-view.fxml");
     }
 
     @FXML
