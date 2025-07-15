@@ -3,67 +3,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.clinic.HomeSystem.PatientHome.CreateAppointmentsController"
-            prefHeight="720.0"
-            prefWidth="1080.0"
-            styleClass="root"
-            stylesheets="@styles.css">
+            prefWidth="1080" prefHeight="720" stylesheets="@styles.css">
 
-    <children>
-        <VBox alignment="CENTER"
-              layoutX="90.0"
-              layoutY="85.0"
-              prefHeight="550.0"
-              prefWidth="900.0"
-              spacing="40.0"
-              styleClass="appointment-container">
+    <!-- Sidebar filters -->
+    <left>
+        <VBox spacing="15" prefWidth="250" style="-fx-padding: 20; -fx-background-color: #f0f0f0;" >
+            <Label text="Filter Doctors" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
 
-            <children>
+            <Label text="Date:"/>
+            <DatePicker fx:id="datePicker" />
 
-                <VBox alignment="CENTER" spacing="20.0">
-                    <children>
-                        <Label styleClass="appointment-title" text="Create Appointment"/>
-                        <Label styleClass="appointment-subtitle" text="Select a specialty and book your doctor"/>
-                        <TextArea fx:id="reviewsArea"
-                                  prefWidth="400"
-                                  prefHeight="200"
-                                  editable="false"
-                                  wrapText="true"
-                                  promptText="Doctor reviews will appear here." />
+            <Label text="Time:"/>
+            <ComboBox fx:id="timeComboBox" promptText="Select Time"/>
 
-                    </children>
-                </VBox>
+            <Label text="Specialty:"/>
+            <ComboBox fx:id="specialtyFilterComboBox" promptText="Select Specialty"/>
 
-                <VBox alignment="CENTER" spacing="15.0">
-                    <children>
-                        <ComboBox fx:id="specialtyComboBox" prefWidth="300.0" promptText="Select Specialty"/>
-                        <ComboBox fx:id="doctorComboBox" prefWidth="300.0" promptText="Select Doctor"/>
-                        <DatePicker fx:id="datePicker" prefWidth="300.0"/>
-                        <ComboBox fx:id="timeComboBox" prefWidth="300.0" promptText="Select Time"/>
-                        <Label fx:id="feedbackLabel" style="-fx-text-fill: #d9534f; -fx-font-size: 14px;" />
-                    </children>
-                </VBox>
+            <Label text="Minimum Stars:"/>
+            <ComboBox fx:id="starsFilterComboBox" promptText="Select Minimum Stars"/>
 
-                <HBox alignment="CENTER" spacing="30.0">
-                    <children>
-                        <Button text="Confirm"
-                                onAction="#handleConfirm"
-                                prefHeight="50.0"
-                                prefWidth="180.0"
-                                styleClass="primary-button"/>
-                        <Button text="Back"
-                                onAction="#handleBack"
-                                prefHeight="50.0"
-                                prefWidth="180.0"
-                                styleClass="secondary-button"/>
-                    </children>
-                </HBox>
+            <Label fx:id="feedbackLabel" text="" />
 
-            </children>
-
+            <Button text="Clear Filters" fx:id="clearFiltersButton" maxWidth="Infinity"/>
         </VBox>
-    </children>
+    </left>
 
-</AnchorPane>
+    <!-- Main scrollable list of doctors -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-padding: 20;">
+            <content>
+                <VBox fx:id="doctorsListVBox" spacing="10" />
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
