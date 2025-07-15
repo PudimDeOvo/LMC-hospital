@@ -52,9 +52,10 @@ public class DoctorSignUpController extends SignUpController{
         String password = passwordField.getText();
         String name = nameField.getText();
         String specialty = SpecialtyComboBox.getValue();
+        String stars = "5"; // valor padrao ao registrar
 
         if (isSignUpValid()){
-            String[] doctorData = {username, password, name, specialty};
+            String[] doctorData = {username, password, name, specialty, stars};
             DoctorDatabase.getInstance().addNewDoctor(doctorData);
             System.out.println("Usuário cadastrado: " + username);
 
