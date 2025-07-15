@@ -43,7 +43,7 @@ public class ReviewPatientController implements Initializable {
         if(appointment != null) {
             String diagnosis = diagnosisField.getText();
             String observations = observationsArea.getText();
-            String review = "Diagnosis: " + diagnosis + "Observations: " + observations;
+            String review = "Diagnosis: " + diagnosis + " Observations: " + observations;
 
             appointment.setMedicalReview(review);
             AppointmentSession.getInstance().setAppointment(appointment);
