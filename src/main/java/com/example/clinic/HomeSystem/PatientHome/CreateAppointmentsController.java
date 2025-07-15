@@ -23,6 +23,7 @@ import com.example.clinic.Entities.HealthInsurancePlan;
 import com.example.clinic.Entities.Review.Review;
 import com.example.clinic.Database.ReviewDatabase.ReviewDatabase;
 import javafx.collections.ObservableList;
+import java.time.format.DateTimeFormatter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -55,7 +56,11 @@ public class CreateAppointmentsController {
             return;
         }
 
-        allDoctors = DoctorDatabase.getInstance().getAllDoctors();
+        allDoctors = DoctorDatabase.getInstance().getAllDoctors()
+                .stream()
+                .filter(doc -> plan.coversSpecialty(doc.getSpecialty()))
+                .collect(Collectors.toList());
+
 
         specialtyFilterComboBox.setItems(FXCollections.observableArrayList(plan.getCoveredSpecialties()));
         specialtyFilterComboBox.setOnAction(e -> filterAndDisplayDoctors());
@@ -208,6 +213,7 @@ public class CreateAppointmentsController {
         feedbackLabel.setText("");
         feedbackLabel.setStyle("-fx-text-fill: #d9534f;");
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate datePicked = datePicker.getValue();
         String time = timeComboBox.getValue();
 
@@ -220,7 +226,8 @@ public class CreateAppointmentsController {
             return;
         }
 
-        String dateTime = datePicked.toString() + " " + time;
+        String formattedDate = datePicked.format(formatter);
+        String dateTime = formattedDate + " " + time;
 
         List<Appointment> existingAppointments = AppointmentDatabase.getInstance()
                 .getAppointments("src/main/database/AppointmentDatabase.csv", true, doctor.getUsername());

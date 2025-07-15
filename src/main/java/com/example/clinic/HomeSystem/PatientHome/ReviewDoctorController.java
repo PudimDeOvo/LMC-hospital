@@ -89,52 +89,6 @@ public class ReviewDoctorController {
             return;
         }
 
-        String patientUsername = PatientSession.getCurrentPatient().getUsername();
-        String appointmentsFile = "src/main/database/AppointmentDatabase.csv";
-        String doctorsFile = "src/main/database/DoctorDatabase.csv";
-
-        List<Appointment> appointments = AppointmentDatabase.getInstance()
-                .getAppointments(appointmentsFile, false, patientUsername);
-
-        boolean found = false;
-        for (Appointment app : appointments) {
-            if (app.getDoctor().getName().equalsIgnoreCase(selectedDoctorName)
-                    && app.isConcluded()
-                    && app.getMedicalReview().equalsIgnoreCase("none")) {
-                app.setMedicalReview(comment);
-                found = true;
-                break;
-            }
-        }
-
-        if (found) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(appointmentsFile))) {
-                bw.write("doctor,patient,date,concluded,medicalReview,status\n");
-                for (Appointment app : appointments) {
-                    bw.write(app.getDoctor().getUsername() + "," +
-                            app.getPatient().getUsername() + "," +
-                            app.getDate() + "," +
-                            app.isConcluded() + "," +
-                            app.getMedicalReview() + "," +
-                            app.getStatus() + "\n");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                feedbackLabel.setText("Error saving review.");
-                feedbackLabel.setStyle("-fx-text-fill: #d9534f;");
-                return;
-            }
-        } else {
-            feedbackLabel.setText("No concluded appointment found to review.");
-            feedbackLabel.setStyle("-fx-text-fill: #d9534f;");
-            return;
-        }
-
-        updateDoctorStars(doctorsFile, selectedDoctorName, selectedStars);
-
-        feedbackLabel.setText("Review submitted successfully!");
-        feedbackLabel.setStyle("-fx-text-fill: #28a745;");
-
         Doctor doctor = DoctorDatabase.getInstance().getDoctorByName(selectedDoctorName);
         if (doctor == null) {
             feedbackLabel.setText("Doctor not found.");
@@ -149,11 +103,13 @@ public class ReviewDoctorController {
                 )
         );
 
+        updateDoctorStars("src/main/database/DoctorDatabase.csv", selectedDoctorName, selectedStars);
+
         feedbackLabel.setText("Review submitted successfully!");
         feedbackLabel.setStyle("-fx-text-fill: #28a745;");
-
         goHome(event);
     }
+
 
     private void updateDoctorStars(String filePath, String doctorName, int newStars) {
         List<String> lines = new ArrayList<>();

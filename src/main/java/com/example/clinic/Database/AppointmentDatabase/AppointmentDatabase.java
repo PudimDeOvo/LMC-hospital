@@ -163,4 +163,57 @@ public class AppointmentDatabase {
             e.printStackTrace();
         }
     }
+
+    public void markConcludedAppointmentsAsPaid(String filePath, String patientUsername) {
+        List<Appointment> updatedAppointments = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String header = br.readLine(); // skip or store header
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 6) {
+                    String doctorUsername = data[0].trim();
+                    String user = data[1].trim();
+                    String date = data[2].trim();
+                    boolean concluded = Boolean.parseBoolean(data[3].trim());
+                    String review = data[4].trim();
+                    String status = data[5].trim();
+
+                    Doctor doctor = DoctorDatabase.getInstance().getDoctor(doctorUsername);
+                    Patient patient = PatientDatabase.getInstance().getPatient(user);
+
+                    Appointment app = new Appointment(doctor, patient, date, concluded, review, status);
+
+                    // Mark as paid if this is the target user and it's concluded but not yet paid
+                    if (user.equalsIgnoreCase(patientUsername) &&
+                            concluded &&
+                            !"paid".equalsIgnoreCase(status)) {
+                        app.setStatus("paid");
+                    }
+
+                    updatedAppointments.add(app);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        // Now overwrite the CSV with updated appointments
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            bw.write("doctor,patient,date,concluded,medicalReview,status\n");
+            for (Appointment app : updatedAppointments) {
+                bw.write(app.getDoctor().getUsername() + "," +
+                        app.getPatient().getUsername() + "," +
+                        app.getDate() + "," +
+                        app.isConcluded() + "," +
+                        app.getMedicalReview().replace(",", ";") + "," +
+                        app.getStatus() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
