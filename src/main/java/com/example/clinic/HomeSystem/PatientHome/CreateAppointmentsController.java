@@ -204,9 +204,11 @@ public class CreateAppointmentsController {
         List<Appointment> apps = AppointmentDatabase.getInstance()
                 .getAppointments("src/main/database/AppointmentDatabase.csv", false, currentPatient.getUsername());
         return apps.stream()
-                .anyMatch(app -> app.getDoctor().getUsername().equals(doctor.getUsername())
-                        && "waiting".equalsIgnoreCase(app.getStatus())
-                        && !app.isConcluded());
+                .anyMatch(app -> {
+                    Doctor appDoctor = app.getDoctor();
+                    return appDoctor != null && appDoctor.getUsername().equals(doctor.getUsername())
+                            && "waiting".equalsIgnoreCase(app.getStatus()) && !app.isConcluded();
+                });
     }
 
     private void handleBookDoctor(Doctor doctor) {
