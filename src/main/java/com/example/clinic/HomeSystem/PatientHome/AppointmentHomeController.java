@@ -106,10 +106,15 @@ public class AppointmentHomeController implements Initializable {
         VBox doctorInfo = new VBox();
         doctorInfo.setSpacing(5);
 
-        Label doctorName = new Label("Doctor: " + appointment.getDoctor().getName());
+        var doctor = appointment.getDoctor();
+
+        String doctorNameStr = (doctor != null) ? doctor.getName() : "Unknown";
+        String doctorUsernameStr = (doctor != null) ? "@" + doctor.getUsername() : "@desconhecido";
+
+        Label doctorName = new Label("Doctor: " + doctorNameStr);
         doctorName.getStyleClass().add("patient-name");
 
-        Label doctorUsername = new Label("@" + appointment.getDoctor().getUsername());
+        Label doctorUsername = new Label(doctorUsernameStr);
         doctorUsername.getStyleClass().add("patient-age");
 
         doctorInfo.getChildren().addAll(doctorName, doctorUsername);
