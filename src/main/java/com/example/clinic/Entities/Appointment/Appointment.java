@@ -71,7 +71,8 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return date + " - Dr. " + doctor.getName() + " [" + status + "]";
+        String doctorName = (doctor != null) ? doctor.getName() : "Desconhecido";
+        return date + " - Dr. " + doctorName + " [" + status + "]";
     }
 
 }
