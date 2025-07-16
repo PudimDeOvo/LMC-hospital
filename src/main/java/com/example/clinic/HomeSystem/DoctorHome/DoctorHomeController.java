@@ -38,7 +38,7 @@ public class DoctorHomeController implements Initializable {
     @FXML private Button allAppointmentsButton;
     @FXML private Button cancelAppointmentButton;
 
-    // Doctor information (in a real app, this would come from a database)
+
     private String doctorName = DoctorSession.getInstance().getLoggedDoctor().getName();
     private String specialty = DoctorSession.getInstance().getLoggedDoctor().getSpecialty().getDisplayName(); //era toString();
     private int rating = DoctorSession.getInstance().getLoggedDoctor().getStars(); // out of 5 stars
